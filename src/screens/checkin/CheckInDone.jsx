@@ -1,36 +1,166 @@
-import React from 'react';
-import { CTAButton, Tag } from '../../components/shared';
-import { C } from '../../constants/colors';
+import React, { useEffect } from 'react';
+import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, BORDER } from '../../constants/palette';
+import { useReadyAnimation } from '../../hooks/useReadyAnimation';
 
-export function CheckInDone({ onDone }) {
+const SESSIONS = [
+  { time: 'Now',      name: 'Morning Back Reset',   focus: 'Lower back · Hips',   dur: '5 min' },
+  { time: '12:30 PM', name: 'Desk Shoulder Release', focus: 'Shoulders · Neck',    dur: '3 min' },
+  { time: '6:00 PM',  name: 'Hip & Spine Flow',      focus: 'Hips · Lower back',   dur: '8 min' },
+];
+
+export function CheckInDone({ onDone, onExit }) {
+  const ready = useReadyAnimation(120);
+
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 28px', textAlign: 'center' }}>
-      <div style={{ width: 80, height: 80, borderRadius: '50%', backgroundColor: C.mint, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, boxShadow: '0 8px 24px rgba(39,89,89,0.15)' }}>
-        <svg width="36" height="28" viewBox="0 0 36 28" fill="none">
-          <path d="M2 14l10 10L34 2" stroke={C.teal} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, padding: '28px 22px 32px', overflowY: 'auto', position: 'relative' }}>
+      {onExit && (
+        <button onClick={onExit} style={{
+          position: 'absolute', top: 20, right: 20, zIndex: 10,
+          width: 36, height: 36, borderRadius: '50%',
+          background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)',
+          cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+        }}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M1 1l10 10M11 1L1 11" stroke="#1A2028" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+        </button>
+      )}
+      <style>{`
+        @keyframes popIn { from { opacity:0; transform:scale(0.6) } to { opacity:1; transform:scale(1) } }
+        @keyframes checkDraw { from { stroke-dashoffset: 52 } to { stroke-dashoffset: 0 } }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(14px) } to { opacity:1; transform:translateY(0) } }
+      `}</style>
+
+      {/* Animated check */}
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        marginBottom: 24, flexShrink: 0,
+      }}>
+        <div style={{
+          width: 80, height: 80, borderRadius: '50%',
+          background: 'linear-gradient(135deg, #EDF7F5 0%, #C8EDE7 100%)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          marginBottom: 18,
+          animation: ready ? 'popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards' : 'none',
+          opacity: ready ? 1 : 0,
+          boxShadow: '0 6px 24px rgba(61,171,142,0.20)',
+        }}>
+          <svg width="34" height="26" viewBox="0 0 34 26" fill="none">
+            <path
+              d="M2 13l9.5 9.5L32 2"
+              stroke={TEAL} strokeWidth="3.5"
+              strokeLinecap="round" strokeLinejoin="round"
+              strokeDasharray="52"
+              strokeDashoffset={ready ? 0 : 52}
+              style={{ transition: 'stroke-dashoffset 0.5s ease 0.3s' }}
+            />
+          </svg>
+        </div>
+
+        <div style={{
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 26,
+          color: TEXT, letterSpacing: '-0.3px', marginBottom: 6,
+          opacity: ready ? 1 : 0,
+          animation: ready ? 'fadeUp 0.4s ease 0.2s both' : 'none',
+        }}>
+          You're all set.
+        </div>
+        <div style={{
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15,
+          color: TEXT_SUB, textAlign: 'center', lineHeight: 1.5, maxWidth: 280,
+          opacity: ready ? 1 : 0,
+          animation: ready ? 'fadeUp 0.4s ease 0.35s both' : 'none',
+        }}>
+          Based on your body map, we've curated today's plan for you.
+        </div>
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 28, color: C.black, marginBottom: 8 }}>Check-in complete!</div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15, color: C.grayDark, marginBottom: 32, lineHeight: '160%' }}>
-        Based on your check-in, we've curated today's plan for you.
-      </div>
-      <div style={{ width: '100%', borderRadius: 12, backgroundColor: C.mintLight, padding: '20px', marginBottom: 28, textAlign: 'left' }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: C.teal, marginBottom: 12 }}>Today's recommended plan</div>
-        {[
-          { time: 'Now', routine: '5-min Morning Reset', tags: ['NECK', 'BACK'] },
-          { time: '2:00 PM', routine: 'Desk Break Stretch', tags: ['SHOULDERS'] },
-          { time: '7:00 PM', routine: 'Hip Release Flow', tags: ['HIPS', 'LOWER BACK'] },
-        ].map((s, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? `1px solid rgba(39,89,89,0.1)` : 'none' }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: C.tealMid, width: 52, flexShrink: 0 }}>{s.time}</div>
-            <div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: C.black, marginBottom: 4 }}>{s.routine}</div>
-              <div style={{ display: 'flex', gap: 4 }}>{s.tags.map(t => <Tag key={t}>{t}</Tag>)}</div>
+
+      {/* Plan card */}
+      <div style={{
+        backgroundColor: '#FFFFFF', borderRadius: 16,
+        border: `1px solid ${BORDER}`,
+        boxShadow: '0 2px 14px rgba(0,0,0,0.07)',
+        overflow: 'hidden', marginBottom: 20, flexShrink: 0,
+        opacity: ready ? 1 : 0,
+        animation: ready ? 'fadeUp 0.4s ease 0.45s both' : 'none',
+      }}>
+        {/* Card header */}
+        <div style={{
+          padding: '14px 18px',
+          background: 'linear-gradient(135deg, #EDF7F5 0%, #D5F0E9 100%)',
+          borderBottom: `1px solid rgba(61,171,142,0.15)`,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}>
+          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEAL }}>
+            Today's recommended plan
+          </div>
+          <div style={{
+            fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEAL,
+            backgroundColor: 'rgba(61,171,142,0.12)', padding: '3px 10px', borderRadius: 10,
+          }}>
+            3 sessions
+          </div>
+        </div>
+
+        {/* Sessions */}
+        {SESSIONS.map((s, i) => (
+          <div key={i} style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            padding: '14px 18px',
+            borderBottom: i < SESSIONS.length - 1 ? `1px solid ${BORDER}` : 'none',
+          }}>
+            <div style={{ width: 52, flexShrink: 0 }}>
+              <div style={{
+                fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11,
+                color: i === 0 ? TEAL : TEXT_SUB,
+                backgroundColor: i === 0 ? TEAL_LIGHT : 'transparent',
+                padding: i === 0 ? '3px 7px' : '0',
+                borderRadius: 8, display: 'inline-block',
+              }}>
+                {s.time}
+              </div>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 2 }}>
+                {s.name}
+              </div>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB }}>
+                {s.focus}
+              </div>
+            </div>
+            <div style={{
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT_SUB,
+              backgroundColor: 'rgba(0,0,0,0.05)', padding: '4px 10px', borderRadius: 8, flexShrink: 0,
+            }}>
+              {s.dur}
             </div>
           </div>
         ))}
       </div>
-      <CTAButton onClick={onDone}>Start first session →</CTAButton>
+
+      {/* CTAs */}
+      <div style={{
+        flexShrink: 0,
+        opacity: ready ? 1 : 0,
+        animation: ready ? 'fadeUp 0.4s ease 0.55s both' : 'none',
+      }}>
+        <button onClick={onDone} style={{
+          width: '100%', height: 52, borderRadius: 26, marginBottom: 12,
+          backgroundColor: TEAL, border: 'none', cursor: 'pointer',
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
+          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(61,171,142,0.30)',
+        }}>
+          Start your first move
+        </button>
+        <button onClick={onDone} style={{
+          width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14, color: TEXT_SUB,
+          padding: '6px 0',
+        }}>
+          See my full plan
+        </button>
+      </div>
     </div>
   );
 }

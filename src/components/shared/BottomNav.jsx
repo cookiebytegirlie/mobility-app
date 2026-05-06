@@ -8,9 +8,9 @@ export function GoalsIcon({ active }) {
   const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
   return (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><circle cx="11" cy="11" r="5" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><circle cx="11" cy="11" r="1.5" fill={c}/></svg>);
 }
-export function StretchIcon({ active }) {
+export function ScanIcon({ active }) {
   const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
-  return (<svg width="20" height="24" viewBox="0 0 20 24" fill="none"><circle cx="10" cy="3" r="2.5" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><path d="M10 6v7M4 10l6 3 6-3M7 16l3 7M13 16l-3 7" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinecap="round"/></svg>);
+  return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2H8L6 4H2a1 1 0 00-1 1v12a1 1 0 001 1h18a1 1 0 001-1V5a1 1 0 00-1-1h-4l-2-2z" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none" strokeLinejoin="round"/><path d="M12 15a4 4 0 100-8 4 4 0 000 8z" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/></svg>);
 }
 export function RoutinesIcon({ active }) {
   const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
@@ -25,8 +25,8 @@ export function BottomNav({ activeTab, onTabChange }) {
   const tabs = [
     { id: 'home',     label: 'Home',     icon: HomeIcon },
     { id: 'goals',    label: 'Goals',    icon: GoalsIcon },
-    { id: 'stretch',  label: 'Stretch',  icon: StretchIcon },
-    { id: 'routines', label: 'Routines', icon: RoutinesIcon },
+    { id: 'scan',     label: 'Scan',     icon: ScanIcon },
+    { id: 'routines', label: 'Sessions', icon: RoutinesIcon },
     { id: 'progress', label: 'Progress', icon: ProgressIcon },
   ];
   return (
@@ -41,6 +41,7 @@ export function BottomNav({ activeTab, onTabChange }) {
       boxShadow: '0 4px 28px rgba(0,0,0,0.12)',
       display: 'flex', alignItems: 'center', justifyContent: 'space-around',
       zIndex: 100,
+      paddingBottom: 'env(safe-area-inset-bottom)',
     }}>
       {tabs.map(({ id, label, icon: Icon }) => {
         const active = activeTab === id;

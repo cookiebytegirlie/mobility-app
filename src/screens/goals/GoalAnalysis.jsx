@@ -1,60 +1,112 @@
 import React, { useState, useEffect } from 'react';
+import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, WHITE, BORDER, SHADOW } from '../../constants/palette';
 import { CTAButton } from '../../components/shared';
-import { C } from '../../constants/colors';
+import { Check, AppIcon } from '../../components/icons';
+
+const STEPS = [
+  'Analyzing baseline mobility...',
+  'Reviewing your activity level...',
+  'Building your personalized plan...',
+];
+
+const FINDINGS = [
+  { icon: 'clock',         title: "You'll need ~10 min/day",   sub: 'Manageable with your schedule' },
+  { icon: 'target',        title: 'Key focus areas',           sub: 'Hips, lower back, shoulders' },
+  { icon: 'calendar',      title: '4-week progressive plan',   sub: 'Easy to moderate intensity' },
+  { icon: 'check-circle',  title: 'Strong success rate',       sub: '89% of similar users hit their goal in time' },
+];
 
 export function GoalAnalysis({ onNext }) {
   const [step, setStep] = useState(0);
+
   useEffect(() => {
     const timers = [
-      setTimeout(() => setStep(1), 800),
-      setTimeout(() => setStep(2), 1600),
-      setTimeout(() => setStep(3), 2400),
+      setTimeout(() => setStep(1), 900),
+      setTimeout(() => setStep(2), 1800),
+      setTimeout(() => setStep(3), 2700),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
-  const items = [
-    { label: 'Analyzing baseline mobility...', done: step >= 1 },
-    { label: 'Reviewing activity level...', done: step >= 2 },
-    { label: 'Building your plan...', done: step >= 3 },
-  ];
-  if (step < 3) return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 28px', textAlign: 'center' }}>
-      <div style={{ width: 60, height: 60, borderRadius: '50%', backgroundColor: C.mintLight, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 32, animation: 'pulse 1.5s infinite' }}>
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="12" stroke={C.teal} strokeWidth="2" fill="none" strokeDasharray="4 4"/>
-        </svg>
-      </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 24, color: C.black, marginBottom: 24 }}>Analyzing your profile...</div>
-      {items.map((item, i) => (
-        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, opacity: i <= step ? 1 : 0.3, transition: 'opacity 0.3s' }}>
-          <div style={{ width: 22, height: 22, borderRadius: '50%', backgroundColor: item.done ? C.mint : C.grayLight, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            {item.done && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke={C.teal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-          </div>
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: item.done ? C.black : C.grayDark }}>{item.label}</span>
+
+  /* Loading state */
+  if (step < 3) {
+    return (
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: BG, padding: '32px 28px', textAlign: 'center' }}>
+        <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+
+        <div style={{
+          width: 64, height: 64, borderRadius: '50%', marginBottom: 32,
+          backgroundColor: TEAL_LIGHT, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 4px 20px rgba(61,171,142,0.20)',
+        }}>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ animation: 'spin 2s linear infinite' }}>
+            <circle cx="14" cy="14" r="11" stroke={TEAL} strokeWidth="2" fill="none" strokeDasharray="16 52"/>
+          </svg>
         </div>
-      ))}
-    </div>
-  );
+
+        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 24, color: TEXT, marginBottom: 28 }}>
+          Building your plan...
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%' }}>
+          {STEPS.map((label, i) => {
+            const done = i < step;
+            const active = i === step;
+            return (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                opacity: i <= step ? 1 : 0.3, transition: 'opacity 0.4s',
+              }}>
+                <div style={{
+                  width: 24, height: 24, borderRadius: '50%', flexShrink: 0,
+                  backgroundColor: done ? TEAL : active ? TEAL_LIGHT : 'rgba(0,0,0,0.07)',
+                  border: done ? 'none' : active ? `2px solid ${TEAL}` : '2px solid transparent',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'all 0.3s',
+                }}>
+                  {done && <Check color="white" />}
+                </div>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: done ? 600 : 500, fontSize: 14, color: done ? TEXT : TEXT_SUB }}>
+                  {label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  /* Results state */
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '32px 24px' }}>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 28, color: C.black, lineHeight: '110%', marginBottom: 24 }}>Here's what we found</div>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {[
-          { icon: '⏱', title: "You'll need ~10 min/day", sub: 'Manageable with your schedule' },
-          { icon: '🎯', title: 'Key focus areas', sub: 'Hips, lower back, shoulders' },
-          { icon: '📅', title: '4-week plan', sub: 'Progressive intensity — easy to moderate' },
-          { icon: '✅', title: 'Success rate', sub: '89% of similar users hit their goal in time' },
-        ].map(({ icon, title, sub }) => (
-          <div key={title} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, backgroundColor: C.mintLight, boxShadow: '0px 2px 3px rgba(0,0,0,0.05)' }}>
-            <span style={{ fontSize: 24 }}>{icon}</span>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: BG, padding: '28px 22px' }}>
+      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 24 }}>
+        Here's what we found
+      </div>
+
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {FINDINGS.map(({ icon, title, sub }) => (
+          <div key={title} style={{
+            display: 'flex', alignItems: 'center', gap: 14,
+            padding: '16px 18px', borderRadius: 14,
+            backgroundColor: WHITE, border: `1px solid ${BORDER}`, boxShadow: SHADOW,
+          }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+              backgroundColor: TEAL_LIGHT,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <AppIcon name={icon} size={22} color={TEAL} />
+            </div>
             <div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: C.black, marginBottom: 2 }}>{title}</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: C.grayDark }}>{sub}</div>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 2 }}>{title}</div>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{sub}</div>
             </div>
           </div>
         ))}
       </div>
-      <CTAButton onClick={onNext} style={{ marginTop: 24 }}>See my recommended plan</CTAButton>
+
+      <CTAButton onClick={onNext} style={{ marginTop: 24 }}>Show me my plan</CTAButton>
     </div>
   );
 }

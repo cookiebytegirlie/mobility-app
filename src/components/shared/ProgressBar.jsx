@@ -2,14 +2,13 @@ import React from 'react';
 
 export function ProgressBar({ step, total, style = {} }) {
   return (
-    <div style={{ display: 'flex', gap: 5, ...style }}>
-      {Array.from({ length: total }).map((_, i) => (
-        <div key={i} style={{
-          flex: 1, height: 3, borderRadius: 2,
-          backgroundColor: i < step ? 'rgba(20,160,130,0.9)' : 'rgba(0,0,0,0.15)',
-          transition: 'background-color 0.3s',
-        }} />
-      ))}
+    <div style={{ width: '100%', height: 4, borderRadius: 2, backgroundColor: '#E1F5EE', ...style }}>
+      <div style={{
+        height: '100%', borderRadius: 2,
+        backgroundColor: '#3DAB8E',
+        width: `${(step / total) * 100}%`,
+        transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+      }} />
     </div>
   );
 }

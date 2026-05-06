@@ -1,0 +1,9 @@
+export const TEAL       = '#3DAB8E';
+export const TEAL_LIGHT = '#EDF7F5';
+export const TEXT       = '#1A2028';
+export const TEXT_SUB   = '#6B7280';
+export const TEXT_MUTED = '#9CA3AF';
+export const BG         = '#FAFAF8';
+export const WHITE      = '#FFFFFF';
+export const BORDER     = 'rgba(0,0,0,0.08)';
+export const SHADOW     = '0 2px 10px rgba(0,0,0,0.06)';

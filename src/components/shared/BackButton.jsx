@@ -1,17 +1,16 @@
 import React from 'react';
+import { BackArrow } from '../icons';
 
-export function BackButton({ onClick }) {
+export function BackButton({ onClick, style = {} }) {
   return (
     <button onClick={onClick} style={{
-      background: 'rgba(0,0,0,0.07)',
-      backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-      border: '1px solid rgba(0,0,0,0.12)',
-      borderRadius: '50%', width: 36, height: 36, cursor: 'pointer',
+      width: 36, height: 36, borderRadius: '50%', background: '#FFFFFF',
+      border: '1px solid rgba(0,0,0,0.08)', cursor: 'pointer', flexShrink: 0,
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
+      boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+      ...style,
     }}>
-      <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
-        <path d="M9 1L1 8.5L9 16" stroke="rgba(20,30,40,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      <BackArrow />
     </button>
   );
 }

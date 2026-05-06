@@ -1,123 +1,203 @@
-import React from 'react';
-import { AppHeader, Tag, BookmarkIcon } from '../components/shared';
-import { C } from '../constants/colors';
+import React, { useState } from 'react';
+import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, WHITE, BORDER, SHADOW } from '../constants/palette';
+import { Tag } from '../components/shared';
+import { Close, AppIcon } from '../components/icons';
+import { LOCATION_ROUTINES } from '../constants/data';
+
+const LOCATIONS = ['Home', 'Office', 'Outdoors', 'Gym'];
+
+const NUDGES = [
+  {
+    id: 'sitting',
+    icon: 'clock',
+    text: "You've been sitting 90 min",
+    cta: '3 min reset',
+    bg: TEAL_LIGHT,
+    border: 'rgba(61,171,142,0.22)',
+    ctaColor: TEAL,
+  },
+  {
+    id: 'walk',
+    icon: 'leaf',
+    text: 'Before your walk outside',
+    cta: 'Quick prep stretch',
+    bg: '#FFF8F0',
+    border: 'rgba(217,119,6,0.18)',
+    ctaColor: '#D97706',
+  },
+];
 
 export function HomeScreen({ onNavigate }) {
-  const suggestions = [
-    { text: "You've been sitting 90 min", cta: "3 min reset", color: C.mintLight, textColor: C.tealMid },
-    { text: "Before your walk outside", cta: "Quick prep stretch", color: '#FFF4EA', textColor: 'rgb(180,90,20)' },
-  ];
+  const [location, setLocation] = useState('Home');
+  const [dismissed, setDismissed] = useState([]);
+
+  const visibleNudges = NUDGES.filter(n => !dismissed.includes(n.id));
+  const routines = LOCATION_ROUTINES[location] || [];
+
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', paddingBottom: 88 }}>
-      <AppHeader onCheckIn={() => onNavigate('checkin-1')} onBell={() => {}} />
-      <div style={{ padding: '8px 20px 0' }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 32, color: C.black, marginBottom: 20, lineHeight: '110%' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: BG, overflowY: 'auto', paddingBottom: 88 }}>
+
+      {/* ── Header ── */}
+      <div style={{ padding: '14px 20px 12px', display: 'flex', alignItems: 'center', gap: 10 }}>
+        {/* Avatar */}
+        <div style={{
+          width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+          background: 'linear-gradient(135deg, #C8EDE7 0%, #A8D8D0 100%)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 1px 6px rgba(0,0,0,0.10)',
+        }}>
+          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: TEAL }}>T</span>
+        </div>
+
+        {/* Check-in pill */}
+        <div onClick={() => onNavigate('checkin-1')} style={{
+          flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+          padding: '9px 14px', borderRadius: 22, cursor: 'pointer',
+          backgroundColor: WHITE, border: `1px solid ${BORDER}`,
+          boxShadow: SHADOW,
+        }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#F97316', flexShrink: 0 }} />
+          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT }}>Complete your daily check-in</span>
+        </div>
+
+        {/* Bell */}
+        <button style={{
+          width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+          background: WHITE, border: `1px solid ${BORDER}`, cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: SHADOW,
+        }}>
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M8 1C5.24 1 3 3.24 3 6v5l-1.5 2h13L13 11V6c0-2.76-2.24-5-5-5z" stroke={TEXT} strokeWidth="1.4" fill="none" strokeLinejoin="round"/>
+            <path d="M6 13.5c0 1.1.9 2 2 2s2-.9 2-2" stroke={TEXT} strokeWidth="1.4" strokeLinecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div style={{ padding: '2px 20px 0' }}>
+
+        {/* ── Headline ── */}
+        <div style={{
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 30,
+          color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 18,
+        }}>
           Let's get moving.
         </div>
 
-        {/* Hero Quick Start card */}
-        <div onClick={() => onNavigate('session-preview')} style={{
-          borderRadius: 10, overflow: 'hidden', cursor: 'pointer',
-          boxShadow: '0px 4px 11.9px rgba(0,0,0,0.2)', marginBottom: 20,
-        }}>
-          <div style={{
-            height: 194, position: 'relative',
-            background: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 84%), url(/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg) center/cover no-repeat`,
-          }}>
-            <span style={{ position: 'absolute', bottom: 16, left: 18, fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 22, color: C.white }}>Quick Start</span>
-            <BookmarkIcon />
-          </div>
-          <div style={{ backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(20px) saturate(160%)', WebkitBackdropFilter: 'blur(20px) saturate(160%)', padding: '12px 16px' }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: C.black, marginBottom: 4 }}>Morning Stretch</div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: C.grayDark, marginBottom: 8 }}>Relax your body to start your day.</div>
-            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
-              <Tag active>FULL BODY</Tag>
-              <Tag>5 MIN</Tag>
-              <Tag>BEGINNER</Tag>
-            </div>
-          </div>
-        </div>
-
-        {/* Scan Environment card */}
-        <div onClick={() => onNavigate('scan-environment')} style={{
-          borderRadius: 10, overflow: 'hidden', cursor: 'pointer', marginBottom: 20,
-          background: 'linear-gradient(135deg, rgb(15,40,40) 0%, rgb(25,70,65) 50%, rgb(20,55,50) 100%)',
-          boxShadow: '0px 4px 16px rgba(0,0,0,0.25)',
-          display: 'flex', alignItems: 'center', padding: '16px 18px', gap: 16,
-          position: 'relative',
-        }}>
-          {/* Subtle grid bg */}
-          <div style={{
-            position: 'absolute', inset: 0, opacity: 0.12,
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
-          }} />
-          {/* Scan icon */}
-          <div style={{
-            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.1)', border: '1.5px solid rgba(205,255,238,0.35)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
-          }}>
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="6" stroke="rgb(205,255,238)" strokeWidth="2" fill="none"/>
-              <circle cx="14" cy="14" r="2" fill="rgb(205,255,238)"/>
-              <path d="M2 9V4h5M21 4h5v5M26 19v5h-5M7 26H2v-5" stroke="rgb(205,255,238)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            {/* Ping */}
-            <div style={{ position: 'absolute', top: -2, right: -2, width: 8, height: 8, borderRadius: '50%', background: C.orange }} />
-          </div>
-          <div style={{ flex: 1, position: 'relative' }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: 'white', marginBottom: 3 }}>
-              Scan your environment
-            </div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: 'rgba(205,255,238,0.75)', lineHeight: '140%' }}>
-              AI spots what's around you and builds a routine on the spot
-            </div>
-          </div>
-          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" style={{ flexShrink: 0, position: 'relative' }}>
-            <path d="M1 1l5 5-5 5" stroke="rgba(205,255,238,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-        </div>
-
-        {/* Smart suggestions */}
-        <div style={{ marginBottom: 20 }}>
-          {suggestions.map((s, i) => (
-            <div key={i} onClick={() => onNavigate('session-preview')} style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '14px 16px', borderRadius: 10, backgroundColor: s.color,
-              marginBottom: 10, cursor: 'pointer',
-              boxShadow: '0px 2px 3px rgba(0,0,0,0.05)',
-            }}>
-              <div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: s.textColor, marginBottom: 2 }}>{s.text}</div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: C.black }}>→ {s.cta}</div>
-              </div>
-              <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1l6 6-6 6" stroke={C.teal} strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </div>
+        {/* ── Location selector + Scan inline ── */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20, overflowX: 'auto', paddingBottom: 2, paddingRight: 16 }}>
+          {LOCATIONS.map(loc => (
+            <button key={loc} onClick={() => setLocation(loc)} style={{
+              flexShrink: 0, padding: '7px 14px', borderRadius: 20, cursor: 'pointer',
+              backgroundColor: location === loc ? TEAL : WHITE,
+              border: `1px solid ${location === loc ? TEAL : BORDER}`,
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13,
+              color: location === loc ? WHITE : TEXT_SUB,
+              boxShadow: location === loc ? '0 2px 8px rgba(61,171,142,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+              transition: 'all 0.15s',
+            }}>{loc}</button>
           ))}
         </div>
 
-        {/* New Routines */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: C.black, marginBottom: 12 }}>New Routines</div>
-        {[
-          { title: 'Feel Good Flow', subtitle: 'Full Body', img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg', tags: ['SHOULDERS', 'BACK'] },
-          { title: 'Hip Opener', subtitle: 'Lower Body', img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg', tags: ['HIPS', 'LEGS'] },
-        ].map((r) => (
-          <div key={r.title} onClick={() => onNavigate('session-preview')} style={{
-            borderRadius: 10, overflow: 'hidden', cursor: 'pointer',
-            boxShadow: '0px 4px 11.9px rgba(0,0,0,0.15)', marginBottom: 16,
+        {/* ── Nudge cards ── */}
+        {visibleNudges.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 22 }}>
+            {visibleNudges.map(n => (
+              <div key={n.id} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '12px 14px', borderRadius: 14,
+                backgroundColor: n.bg, border: `1px solid ${n.border}`,
+                boxShadow: '0 1px 6px rgba(0,0,0,0.04)',
+              }}>
+                <AppIcon name={n.icon} size={20} color={n.ctaColor} style={{ flexShrink: 0 }} />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginBottom: 3 }}>{n.text}</div>
+                  <div
+                    onClick={() => onNavigate('session-preview')}
+                    style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}
+                  >
+                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT }}>{n.cta}</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M4 2l4 4-4 4" stroke={n.ctaColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setDismissed(d => [...d, n.id])}
+                  style={{
+                    width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
+                    background: 'rgba(0,0,0,0.07)', border: 'none', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
+                  }}
+                >
+                  <Close color={TEXT_SUB} width={8} height={8} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* ── Quick Start hero card ── */}
+        <div onClick={() => onNavigate('session-preview')} style={{
+          borderRadius: 16, overflow: 'hidden', cursor: 'pointer',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.10)', marginBottom: 24,
+        }}>
+          <div style={{
+            height: 180, position: 'relative',
+            background: `linear-gradient(rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.50) 85%), url(/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg) center/cover no-repeat`,
           }}>
-            <div style={{ height: 130, position: 'relative', background: `linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 84%), url(${r.img}) center/cover no-repeat` }}>
-              <span style={{ position: 'absolute', bottom: 12, left: 16, fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 18, color: C.white }}>{r.title}</span>
-              <BookmarkIcon />
+            <div style={{
+              position: 'absolute', top: 14, left: 14,
+              padding: '4px 10px', borderRadius: 20,
+              backgroundColor: 'rgba(255,255,255,0.18)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,0.28)',
+            }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: WHITE, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={WHITE} /> Good for right now</span>
             </div>
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: '10px 16px', display: 'flex', gap: 6 }}>
-              {r.tags.map(t => <Tag key={t}>{t}</Tag>)}
+            <div style={{ position: 'absolute', bottom: 14, left: 16 }}>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 22, color: WHITE, letterSpacing: '-0.2px', marginBottom: 3 }}>For your lower back</div>
+              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>5 min · Full body warmup</div>
             </div>
           </div>
-        ))}
+          <div style={{
+            backgroundColor: WHITE, padding: '12px 16px',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <Tag active>Full body</Tag>
+              <Tag>5 min</Tag>
+              <Tag>Beginner</Tag>
+            </div>
+            <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+              <path d="M1 1l5 5-5 5" stroke={TEAL} strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* ── New Routines ── */}
+        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>You might like these</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {routines.map((r, i) => (
+            <div key={i} onClick={() => onNavigate('session-preview')} style={{
+              borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
+            }}>
+              <div style={{
+                height: 118, position: 'relative',
+                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.46) 85%), url(${r.img}) center/cover no-repeat`,
+              }}>
+                <div style={{ position: 'absolute', bottom: 12, left: 14 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: WHITE, marginBottom: 2 }}>{r.title}</div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)' }}>{r.sub}</div>
+                </div>
+              </div>
+              <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6 }}>
+                {r.tags.map(t => <Tag key={t}>{t}</Tag>)}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

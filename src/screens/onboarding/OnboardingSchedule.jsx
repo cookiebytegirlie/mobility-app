@@ -1,54 +1,88 @@
 import React, { useState } from 'react';
-import { CTAButton, BackButton, ProgressBar } from '../../components/shared';
-import { C } from '../../constants/colors';
+import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, BORDER } from '../../constants/palette';
+import { BackButton, ProgressBar } from '../../components/shared';
+import { Check, AppIcon } from '../../components/icons';
+
+const TIMES = [
+  { id: 'morning',   label: 'Morning',   sub: 'Before your day starts', icon: 'sunrise'  },
+  { id: 'afternoon', label: 'Afternoon', sub: 'During lunch or breaks', icon: 'sun'      },
+  { id: 'evening',   label: 'Evening',   sub: 'Wind down after work',   icon: 'moon'     },
+  { id: 'flexible',  label: 'Flexible',  sub: "I'll decide each day",   icon: 'flexible' },
+];
 
 export function OnboardingSchedule({ onNext, onBack }) {
   const [selected, setSelected] = useState(null);
-  const times = [
-    { id: 'morning', label: 'Morning', sub: 'Before your day starts', icon: '🌅' },
-    { id: 'afternoon', label: 'Afternoon', sub: 'During lunch or breaks', icon: '☀️' },
-    { id: 'evening', label: 'Evening', sub: 'Wind down after work', icon: '🌙' },
-    { id: 'flexible', label: 'Flexible', sub: "I'll decide each day", icon: '✦' },
-  ];
+
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '16px 24px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, padding: '16px 24px 28px' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
         <BackButton onClick={onBack} />
         <ProgressBar step={3} total={4} style={{ flex: 1 }} />
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 30, color: C.black, lineHeight: '110%', margin: '24px 0 8px' }}>
+
+      <div style={{
+        fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 26,
+        color: TEXT, lineHeight: 1.2, letterSpacing: '-0.3px', marginBottom: 6,
+      }}>
         When do you prefer to move?
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15, color: C.grayDark, marginBottom: 32 }}>
+      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15, color: TEXT_SUB, marginBottom: 28 }}>
         We'll schedule your sessions around this.
       </div>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
-        {times.map(({ id, label, sub, icon }) => (
-          <button key={id} onClick={() => setSelected(id)} style={{
-            display: 'flex', alignItems: 'center', gap: 16,
-            padding: '18px 20px', borderRadius: 12, border: 'none', cursor: 'pointer',
-            backgroundColor: selected === id ? C.mint : C.grayLight,
-            boxShadow: selected === id ? '0px 2px 8px rgba(39,89,89,0.15)' : 'none',
-            transition: 'all 0.15s',
-          }}>
-            <span style={{ fontSize: 24 }}>{icon}</span>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: selected === id ? C.teal : C.black }}>{label}</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: selected === id ? C.tealMid : C.grayDark }}>{sub}</div>
-            </div>
-            {selected === id && (
-              <div style={{ marginLeft: 'auto', width: 20, height: 20, borderRadius: '50%', backgroundColor: C.teal, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path d="M1 4l3 3 5-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {TIMES.map(({ id, label, sub, icon }) => {
+          const chosen = selected === id;
+          return (
+            <button key={id} onClick={() => setSelected(id)} style={{
+              display: 'flex', alignItems: 'center', gap: 14,
+              padding: '16px 18px', borderRadius: 14,
+              border: `1.5px solid ${chosen ? TEAL : BORDER}`,
+              backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
+              cursor: 'pointer',
+              boxShadow: chosen ? '0 2px 12px rgba(61,171,142,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
+              transition: 'all 0.15s',
+            }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+                backgroundColor: chosen ? 'rgba(61,171,142,0.12)' : 'rgba(0,0,0,0.04)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <AppIcon name={icon} size={22} color={chosen ? TEAL : TEXT_SUB} />
               </div>
-            )}
-          </button>
-        ))}
+              <div style={{ textAlign: 'left', flex: 1 }}>
+                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: chosen ? TEAL : TEXT }}>{label}</div>
+                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB, marginTop: 2 }}>{sub}</div>
+              </div>
+              {chosen && (
+                <div style={{
+                  width: 22, height: 22, borderRadius: '50%', backgroundColor: TEAL, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Check color="white" />
+                </div>
+              )}
+            </button>
+          );
+        })}
       </div>
-      <div style={{ marginTop: 24 }}>
-        <CTAButton onClick={onNext} style={{ opacity: selected ? 1 : 0.5 }}>Continue</CTAButton>
-      </div>
+
+      <button
+        onClick={onNext}
+        disabled={!selected}
+        style={{
+          width: '100%', height: 52, borderRadius: 26, marginTop: 24,
+          backgroundColor: selected ? TEAL : 'rgba(0,0,0,0.08)',
+          border: 'none', cursor: selected ? 'pointer' : 'default',
+          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
+          color: selected ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
+          boxShadow: selected ? '0 4px 20px rgba(61,171,142,0.28)' : 'none',
+          transition: 'all 0.2s',
+        }}
+      >
+        Continue
+      </button>
     </div>
   );
 }
