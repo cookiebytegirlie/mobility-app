@@ -9,6 +9,8 @@ export function OnboardingBodyMap({ onNext, onBack }) {
       onNext={onNext}
       onBack={onBack}
       showSkip={true}
+      progressStep={4}
+      progressTotal={6}
     />
   );
 }

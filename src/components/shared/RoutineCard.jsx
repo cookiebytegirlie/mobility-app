@@ -23,12 +23,12 @@ export function RoutineCard({ title, subtitle, tags = [], image, onClick, compac
           background: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 84%), url(${image}) center/cover no-repeat`,
           position: 'relative',
         }}>
-          <span style={{ position: 'absolute', bottom: 12, left: 16, fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 24, color: 'rgba(255,255,255,1)', lineHeight: '100%' }}>{title}</span>
+          <span style={{ position: 'absolute', bottom: 12, left: 16, fontFamily: 'Inter', fontWeight: 700, fontSize: 24, color: 'rgba(255,255,255,1)', lineHeight: '100%' }}>{title}</span>
           <BookmarkIcon />
         </div>
         <div style={{ ...glassPanel, padding: '12px 16px', display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {tags.map(t => <Tag key={t}>{t}</Tag>)}
-          {subtitle && <span style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 12, color: 'rgba(20,30,40,0.65)', alignSelf: 'center' }}>{subtitle}</span>}
+          {subtitle && <span style={{ fontFamily: 'Inter', fontSize: 12, color: 'rgba(20,30,40,0.65)', alignSelf: 'center' }}>{subtitle}</span>}
         </div>
       </div>
     );
@@ -46,12 +46,12 @@ export function RoutineCard({ title, subtitle, tags = [], image, onClick, compac
         background: `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 84%), url(${image}) center/cover no-repeat`,
         position: 'relative',
       }}>
-        <span style={{ position: 'absolute', bottom: 16, left: 18, fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 26, color: 'rgba(255,255,255,1)', lineHeight: '100%' }}>{title}</span>
+        <span style={{ position: 'absolute', bottom: 16, left: 18, fontFamily: 'Inter', fontWeight: 700, fontSize: 26, color: 'rgba(255,255,255,1)', lineHeight: '100%' }}>{title}</span>
         <BookmarkIcon />
       </div>
       <div style={{ ...glassPanel, padding: '14px 18px' }}>
-        {subtitle && <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: 'rgba(20,30,40,0.95)', marginBottom: 4 }}>{subtitle}</div>}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(20,30,40,0.65)', marginBottom: 10 }}>Relax your body to start your day.</div>
+        {subtitle && <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: 'rgba(20,30,40,0.95)', marginBottom: 4 }}>{subtitle}</div>}
+        <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: 'rgba(20,30,40,0.65)', marginBottom: 10 }}>Relax your body to start your day.</div>
         <div style={{ display: 'flex', gap: 6 }}>
           {tags.map(t => <Tag key={t}>{t}</Tag>)}
         </div>

@@ -22,13 +22,13 @@ export function GoalPlan({ onSave, onBack }) {
         <ProgressBar step={4} total={4} style={{ flex: 1 }} />
       </div>
 
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '20px 0 20px' }}>
+      <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '20px 0 20px' }}>
         Your recommended plan
       </div>
 
       {/* Weekly schedule */}
       <div style={{ marginBottom: 22 }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 12 }}>Weekly schedule</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 12 }}>Weekly schedule</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {WEEK_PLAN.map(({ day, sessions, focus }) => (
             <div key={day} style={{
@@ -37,14 +37,14 @@ export function GoalPlan({ onSave, onBack }) {
               border: `1px solid ${BORDER}`, boxShadow: SHADOW,
             }}>
               <div style={{
-                width: 36, fontFamily: 'Plus Jakarta Sans', fontWeight: 800,
+                width: 36, fontFamily: 'Inter', fontWeight: 800,
                 fontSize: 13, color: TEAL, flexShrink: 0, paddingTop: 1,
               }}>{day}</div>
               <div style={{ flex: 1 }}>
                 {sessions.map(s => (
-                  <div key={s} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: TEXT, marginBottom: 2 }}>{s}</div>
+                  <div key={s} style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: TEXT, marginBottom: 2 }}>{s}</div>
                 ))}
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 3 }}>{focus}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 3 }}>{focus}</div>
               </div>
             </div>
           ))}
@@ -53,7 +53,7 @@ export function GoalPlan({ onSave, onBack }) {
 
       {/* Intensity */}
       <div style={{ marginBottom: 20 }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Intensity</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Intensity</div>
         <div style={{ display: 'flex', gap: 8 }}>
           {INTENSITIES.map(i => {
             const active = intensity === i;
@@ -62,9 +62,9 @@ export function GoalPlan({ onSave, onBack }) {
                 flex: 1, padding: '10px 0', borderRadius: 10, cursor: 'pointer',
                 backgroundColor: active ? TEAL : WHITE,
                 border: `1.5px solid ${active ? TEAL : BORDER}`,
-                fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13,
+                fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
                 color: active ? WHITE : TEXT_SUB,
-                boxShadow: active ? '0 2px 8px rgba(61,171,142,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+                boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
                 transition: 'all 0.15s',
               }}>{i}</button>
             );
@@ -74,7 +74,7 @@ export function GoalPlan({ onSave, onBack }) {
 
       {/* Frequency slider */}
       <div style={{ marginBottom: 28 }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 12 }}>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 12 }}>
           Sessions per week: <span style={{ color: TEAL, fontWeight: 800 }}>{frequency}</span>
         </div>
         <div style={{ position: 'relative', height: 28, display: 'flex', alignItems: 'center' }}>
@@ -89,7 +89,7 @@ export function GoalPlan({ onSave, onBack }) {
             style={{ position: 'relative', width: '100%', appearance: 'none', WebkitAppearance: 'none', background: 'transparent', cursor: 'pointer', height: 28, margin: 0 }}
           />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'Plus Jakarta Sans', fontSize: 11, color: TEXT_SUB, marginTop: 4 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'Inter', fontSize: 11, color: TEXT_SUB, marginTop: 4 }}>
           <span>2/wk</span><span>7/wk</span>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { AppIcon } from '../icons';
 
-const TEAL = '#3DAB8E';
-const TEAL_LIGHT = '#EDF7F5';
-const TEXT = '#1A2028';
-const TEXT_SUB = '#6B7280';
-const BG = '#FAFAF8';
+const TEAL = '#FF8839';
+const TEAL_LIGHT = '#EBE8C8';
+const TEXT = '#300A09';
+const TEXT_SUB = '#7A4A3A';
+const BG = '#EFEBE4';
 const BORDER = 'rgba(0,0,0,0.08)';
 
 export const REGION_SUBAREAS = {
@@ -30,7 +30,7 @@ export function Silhouette({ view, selectedRegions, hoverRegion, onRegionClick, 
   const fill   = view === 'front' ? '#E6F4F0' : '#EAF2EE';
   const stroke = '#BDD8D0';
 
-  const zoneFill   = (id) => selectedRegions.includes(id) ? 'rgba(61,171,142,0.32)' : hoverRegion === id ? 'rgba(61,171,142,0.14)' : 'transparent';
+  const zoneFill   = (id) => selectedRegions.includes(id) ? 'rgba(255,136,57,0.32)' : hoverRegion === id ? 'rgba(255,136,57,0.14)' : 'transparent';
   const zoneStroke = (id) => selectedRegions.includes(id) ? TEAL : 'transparent';
   const labelFill  = (id) => selectedRegions.includes(id) ? TEAL : '#5A6672';
 
@@ -43,7 +43,7 @@ export function Silhouette({ view, selectedRegions, hoverRegion, onRegionClick, 
   });
 
   const ls = (id, extra = {}) => ({
-    fontSize: '4.8px', fontFamily: 'Plus Jakarta Sans, sans-serif',
+    fontSize: '4.8px', fontFamily: 'Inter, sans-serif',
     fontWeight: 700, fill: labelFill(id), pointerEvents: 'none',
     ...extra,
   });
@@ -113,7 +113,7 @@ export function Silhouette({ view, selectedRegions, hoverRegion, onRegionClick, 
 /* ─── Full 3-level interactive body map ─── */
 export function InteractiveBodyMap({
   title, subtitle, onNext, onBack, showSkip = false,
-  progressStep, progressTotal,
+  progressStep, progressTotal, onExit,
 }) {
   const [level, setLevel]           = useState(1);
   const [activeRegion, setActive]   = useState(null);
@@ -156,17 +156,17 @@ export function InteractiveBodyMap({
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
         <BackBtn onClick={() => setLevel(1)} />
         <div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase' }}>Selecting</div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 20, color: TEXT }}>{activeRegion}</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase' }}>Selecting</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 20, color: TEXT }}>{activeRegion}</div>
         </div>
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 15, color: TEXT_SUB, marginBottom: 20 }}>Which part?</div>
+      <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 15, color: TEXT_SUB, marginBottom: 20 }}>Which part?</div>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {(REGION_SUBAREAS[activeRegion] || []).map(sub => (
           <button key={sub} onClick={() => handleSubAreaClick(sub)} style={{
             width: '100%', padding: '16px 20px', borderRadius: 14,
             border: `1.5px solid ${BORDER}`, backgroundColor: '#FFFFFF',
-            cursor: 'pointer', fontFamily: 'Plus Jakarta Sans', fontWeight: 600,
+            cursor: 'pointer', fontFamily: 'Inter', fontWeight: 600,
             fontSize: 15, color: TEXT, textAlign: 'left',
             boxShadow: '0 1px 4px rgba(0,0,0,0.05)', transition: 'all 0.12s',
           }}
@@ -184,11 +184,11 @@ export function InteractiveBodyMap({
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
         <BackBtn onClick={() => setLevel(2)} />
         <div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase' }}>{activeRegion}</div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 20, color: TEXT }}>{activeSubArea}</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase' }}>{activeRegion}</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 20, color: TEXT }}>{activeSubArea}</div>
         </div>
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 15, color: TEXT_SUB, marginBottom: 24 }}>How bad is it right now?</div>
+      <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 15, color: TEXT_SUB, marginBottom: 24 }}>How bad is it right now?</div>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
         {INTENSITIES.map(({ id, label }) => (
           <button key={id} onClick={() => handleIntensityClick(id)} style={{
@@ -201,7 +201,7 @@ export function InteractiveBodyMap({
             onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.backgroundColor = '#FFFFFF'; }}
           >
             <AppIcon name={`face-${id}`} size={26} color={TEAL} />
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 16, color: TEXT }}>{label}</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 16, color: TEXT }}>{label}</span>
           </button>
         ))}
       </div>
@@ -210,44 +210,55 @@ export function InteractiveBodyMap({
 
   /* Level 1 */
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, padding: '16px 20px 28px', overflow: 'hidden' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, flexShrink: 0 }}>
-        <BackBtn onClick={onBack} />
-        {progressStep && progressTotal ? (
-          <div style={{ flex: 1, height: 4, borderRadius: 2, backgroundColor: '#E1F5EE' }}>
-            <div style={{
-              height: '100%', borderRadius: 2, backgroundColor: TEAL,
-              width: `${(progressStep / progressTotal) * 100}%`,
-              transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}/>
-          </div>
-        ) : (
-          <div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: TEXT }}>{title}</div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{subtitle}</div>
-          </div>
-        )}
-      </div>
-
-      {/* Title when progress bar is shown */}
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, overflow: 'hidden' }}>
+      {/* Progress bar */}
       {progressStep && progressTotal && (
-        <div style={{ marginBottom: 8, flexShrink: 0 }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 20, color: TEXT, lineHeight: 1.25 }}>{title}</div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: TEXT_SUB, marginTop: 3 }}>{subtitle}</div>
+        <div style={{ padding: '16px 20px 0', flexShrink: 0 }}>
+          <div style={{ width: '100%', height: 3, borderRadius: 2, backgroundColor: '#E8E0D5' }}>
+            <div style={{
+              height: '100%', borderRadius: 2,
+              background: 'linear-gradient(90deg, #FF8839, #FF8839)',
+              width: `${(progressStep / progressTotal) * 100}%`,
+              transition: 'width 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)',
+              willChange: 'width',
+            }} />
+          </div>
         </div>
       )}
 
+      {/* Nav row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px 0', flexShrink: 0 }}>
+        <BackBtn onClick={onBack} />
+        {onExit && (
+          <button onClick={onExit} style={{
+            width: 36, height: 36, borderRadius: '50%',
+            background: '#FFFFFF', border: `1px solid ${BORDER}`,
+            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+          }}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M1 1l10 10M11 1L1 11" stroke={TEXT} strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Title */}
+      <div style={{ padding: '10px 24px 0', flexShrink: 0 }}>
+        <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, lineHeight: 1.2 }}>{title}</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 14, color: TEXT_SUB, marginTop: 4 }}>{subtitle}</div>
+      </div>
+
       {/* Selected region tags */}
       {selections.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8, flexShrink: 0 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: '8px 24px 0', flexShrink: 0 }}>
           {selections.map(s => (
             <div key={s.region} style={{
               display: 'flex', alignItems: 'center', gap: 5,
               padding: '4px 10px 4px 12px', borderRadius: 20,
               backgroundColor: TEAL_LIGHT, border: `1px solid ${TEAL}`,
             }}>
-              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEAL }}>{s.region}</span>
+              <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEAL }}>{s.region}</span>
               <button onClick={() => removeSelection(s.region)} style={{
                 background: 'none', border: 'none', cursor: 'pointer',
                 color: TEAL, fontSize: 14, lineHeight: 1, padding: 0, display: 'flex', alignItems: 'center',
@@ -258,16 +269,16 @@ export function InteractiveBodyMap({
       )}
 
       {/* Front + back silhouettes */}
-      <div style={{ flex: 1, display: 'flex', gap: 8, overflow: 'hidden' }}>
+      <div style={{ flex: 1, display: 'flex', gap: 8, padding: '8px 20px 0', overflow: 'hidden' }}>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase', textAlign: 'center', marginBottom: 5, flexShrink: 0 }}>Front</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase', textAlign: 'center', marginBottom: 5, flexShrink: 0 }}>Front</div>
           <div style={{ flex: 1, overflow: 'hidden' }}>
             <Silhouette view="front" selectedRegions={selectedIds} hoverRegion={hoverRegion} onRegionClick={handleRegionClick} onRegionHover={setHover}/>
           </div>
         </div>
         <div style={{ width: 1, backgroundColor: BORDER, margin: '24px 0', flexShrink: 0 }}/>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase', textAlign: 'center', marginBottom: 5, flexShrink: 0 }}>Back</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEXT_SUB, letterSpacing: 0.8, textTransform: 'uppercase', textAlign: 'center', marginBottom: 5, flexShrink: 0 }}>Back</div>
           <div style={{ flex: 1, overflow: 'hidden' }}>
             <Silhouette view="back" selectedRegions={selectedIds} hoverRegion={hoverRegion} onRegionClick={handleRegionClick} onRegionHover={setHover}/>
           </div>
@@ -275,22 +286,21 @@ export function InteractiveBodyMap({
       </div>
 
       {/* Bottom actions */}
-      <div style={{ flexShrink: 0, marginTop: 10 }}>
-        <button onClick={() => onNext(selections)} disabled={!hasSelection} style={{
+      <div style={{ flexShrink: 0, padding: '10px 24px 28px' }}>
+        <button onClick={() => onNext(selections)} style={{
           width: '100%', height: 50, borderRadius: 25, marginBottom: 10,
-          backgroundColor: hasSelection ? TEAL : 'rgba(0,0,0,0.08)',
-          border: 'none', cursor: hasSelection ? 'pointer' : 'default',
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
-          color: hasSelection ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
-          boxShadow: hasSelection ? '0 4px 20px rgba(61,171,142,0.28)' : 'none',
-          transition: 'all 0.2s',
+          backgroundColor: TEAL,
+          border: 'none', cursor: 'pointer',
+          fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
+          color: '#FFFFFF',
+          boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
         }}>
           Continue{hasSelection ? ` (${selections.length} area${selections.length > 1 ? 's' : ''})` : ''}
         </button>
         {showSkip && (
           <button onClick={() => onNext([])} style={{
             width: '100%', background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14, color: '#9CA3AF', padding: '4px 0',
+            fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: '#A07060', padding: '4px 0',
           }}>Skip</button>
         )}
       </div>

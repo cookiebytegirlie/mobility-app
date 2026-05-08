@@ -8,7 +8,7 @@ export function SelectionChip({ label, selected, onClick }) {
       cursor: 'pointer',
       backgroundColor: selected ? 'rgba(20,160,130,0.12)' : 'rgba(255,255,255,0.75)',
       backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-      fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14,
+      fontFamily: 'Inter', fontWeight: 600, fontSize: 14,
       color: selected ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.85)',
       boxShadow: selected ? '0px 2px 12px rgba(20,160,130,0.12)' : 'none',
       transition: 'all 0.15s', transform: selected ? 'scale(1.02)' : 'scale(1)',

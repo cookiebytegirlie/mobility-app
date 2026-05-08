@@ -15,23 +15,23 @@ export function GoalInput({ onNext, onBack }) {
         <ProgressBar step={2} total={4} style={{ flex: 1 }} />
       </div>
 
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '24px 0 24px' }}>
+      <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '24px 0 24px' }}>
         Tell us a bit more
       </div>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 24 }}>
         {/* Goal description */}
         <div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Describe your goal</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Describe your goal</div>
           <textarea
             value={goal}
             onChange={e => setGoal(e.target.value)}
             placeholder="e.g. Reduce lower back pain from sitting at my desk all day..."
             style={{
               width: '100%', height: 100, borderRadius: 12, boxSizing: 'border-box',
-              border: `1.5px solid ${goal ? 'rgba(61,171,142,0.40)' : BORDER}`,
+              border: `1.5px solid ${goal ? 'rgba(255,136,57,0.40)' : BORDER}`,
               padding: '12px 14px',
-              fontFamily: 'Plus Jakarta Sans', fontSize: 14, color: TEXT,
+              fontFamily: 'Inter', fontSize: 14, color: TEXT,
               resize: 'none', outline: 'none',
               backgroundColor: WHITE, lineHeight: '150%',
               transition: 'border-color 0.15s',
@@ -41,7 +41,7 @@ export function GoalInput({ onNext, onBack }) {
 
         {/* Timeline */}
         <div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Timeline</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 10 }}>Timeline</div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {WEEK_OPTIONS.map(w => {
               const active = weeks === w;
@@ -50,9 +50,9 @@ export function GoalInput({ onNext, onBack }) {
                   padding: '9px 16px', borderRadius: 20, cursor: 'pointer',
                   backgroundColor: active ? TEAL : WHITE,
                   border: `1.5px solid ${active ? TEAL : BORDER}`,
-                  fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14,
+                  fontFamily: 'Inter', fontWeight: 600, fontSize: 14,
                   color: active ? WHITE : TEXT_SUB,
-                  boxShadow: active ? '0 2px 8px rgba(61,171,142,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+                  boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
                   transition: 'all 0.15s',
                 }}>
                   {w} {w === 1 ? 'week' : 'weeks'}

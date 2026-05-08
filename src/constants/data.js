@@ -84,10 +84,10 @@ export const TWEAK_DEFAULTS = {
 };
 
 export const getPhoneBg = (s) => {
-  if (s === 'session-live' || s === 'session-preview' || s === 'session-complete') return '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg';
-  if (s.startsWith('goals') || s === 'goals-landing') return '/images/jan-brennenstuhl-cxUoEcsQRIo-unsplash.jpg';
-  if (s === 'scan-environment') return '/images/thom-milkovic-qPPWNeFVLFQ-unsplash.jpg';
-  return '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg';
+  if (s === 'session-live' || s === 'session-preview' || s === 'session-complete') return '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg';
+  if (s.startsWith('goals') || s === 'goals-landing') return '/images/Abstract-Body.jpg';
+  if (s === 'scan-environment') return '/images/Meditation.jpg';
+  return '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg';
 };
 
 export const MOODS = [
@@ -110,7 +110,7 @@ export const MOVES = [
     name: 'Neck Rolls',
     cue: 'Drop your chin to your chest. Slowly roll to the right, back, left.',
     duration: 30,
-    img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     focus: ['Neck'],
     tutorial: {
       steps: [
@@ -127,7 +127,7 @@ export const MOVES = [
     name: 'Shoulder Circles',
     cue: 'Roll both shoulders back in big slow circles. Feel tension release.',
     duration: 40,
-    img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     focus: ['Shoulders'],
     tutorial: {
       steps: [
@@ -144,7 +144,7 @@ export const MOVES = [
     name: 'Cat-Cow Stretch',
     cue: 'On hands and knees — arch up like a cat, then dip like a cow.',
     duration: 45,
-    img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     focus: ['Spine', 'Upper Back'],
     tutorial: {
       steps: [
@@ -161,7 +161,7 @@ export const MOVES = [
     name: 'Hip Opener',
     cue: 'Step one foot forward into a lunge. Sink your hips low. Switch after 20 sec.',
     duration: 50,
-    img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     focus: ['Hips', 'Lower Back'],
     tutorial: {
       steps: [
@@ -178,7 +178,7 @@ export const MOVES = [
     name: 'Seated Twist',
     cue: 'Sit tall. Twist gently across your knee. Hold 5 breaths each side.',
     duration: 40,
-    img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     focus: ['Spine', 'Hips'],
     tutorial: {
       steps: [
@@ -195,63 +195,63 @@ export const MOVES = [
 
 export const LOCATION_ROUTINES = {
   Home: [
-    { title: 'For your lower back', sub: '5 min · Morning reset', img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg', tags: ['Back', 'Hips'] },
-    { title: 'Ease your neck tension', sub: '3 min · Quick relief', img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg', tags: ['Neck', 'Shoulders'] },
+    { title: 'For your lower back', sub: '5 min · Morning reset', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Back', 'Hips'] },
+    { title: 'Ease your neck tension', sub: '3 min · Quick relief', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Neck', 'Shoulders'] },
   ],
   Office: [
-    { title: 'Reset your shoulders', sub: '5 min · Desk break', img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg', tags: ['Shoulders', 'Back'] },
-    { title: 'Release hip tension', sub: '8 min · Chair-friendly', img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg', tags: ['Hips', 'Back'] },
+    { title: 'Reset your shoulders', sub: '5 min · Desk break', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Shoulders', 'Back'] },
+    { title: 'Release hip tension', sub: '8 min · Chair-friendly', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Hips', 'Back'] },
   ],
   Outdoors: [
-    { title: 'Wake up your full body', sub: '10 min · Morning flow', img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg', tags: ['Full body'] },
-    { title: 'Open your hips', sub: '5 min · Park bench', img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg', tags: ['Hips', 'Legs'] },
+    { title: 'Wake up your full body', sub: '10 min · Morning flow', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Full body'] },
+    { title: 'Open your hips', sub: '5 min · Park bench', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Hips', 'Legs'] },
   ],
   Gym: [
-    { title: 'Warm up your whole body', sub: '8 min · Pre-workout', img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg', tags: ['Full body'] },
-    { title: 'Open your back', sub: '5 min · Bar-assisted', img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg', tags: ['Back', 'Shoulders'] },
+    { title: 'Warm up your whole body', sub: '8 min · Pre-workout', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Full body'] },
+    { title: 'Open your back', sub: '5 min · Bar-assisted', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Back', 'Shoulders'] },
   ],
 };
 
 export const ROUTINES = [
   {
     title: 'For your lower back',  sub: 'Morning Reset',
-    tags: ['Back', '5 min'], img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    tags: ['Back', '5 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     body: ['Back'], env: ['Desk', 'Home'], vibe: ['Gentle wake-up'],
   },
   {
     title: 'Feel good all over',   sub: 'Full Body Flow',
-    tags: ['Full body', '10 min'], img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    tags: ['Full body', '10 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     body: ['Full Body'], env: ['Home', 'Park'], vibe: ['Energy boost'],
   },
   {
     title: 'Open your hips',       sub: 'Hip Release',
-    tags: ['Hips', '8 min'], img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    tags: ['Hips', '8 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     body: ['Hips'], env: ['Home', 'Park', 'Gym'], vibe: ['Stress relief'],
   },
   {
     title: 'Ease neck tension',    sub: 'Neck & Shoulder Reset',
-    tags: ['Neck', '3 min'], img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    tags: ['Neck', '3 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     body: ['Neck', 'Shoulders'], env: ['Desk', 'Home'], vibe: ['Stress relief', 'Wind down'],
   },
   {
     title: 'Desk break reset',     sub: 'Quick Office Flow',
-    tags: ['Back', '5 min'], img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg',
+    tags: ['Back', '5 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
     body: ['Back', 'Shoulders'], env: ['Desk'], vibe: ['Stress relief', 'Energy boost'],
   },
   {
     title: 'Wind down tonight',    sub: 'Evening Unwind',
-    tags: ['Full body', '15 min'], img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    tags: ['Full body', '15 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     body: ['Full Body'], env: ['Home'], vibe: ['Wind down'],
   },
 ];
 
 export const SESSION_LOGS = [
-  { date: 'Today, 7:42 AM',     routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg' },
-  { date: 'Yesterday, 7:55 AM', routine: 'Hip Release Flow', duration: '8 min',  focus: ['Hips', 'Lower Back'], img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg' },
-  { date: 'Apr 20, 6:30 PM',    routine: 'Desk Break Reset', duration: '3 min',  focus: ['Shoulders'],          img: '/images/jan-brennenstuhl-cxUoEcsQRIo-unsplash.jpg' },
-  { date: 'Apr 19, 8:10 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg' },
-  { date: 'Apr 18, 12:15 PM',   routine: 'Full Body Flow',   duration: '10 min', focus: ['Full Body'],          img: '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg' },
-  { date: 'Apr 15, 7:30 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Shoulders'],  img: '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg' },
+  { date: 'Today, 7:42 AM',     routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
+  { date: 'Yesterday, 7:55 AM', routine: 'Hip Release Flow', duration: '8 min',  focus: ['Hips', 'Lower Back'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg' },
+  { date: 'Apr 20, 6:30 PM',    routine: 'Desk Break Reset', duration: '3 min',  focus: ['Shoulders'],          img: '/images/Abstract-Body.jpg' },
+  { date: 'Apr 19, 8:10 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
+  { date: 'Apr 18, 12:15 PM',   routine: 'Full Body Flow',   duration: '10 min', focus: ['Full Body'],          img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg' },
+  { date: 'Apr 15, 7:30 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Shoulders'],  img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
 ];
 
 export const ENERGY_MAP = {

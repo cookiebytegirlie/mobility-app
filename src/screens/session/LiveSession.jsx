@@ -41,7 +41,7 @@ function TutorialSheet({ move, onClose, onStart }) {
       {/* Sheet */}
       <div style={{
         position: 'relative', zIndex: 1,
-        backgroundColor: '#FAFAF8',
+        backgroundColor: '#EFEBE4',
         borderRadius: '24px 24px 0 0',
         maxHeight: '80%',
         display: 'flex', flexDirection: 'column',
@@ -69,32 +69,39 @@ function TutorialSheet({ move, onClose, onStart }) {
             </svg>
           </div>
           <div style={{ position: 'absolute', bottom: 12, left: 14 }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: 'rgba(255,255,255,0.8)', letterSpacing: 0.8 }}>HOW TO DO IT</div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: 'white' }}>{move.name}</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: 'rgba(255,255,255,0.8)', letterSpacing: 0.8 }}>HOW TO DO IT</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: 'white' }}>{move.name}</div>
           </div>
         </div>
 
         {/* Scrollable steps */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '18px 20px 0' }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: TEAL, letterSpacing: 0.8, marginBottom: 12 }}>STEP BY STEP</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: TEAL, letterSpacing: 0.8, marginBottom: 12 }}>STEP BY STEP</div>
           {move.tutorial.steps.map((step, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, marginBottom: 14 }}>
               <div style={{
                 width: 26, height: 26, borderRadius: '50%', flexShrink: 0, marginTop: 1,
-                backgroundColor: '#EDF7F5',
+                backgroundColor: '#EBE8C8',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
+                <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
               </div>
-              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: '#1A2028', lineHeight: 1.6, margin: 0 }}>{step}</p>
+              <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 14, color: '#300A09', lineHeight: 1.6, margin: 0 }}>{step}</p>
             </div>
           ))}
           <div style={{
             padding: '14px 16px', borderRadius: 12, marginBottom: 20,
-            backgroundColor: '#EDF7F5', border: '1px solid rgba(61,171,142,0.20)',
+            backgroundColor: '#EBE8C8', border: '1px solid rgba(255,136,57,0.20)',
           }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: TEAL, marginBottom: 5 }}>⚠ Common mistake</div>
-            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: '#6B7280', lineHeight: 1.55, margin: 0 }}>{move.tutorial.tip}</p>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: TEAL, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 1.5L1 14h14L8 1.5z"/>
+                <line x1="8" y1="6.5" x2="8" y2="9.5"/>
+                <line x1="8" y1="11.5" x2="8.01" y2="11.5" strokeWidth="2"/>
+              </svg>
+              Common mistake
+            </div>
+            <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: '#7A4A3A', lineHeight: 1.55, margin: 0 }}>{move.tutorial.tip}</p>
           </div>
         </div>
 
@@ -103,8 +110,8 @@ function TutorialSheet({ move, onClose, onStart }) {
           <button onClick={onStart} style={{
             width: '100%', height: 50, borderRadius: 25,
             backgroundColor: TEAL, border: 'none', cursor: 'pointer',
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: '#FFFFFF',
-            boxShadow: '0 4px 16px rgba(61,171,142,0.28)',
+            fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: '#FFFFFF',
+            boxShadow: '0 4px 16px rgba(255,136,57,0.28)',
           }}>
             Got it — start this move
           </button>
@@ -187,7 +194,7 @@ export function LiveSession({ onEnd }) {
                 <path d="M2 2l18 11L2 24V2z" fill="white"/>
               </svg>
             </div>
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.75)' }}>
+            <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.75)' }}>
               Form check video
             </span>
           </div>
@@ -225,15 +232,15 @@ export function LiveSession({ onEnd }) {
           backgroundColor: 'rgba(255,255,255,0.18)',
           border: '1px solid rgba(255,255,255,0.30)',
         }}>
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: 'white' }}>
+          <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: 'white' }}>
             {moveIndex + 1} of {MOVES.length}
           </span>
         </div>
 
         <button onClick={() => setIsFormView(v => !v)} style={{
           width: 38, height: 38, borderRadius: '50%',
-          backgroundColor: isFormView ? 'rgba(61,171,142,0.7)' : 'rgba(255,255,255,0.18)',
-          border: `1px solid ${isFormView ? 'rgba(61,171,142,0.9)' : 'rgba(255,255,255,0.30)'}`,
+          backgroundColor: isFormView ? 'rgba(255,136,57,0.7)' : 'rgba(255,255,255,0.18)',
+          border: `1px solid ${isFormView ? 'rgba(255,136,57,0.9)' : 'rgba(255,255,255,0.30)'}`,
           cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           {isFormView ? (
@@ -256,7 +263,7 @@ export function LiveSession({ onEnd }) {
             height: 4,
             width: i === moveIndex ? 22 : 4,
             borderRadius: 2,
-            backgroundColor: i < moveIndex ? 'rgba(61,171,142,0.9)' : i === moveIndex ? 'white' : 'rgba(255,255,255,0.28)',
+            backgroundColor: i < moveIndex ? 'rgba(255,136,57,0.9)' : i === moveIndex ? 'white' : 'rgba(255,255,255,0.28)',
             transition: 'all 0.3s',
             cursor: 'pointer',
           }}/>
@@ -287,15 +294,31 @@ export function LiveSession({ onEnd }) {
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 48, color: 'white', lineHeight: 1 }}>
+          <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 48, color: 'white', lineHeight: 1 }}>
             {remaining}
           </div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 3 }}>sec</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 3 }}>sec</div>
           <div style={{
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11,
+            fontFamily: 'Inter', fontWeight: 700, fontSize: 11,
             color: paused ? '#FCD34D' : TEAL, marginTop: 7, letterSpacing: 1,
+            display: 'flex', alignItems: 'center', gap: 4,
           }}>
-            {paused ? '⏸ PAUSED' : '▸ TAP'}
+            {paused ? (
+              <>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <line x1="5" y1="3" x2="5" y2="13"/>
+                  <line x1="11" y1="3" x2="11" y2="13"/>
+                </svg>
+                PAUSED
+              </>
+            ) : (
+              <>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="4,2 13,8 4,14" fill="none"/>
+                </svg>
+                TAP
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -328,10 +351,10 @@ export function LiveSession({ onEnd }) {
       {/* ── Bottom: name, cue, buttons ── */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 20px 28px' }}>
         <div style={{ marginBottom: 14 }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 22, color: 'white', marginBottom: 5 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 22, color: 'white', marginBottom: 5 }}>
             {move.name}
           </div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>
             {move.cue}
           </div>
         </div>
@@ -343,7 +366,7 @@ export function LiveSession({ onEnd }) {
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" strokeWidth="2" strokeLinecap="round">
             <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>
+          <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>
             Show me how
           </span>
         </button>
@@ -353,7 +376,7 @@ export function LiveSession({ onEnd }) {
           backgroundColor: 'rgba(255,255,255,0.14)',
           border: '1px solid rgba(255,255,255,0.28)',
           cursor: 'pointer',
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15,
+          fontFamily: 'Inter', fontWeight: 700, fontSize: 15,
           color: 'rgba(255,255,255,0.90)',
         }}>
           I'm done for now

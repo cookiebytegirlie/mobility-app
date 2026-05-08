@@ -1,9 +1,9 @@
-export const TEAL       = '#3DAB8E';
-export const TEAL_LIGHT = '#EDF7F5';
-export const TEXT       = '#1A2028';
-export const TEXT_SUB   = '#6B7280';
-export const TEXT_MUTED = '#9CA3AF';
-export const BG         = '#FAFAF8';
+export const TEAL       = '#FF8839';
+export const TEAL_LIGHT = '#EBE8C8';
+export const TEXT       = '#300A09';
+export const TEXT_SUB   = '#7A4A3A';
+export const TEXT_MUTED = '#A07060';
+export const BG         = '#EFEBE4';
 export const WHITE      = '#FFFFFF';
-export const BORDER     = 'rgba(0,0,0,0.08)';
-export const SHADOW     = '0 2px 10px rgba(0,0,0,0.06)';
+export const BORDER     = 'rgba(48,10,9,0.08)';
+export const SHADOW     = '0 2px 12px rgba(48,10,9,0.06)';

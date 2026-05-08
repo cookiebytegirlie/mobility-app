@@ -40,26 +40,30 @@ export function OnboardingDiagnostic({ onNext, onBack }) {
   };
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, padding: '16px 24px 28px' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG }}>
+      {/* Progress bar */}
+      <div style={{ padding: '16px 20px 0', flexShrink: 0 }}>
+        <ProgressBar step={2} total={6} />
+      </div>
+
+      {/* Nav row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px 0', flexShrink: 0 }}>
         <BackButton onClick={handleBack} />
-        <ProgressBar step={step + 1} total={QUESTIONS.length} style={{ flex: 1 }} />
-        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: TEXT_SUB, flexShrink: 0 }}>
+        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: TEXT_SUB }}>
           {step + 1} / {QUESTIONS.length}
         </span>
       </div>
 
-      {/* Question */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      {/* Content */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px 24px 0' }}>
         <div style={{
-          fontFamily: 'Plus Jakarta Sans',
-          fontWeight: 700,
-          fontSize: 22,
+          fontFamily: 'Denim Ink',
+          fontWeight: 600,
+          fontSize: 28,
           color: TEXT,
-          lineHeight: 1.35,
+          lineHeight: 1.25,
           marginBottom: 28,
-          letterSpacing: '-0.2px',
+          letterSpacing: '-0.3px',
         }}>
           {q.q}
         </div>
@@ -78,12 +82,12 @@ export function OnboardingDiagnostic({ onNext, onBack }) {
                   border: `1.5px solid ${chosen ? TEAL : BORDER}`,
                   backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
                   cursor: 'pointer',
-                  fontFamily: 'Plus Jakarta Sans',
+                  fontFamily: 'Inter',
                   fontWeight: 600,
                   fontSize: 15,
                   color: chosen ? TEAL : TEXT,
                   textAlign: 'left',
-                  boxShadow: chosen ? '0 2px 12px rgba(61,171,142,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
+                  boxShadow: chosen ? '0 2px 12px rgba(255,136,57,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
                   transition: 'all 0.15s',
                   display: 'flex',
                   alignItems: 'center',
@@ -107,21 +111,24 @@ export function OnboardingDiagnostic({ onNext, onBack }) {
         </div>
       </div>
 
-      <button
-        onClick={handleContinue}
-        disabled={!selected}
-        style={{
-          width: '100%', height: 52, borderRadius: 26, marginTop: 24,
-          backgroundColor: selected ? TEAL : 'rgba(0,0,0,0.08)',
-          border: 'none', cursor: selected ? 'pointer' : 'default',
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
-          color: selected ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
-          boxShadow: selected ? '0 4px 20px rgba(61,171,142,0.28)' : 'none',
-          transition: 'all 0.2s',
-        }}
-      >
-        {isLast ? 'Continue' : 'Next'}
-      </button>
+      {/* CTA */}
+      <div style={{ padding: '24px 24px 28px', flexShrink: 0 }}>
+        <button
+          onClick={handleContinue}
+          disabled={!selected}
+          style={{
+            width: '100%', height: 52, borderRadius: 26,
+            backgroundColor: selected ? TEAL : 'rgba(0,0,0,0.08)',
+            border: 'none', cursor: selected ? 'pointer' : 'default',
+            fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
+            color: selected ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
+            boxShadow: selected ? '0 4px 20px rgba(255,136,57,0.28)' : 'none',
+            transition: 'all 0.2s',
+          }}
+        >
+          {isLast ? 'Continue' : 'Next'}
+        </button>
+      </div>
     </div>
   );
 }

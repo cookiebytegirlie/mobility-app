@@ -21,10 +21,10 @@ export function GoalType({ onNext, onBack }) {
         <ProgressBar step={1} total={4} style={{ flex: 1 }} />
       </div>
 
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '24px 0 8px' }}>
+      <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, margin: '24px 0 8px' }}>
         What do you want to work toward?
       </div>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15, color: TEXT_SUB, marginBottom: 28 }}>
+      <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 15, color: TEXT_SUB, marginBottom: 28 }}>
         We'll build a plan around your goal.
       </div>
 
@@ -36,20 +36,20 @@ export function GoalType({ onNext, onBack }) {
               display: 'flex', alignItems: 'center', gap: 14,
               padding: '16px 18px', borderRadius: 14, cursor: 'pointer',
               backgroundColor: active ? TEAL_LIGHT : WHITE,
-              border: `1.5px solid ${active ? 'rgba(61,171,142,0.40)' : BORDER}`,
-              boxShadow: active ? '0 2px 10px rgba(61,171,142,0.14)' : SHADOW,
+              border: `1.5px solid ${active ? 'rgba(255,136,57,0.40)' : BORDER}`,
+              boxShadow: active ? '0 2px 10px rgba(255,136,57,0.14)' : SHADOW,
               transition: 'all 0.15s', textAlign: 'left',
             }}>
               <div style={{
                 width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                backgroundColor: active ? 'rgba(61,171,142,0.16)' : 'rgba(0,0,0,0.05)',
+                backgroundColor: active ? 'rgba(255,136,57,0.16)' : 'rgba(0,0,0,0.05)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <AppIcon name={icon} size={22} color={active ? TEAL : TEXT_SUB} />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: active ? TEAL : TEXT, marginBottom: 2 }}>{label}</div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{desc}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: active ? TEAL : TEXT, marginBottom: 2 }}>{label}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{desc}</div>
               </div>
               {active && (
                 <div style={{ width: 22, height: 22, borderRadius: '50%', backgroundColor: TEAL, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

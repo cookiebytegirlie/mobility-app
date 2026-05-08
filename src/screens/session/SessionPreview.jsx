@@ -13,7 +13,7 @@ export function SessionPreview({ onStart, onBack }) {
       {/* Hero */}
       <div style={{
         height: 200, position: 'relative', flexShrink: 0,
-        background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(251,248,245,0.9) 100%), url(/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg) center/cover no-repeat`,
+        background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(239,235,228,0.9) 100%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12019.jpg) center/cover no-repeat`,
       }}>
         <BackButton onClick={onBack} style={{
           position: 'absolute', top: 16, left: 16,
@@ -26,11 +26,11 @@ export function SessionPreview({ onStart, onBack }) {
           <div style={{
             display: 'inline-flex', alignItems: 'center',
             padding: '4px 10px', borderRadius: 20, marginBottom: 8,
-            backgroundColor: TEAL_LIGHT, border: `1px solid rgba(61,171,142,0.30)`,
+            backgroundColor: TEAL_LIGHT, border: `1px solid rgba(255,136,57,0.30)`,
           }}>
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={TEAL} /> QUICK START</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={TEAL} /> QUICK START</span>
           </div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 26, color: TEXT, letterSpacing: '-0.3px' }}>
+          <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 26, color: TEXT, letterSpacing: '-0.3px' }}>
             Morning Stretch
           </div>
         </div>
@@ -49,15 +49,15 @@ export function SessionPreview({ onStart, onBack }) {
               backgroundColor: '#FFFFFF', border: `1px solid ${BORDER}`,
               boxShadow: '0 1px 6px rgba(0,0,0,0.05)',
             }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: TEAL, letterSpacing: 0.5, marginBottom: 5 }}>{label}</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT }}>{value}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEAL, letterSpacing: 0.5, marginBottom: 5 }}>{label}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT }}>{value}</div>
             </div>
           ))}
         </div>
 
         {/* Duration selector */}
         <div style={{ marginBottom: 24 }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 12 }}>Duration</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 12 }}>Duration</div>
           <div style={{ display: 'flex', gap: 8 }}>
             {[2, 5, 10, 15].map(d => {
               const chosen = duration === d;
@@ -67,9 +67,9 @@ export function SessionPreview({ onStart, onBack }) {
                   border: `1.5px solid ${chosen ? TEAL : BORDER}`,
                   backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
                   cursor: 'pointer',
-                  fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15,
+                  fontFamily: 'Inter', fontWeight: 700, fontSize: 15,
                   color: chosen ? TEAL : TEXT,
-                  boxShadow: chosen ? '0 2px 10px rgba(61,171,142,0.16)' : '0 1px 4px rgba(0,0,0,0.05)',
+                  boxShadow: chosen ? '0 2px 10px rgba(255,136,57,0.16)' : '0 1px 4px rgba(0,0,0,0.05)',
                   transition: 'all 0.15s',
                 }}>
                   {d}<span style={{ fontSize: 11, fontWeight: 600, color: chosen ? TEAL : TEXT_SUB }}> min</span>
@@ -81,7 +81,7 @@ export function SessionPreview({ onStart, onBack }) {
 
         {/* Exercise list */}
         <div style={{ marginBottom: 28 }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 14 }}>What you'll do</div>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 14 }}>What you'll do</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {exercises.map((ex, i) => {
               const [name, time] = ex.split(' — ');
@@ -97,11 +97,11 @@ export function SessionPreview({ onStart, onBack }) {
                     backgroundColor: TEAL_LIGHT,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
                   </div>
-                  <span style={{ flex: 1, fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14, color: TEXT }}>{name}</span>
+                  <span style={{ flex: 1, fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: TEXT }}>{name}</span>
                   <span style={{
-                    fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT_SUB,
+                    fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT_SUB,
                     backgroundColor: 'rgba(0,0,0,0.05)', padding: '3px 9px', borderRadius: 8,
                   }}>{time}</span>
                 </div>
@@ -116,8 +116,8 @@ export function SessionPreview({ onStart, onBack }) {
         <button onClick={() => onStart(duration)} style={{
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(61,171,142,0.30)',
+          fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
+          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.30)',
         }}>
           Start {duration} min session
         </button>

@@ -5,10 +5,10 @@ import { AppIcon } from '../components/icons';
 
 /* Map each environment to a real photo */
 const ENV_IMAGES = {
-  'Park':        '/images/thom-milkovic-qPPWNeFVLFQ-unsplash.jpg',
-  'Office':      '/images/jan-brennenstuhl-cxUoEcsQRIo-unsplash.jpg',
-  'Living Room': '/images/romello-williams-P8VMwYFY-Es-unsplash.jpg',
-  'Gym':         '/images/richard-lee-FixxdTqC8zg-unsplash.jpg',
+  'Park':        '/images/Meditation.jpg',
+  'Office':      '/images/Abstract-Body.jpg',
+  'Living Room': '/images/DTS_manifest_Daniel_Farò_Photos_ID12032.jpg',
+  'Gym':         '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
 };
 
 const ROUTINE_ICONS = ['star', 'yoga', 'muscle'];
@@ -20,7 +20,7 @@ export function ScanScreen({ onNavigate }) {
   const [aiLoading, setAiLoading] = useState(false);
 
   const env     = ENVIRONMENTS[envIndex];
-  const bgImage = ENV_IMAGES[env.name] || '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg';
+  const bgImage = ENV_IMAGES[env.name] || '/images/Meditation.jpg';
 
   /* Auto-transition: scanning → results after 2 s */
   useEffect(() => {
@@ -75,8 +75,8 @@ export function ScanScreen({ onNavigate }) {
         <div style={{
           position: 'absolute', inset: 0, zIndex: 5,
           backgroundImage: `
-            linear-gradient(rgba(61,171,142,0.20) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(61,171,142,0.20) 1px, transparent 1px)
+            linear-gradient(rgba(255,136,57,0.20) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,136,57,0.20) 1px, transparent 1px)
           `,
           backgroundSize: '36px 36px',
           animation: 'pulse 2.4s ease-in-out infinite',
@@ -127,7 +127,7 @@ export function ScanScreen({ onNavigate }) {
           background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)',
           border: '1px solid rgba(255,255,255,0.25)',
           padding: '7px 16px', borderRadius: 22,
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: WHITE,
+          fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: WHITE,
         }}>Environment Scan</div>
 
         {/* Environment switcher */}
@@ -136,7 +136,7 @@ export function ScanScreen({ onNavigate }) {
           border: '1px solid rgba(255,255,255,0.28)',
           padding: '7px 12px', borderRadius: 22, cursor: 'pointer',
           display: 'flex', alignItems: 'center', gap: 5,
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: WHITE,
+          fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: WHITE,
         }}>
           <AppIcon name={env.icon} size={14} color={WHITE} />
           <span>{env.name}</span>
@@ -179,7 +179,7 @@ export function ScanScreen({ onNavigate }) {
             padding: '8px 18px', borderRadius: 22,
             background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(10px)',
             border: '1px solid rgba(255,255,255,0.25)',
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: WHITE,
+            fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: WHITE,
           }}>
             {phase === 'scanning' ? 'Looking around...' : 'Tap to scan your environment'}
           </div>
@@ -224,17 +224,17 @@ export function ScanScreen({ onNavigate }) {
           <div style={{ padding: '4px 20px 14px', borderBottom: `1px solid ${BORDER}` }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 17, color: TEXT, display: 'flex', alignItems: 'center', gap: 7 }}>
-                  <AppIcon name={env.icon} size={17} color={TEXT} /> {env.name} Routines
+                <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 17, color: TEXT, display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <AppIcon name={env.icon} size={17} color={TEXT} /> {env.name} Moves
                 </div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 2 }}>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 2 }}>
                   {env.objects.length} objects detected · Suggested for this spot
                 </div>
               </div>
               <button onClick={reset} style={{
                 padding: '7px 14px', borderRadius: 20,
                 border: `1px solid ${BORDER}`, backgroundColor: WHITE,
-                cursor: 'pointer', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT,
+                cursor: 'pointer', fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT,
                 boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
               }}>Look again</button>
             </div>
@@ -253,7 +253,7 @@ export function ScanScreen({ onNavigate }) {
                 ))}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 6 }}>
                   <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: TEAL, animation: 'pulse 1s infinite' }} />
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>AI analyzing environment…</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>AI analyzing environment…</span>
                 </div>
               </div>
             ) : (
@@ -263,28 +263,28 @@ export function ScanScreen({ onNavigate }) {
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '13px 14px', borderRadius: 12, cursor: 'pointer',
                     backgroundColor: i === 0 ? TEAL_LIGHT : WHITE,
-                    border: `1px solid ${i === 0 ? 'rgba(61,171,142,0.25)' : BORDER}`,
-                    boxShadow: i === 0 ? '0 2px 10px rgba(61,171,142,0.10)' : '0 1px 6px rgba(0,0,0,0.05)',
+                    border: `1px solid ${i === 0 ? 'rgba(255,136,57,0.25)' : BORDER}`,
+                    boxShadow: i === 0 ? '0 2px 10px rgba(255,136,57,0.10)' : '0 1px 6px rgba(0,0,0,0.05)',
                     transition: 'all 0.15s',
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                      backgroundColor: i === 0 ? TEAL : 'rgba(61,171,142,0.12)',
+                      backgroundColor: i === 0 ? TEAL : 'rgba(255,136,57,0.12)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <AppIcon name={ROUTINE_ICONS[i]} size={18} color={i === 0 ? WHITE : TEAL} />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 2 }}>{r.name}</div>
+                      <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 2 }}>{r.name}</div>
                       <div style={{
-                        fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: TEXT_SUB, lineHeight: 1.45,
+                        fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_SUB, lineHeight: 1.45,
                         overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
                       }}>{r.description}</div>
                       <div style={{ display: 'flex', gap: 6, marginTop: 6 }}>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: TEAL, backgroundColor: TEAL_LIGHT, padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(61,171,142,0.22)' }}>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEAL, backgroundColor: TEAL_LIGHT, padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(255,136,57,0.22)' }}>
                           {r.duration}
                         </span>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: TEXT_SUB, backgroundColor: 'rgba(0,0,0,0.05)', padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(0,0,0,0.07)' }}>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEXT_SUB, backgroundColor: 'rgba(0,0,0,0.05)', padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(0,0,0,0.07)' }}>
                           {r.uses ? r.uses.toUpperCase() : ''}
                         </span>
                       </div>

@@ -54,7 +54,6 @@ function App() {
     localStorage.setItem('checkin_returning', 'true');
   };
 
-  const [navClass, setNavClass] = useState('screen-enter');
   const [sessionDuration, setSessionDuration] = useState(5);
   const [phoneScale, setPhoneScale] = useState(1);
   useEffect(() => {
@@ -90,15 +89,14 @@ function App() {
     return () => window.removeEventListener('message', handler);
   }, []);
 
-  const navigate = (s) => { setNavClass('screen-enter'); setScreen(s); };
-  const navigateFlow = (s, dir = 'forward') => { setNavClass(dir === 'forward' ? 'screen-slide-right' : 'screen-slide-left'); setScreen(s); };
+  const navigateFade = (s) => setScreen(s);
   const handleTabChange = (t) => {
     setTab(t);
-    if (t === 'home') navigate('main-home');
-    else if (t === 'routines') navigate('browse-routines');
-    else if (t === 'goals') navigate('goals-landing');
-    else if (t === 'scan') navigate('scan-environment');
-    else if (t === 'progress') navigate('progress');
+    if (t === 'home') navigateFade('main-home');
+    else if (t === 'routines') navigateFade('browse-routines');
+    else if (t === 'goals') navigateFade('goals-landing');
+    else if (t === 'scan') navigateFade('scan-environment');
+    else if (t === 'progress') navigateFade('progress');
   };
 
   const mainScreens = ['main-home', 'browse-routines', 'progress', 'goals-landing', 'scan-environment'];
@@ -106,36 +104,36 @@ function App() {
 
   const renderScreen = () => {
     switch(screen) {
-      case 'onboarding-welcome':    return <OnboardingWelcome onNext={() => navigateFlow('onboarding-diagnostic')} />;
-      case 'onboarding-diagnostic': return <OnboardingDiagnostic onNext={() => navigateFlow('onboarding-schedule')} onBack={() => navigateFlow('onboarding-welcome', 'backward')} />;
-      case 'onboarding-schedule':   return <OnboardingSchedule onNext={() => navigateFlow('onboarding-body-map')} onBack={() => navigateFlow('onboarding-diagnostic', 'backward')} />;
-      case 'onboarding-body-map':   return <OnboardingBodyMap onNext={() => navigateFlow('onboarding-summary')} onBack={() => navigateFlow('onboarding-schedule', 'backward')} />;
-      case 'onboarding-summary':    return <OnboardingSummary onNext={() => navigateFlow('onboarding-plan')} onDone={() => navigateFlow('onboarding-plan')} />;
-      case 'onboarding-plan':       return <OnboardingPlan onSave={() => { setTab('home'); navigate('main-home'); }} onBack={() => navigateFlow('onboarding-summary', 'backward')} />;
-      case 'main-home':            return <HomeScreen onNavigate={navigate} />;
-      case 'browse-routines':      return <BrowseRoutinesScreen onNavigate={navigate} />;
-      case 'progress':             return <ProgressScreen onNavigate={navigate} />;
+      case 'onboarding-welcome':    return <OnboardingWelcome onNext={() => navigateFade('onboarding-diagnostic')} />;
+      case 'onboarding-diagnostic': return <OnboardingDiagnostic onNext={() => navigateFade('onboarding-schedule')} onBack={() => navigateFade('onboarding-welcome')} />;
+      case 'onboarding-schedule':   return <OnboardingSchedule onNext={() => navigateFade('onboarding-body-map')} onBack={() => navigateFade('onboarding-diagnostic')} />;
+      case 'onboarding-body-map':   return <OnboardingBodyMap onNext={() => navigateFade('onboarding-summary')} onBack={() => navigateFade('onboarding-schedule')} />;
+      case 'onboarding-summary':    return <OnboardingSummary onNext={() => navigateFade('onboarding-plan')} onDone={() => navigateFade('onboarding-plan')} />;
+      case 'onboarding-plan':       return <OnboardingPlan onSave={() => { setTab('home'); navigateFade('main-home'); }} onBack={() => navigateFade('onboarding-summary')} />;
+      case 'main-home':            return <HomeScreen onNavigate={navigateFade} />;
+      case 'browse-routines':      return <BrowseRoutinesScreen onNavigate={navigateFade} />;
+      case 'progress':             return <ProgressScreen onNavigate={navigateFade} />;
       /* Check-in — full flow */
-      case 'checkin-1':            return <CheckInWelcome isReturningUser={isReturningUser} onNext={() => navigateFlow('checkin-2')} onReturnStart={() => navigateFlow('checkin-return-body')} onExit={() => navigate('main-home')} />;
-      case 'checkin-2':            return <CheckInEnergy onNext={() => navigateFlow('checkin-3')} onBack={() => navigateFlow('checkin-1', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-3':            return <CheckInPlans onNext={() => navigateFlow('checkin-4')} onBack={() => navigateFlow('checkin-2', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-4':            return <CheckInBodyMap onNext={() => navigateFlow('checkin-5')} onBack={() => navigateFlow('checkin-3', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-5':            return <CheckInSessions onNext={() => navigateFlow('checkin-6')} onBack={() => navigateFlow('checkin-4', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-6':            return <CheckInTime onNext={() => navigateFlow('checkin-done')} onBack={() => navigateFlow('checkin-5', 'backward')} onExit={() => navigate('main-home')} />;
+      case 'checkin-1':            return <CheckInWelcome isReturningUser={isReturningUser} onNext={() => navigateFade('checkin-2')} onReturnStart={() => navigateFade('checkin-return-body')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-2':            return <CheckInEnergy onNext={() => navigateFade('checkin-3')} onBack={() => navigateFade('checkin-1')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-3':            return <CheckInPlans onNext={() => navigateFade('checkin-4')} onBack={() => navigateFade('checkin-2')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-4':            return <CheckInBodyMap onNext={() => navigateFade('checkin-5')} onBack={() => navigateFade('checkin-3')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-5':            return <CheckInSessions onNext={() => navigateFade('checkin-6')} onBack={() => navigateFade('checkin-4')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-6':            return <CheckInTime onNext={() => navigateFade('checkin-done')} onBack={() => navigateFade('checkin-5')} onExit={() => navigateFade('main-home')} />;
       /* Check-in — compressed (returning user) */
-      case 'checkin-return-body':  return <CheckInBodyMap isCompressed onNext={() => navigateFlow('checkin-return-time')} onBack={() => navigateFlow('checkin-1', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-return-time':  return <CheckInTime isCompressed onNext={() => navigateFlow('checkin-done')} onBack={() => navigateFlow('checkin-return-body', 'backward')} onExit={() => navigate('main-home')} />;
-      case 'checkin-done':         return <CheckInDone onDone={() => { markReturning(); navigate('session-preview'); }} onExit={() => navigate('main-home')} />;
-      case 'session-preview':      return <SessionPreview onStart={(dur) => { setSessionDuration(dur); navigate('session-live'); }} onBack={() => navigate('main-home')} />;
-      case 'session-live':         return <LiveSession onEnd={() => navigate('session-complete')} />;
-      case 'session-complete':     return <SessionComplete duration={sessionDuration} onDone={() => { setTab('home'); navigate('main-home'); }} onMore={(extra) => { setSessionDuration(d => d + extra); navigate('session-live'); }} />;
-      case 'goals-landing':        return <GoalsLanding onNavigate={navigate} />;
-      case 'goals-type':           return <GoalType onNext={() => navigate('goals-input')} onBack={() => navigate('goals-landing')} />;
-      case 'goals-input':          return <GoalInput onNext={() => navigate('goals-analysis')} onBack={() => navigate('goals-type')} />;
-      case 'goals-analysis':       return <GoalAnalysis onNext={() => navigate('goals-plan')} />;
-      case 'goals-plan':           return <GoalPlan onSave={() => { setTab('home'); navigate('main-home'); }} onBack={() => navigate('goals-analysis')} />;
-      case 'scan-environment':     return <ScanScreen onNavigate={navigate} />;
-      default:                     return <HomeScreen onNavigate={navigate} />;
+      case 'checkin-return-body':  return <CheckInBodyMap isCompressed onNext={() => navigateFade('checkin-return-time')} onBack={() => navigateFade('checkin-1')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-return-time':  return <CheckInTime isCompressed onNext={() => navigateFade('checkin-done')} onBack={() => navigateFade('checkin-return-body')} onExit={() => navigateFade('main-home')} />;
+      case 'checkin-done':         return <CheckInDone onDone={() => { markReturning(); navigateFade('session-preview'); }} onExit={() => navigateFade('main-home')} />;
+      case 'session-preview':      return <SessionPreview onStart={(dur) => { setSessionDuration(dur); navigateFade('session-live'); }} onBack={() => navigateFade('main-home')} />;
+      case 'session-live':         return <LiveSession onEnd={() => navigateFade('session-complete')} />;
+      case 'session-complete':     return <SessionComplete duration={sessionDuration} onDone={() => { setTab('home'); navigateFade('main-home'); }} onMore={(extra) => { setSessionDuration(d => d + extra); navigateFade('session-live'); }} />;
+      case 'goals-landing':        return <GoalsLanding onNavigate={navigateFade} />;
+      case 'goals-type':           return <GoalType onNext={() => navigateFade('goals-input')} onBack={() => navigateFade('goals-landing')} />;
+      case 'goals-input':          return <GoalInput onNext={() => navigateFade('goals-analysis')} onBack={() => navigateFade('goals-type')} />;
+      case 'goals-analysis':       return <GoalAnalysis onNext={() => navigateFade('goals-plan')} />;
+      case 'goals-plan':           return <GoalPlan onSave={() => { setTab('home'); navigateFade('main-home'); }} onBack={() => navigateFade('goals-analysis')} />;
+      case 'scan-environment':     return <ScanScreen onNavigate={navigateFade} />;
+      default:                     return <HomeScreen onNavigate={navigateFade} />;
     }
   };
 
@@ -198,7 +196,7 @@ function App() {
           {/* App content */}
           <div style={{
             width: '100%', height: '100%',
-            backgroundColor: '#FAFAF8',
+            backgroundColor: '#EFEBE4',
             display: 'flex', flexDirection: 'column',
             position: 'relative',
             overflow: 'hidden',
@@ -207,8 +205,11 @@ function App() {
             <div style={{ height: (screen === 'session-live' || screen === 'session-preview') ? 0 : 52, flexShrink: 0 }} />
 
             {/* Screen content */}
-            <div key={screen} className={navClass} style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden', minHeight: 0 }}>
-              {renderScreen()}
+            <div style={{ flex: 1, position: 'relative', minHeight: 0 }}>
+              <div key={screen} className="screen-fade"
+                   style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column' }}>
+                {renderScreen()}
+              </div>
             </div>
 
             {/* Bottom nav */}
@@ -232,12 +233,12 @@ function App() {
                 border: '1px solid rgba(0,0,0,0.10)', maxHeight: 420, overflowY: 'auto',
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: 'rgba(20,160,130,1)' }}>Tweaks</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: 'rgba(20,160,130,1)' }}>Tweaks</span>
                   <button onClick={() => { setShowTweaksPanel(false); window.parent.postMessage({type:'__edit_mode_dismissed'},'*'); }}
                     style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: 'rgba(20,30,40,0.5)', lineHeight: 1 }}>×</button>
                 </div>
                 <div style={{ marginBottom: 18 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: 'rgba(20,30,40,0.5)', letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 12 }}>Accent color</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: 'rgba(20,30,40,0.5)', letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 12 }}>Accent color</div>
                   <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
                     {['teal','tealMid'].map(k => (
                       <div key={k} style={{ flex: 1, height: 28, borderRadius: 8, backgroundColor: C[k], border: '1px solid rgba(0,0,0,0.10)' }} title={k} />
@@ -250,8 +251,8 @@ function App() {
                   ].map(({ key, label, min, max, gradient }) => (
                     <div key={key} style={{ marginBottom: 12 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: 'rgba(20,30,40,0.7)' }}>{label}</span>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: 'rgba(20,160,130,1)' }}>{tweaks[key]}{key === 'hue' ? '°' : '%'}</span>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: 'rgba(20,30,40,0.7)' }}>{label}</span>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: 'rgba(20,160,130,1)' }}>{tweaks[key]}{key === 'hue' ? '°' : '%'}</span>
                       </div>
                       <div style={{ position: 'relative', height: 20, display: 'flex', alignItems: 'center' }}>
                         <div style={{ position: 'absolute', left: 0, right: 0, height: 8, borderRadius: 4, background: gradient, boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.2)' }} />

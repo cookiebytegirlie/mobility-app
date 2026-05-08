@@ -21,9 +21,9 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 28, flexShrink: 0 }}>
         <div style={{
           width: 82, height: 82, borderRadius: '50%', marginBottom: 20,
-          background: 'linear-gradient(135deg, #EDF7F5 0%, #C8EDE7 100%)',
+          background: 'linear-gradient(135deg, #EBE8C8 0%, #FFE8D6 100%)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 6px 28px rgba(61,171,142,0.22)',
+          boxShadow: '0 6px 28px rgba(255,136,57,0.22)',
           animation: ready ? 'popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards' : 'none',
           opacity: ready ? 1 : 0,
         }}>
@@ -40,14 +40,14 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
         </div>
 
         <div style={{
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28,
+          fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28,
           color: TEXT, letterSpacing: '-0.3px', marginBottom: 7,
           animation: ready ? 'fadeUpS 0.4s ease 0.2s both' : 'none', opacity: ready ? 1 : 0,
         }}>
           Nice — {duration} min done.
         </div>
         <div style={{
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 15,
+          fontFamily: 'Inter', fontWeight: 500, fontSize: 15,
           color: TEXT_SUB, textAlign: 'center', lineHeight: 1.55,
           animation: ready ? 'fadeUpS 0.4s ease 0.32s both' : 'none', opacity: ready ? 1 : 0,
         }}>
@@ -64,20 +64,20 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
       }}>
         <div style={{
           padding: '14px 18px',
-          background: 'linear-gradient(135deg, rgba(61,171,142,0.10) 0%, rgba(61,171,142,0.06) 100%)',
-          borderBottom: `1px solid rgba(61,171,142,0.12)`,
+          background: 'linear-gradient(135deg, rgba(255,136,57,0.10) 0%, rgba(255,136,57,0.06) 100%)',
+          borderBottom: `1px solid rgba(255,136,57,0.12)`,
           display: 'flex', alignItems: 'center', gap: 12,
         }}>
           <AppIcon name="fire" size={26} color="#F97316" />
           <div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: TEXT }}>3-day streak</div>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>Goal: hip mobility</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: TEXT }}>3-day streak</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>Goal: hip mobility</div>
           </div>
         </div>
         <div style={{ padding: '14px 18px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: TEXT_SUB }}>Progress toward goal</span>
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEAL }}>35%</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: TEXT_SUB }}>Progress toward goal</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEAL }}>35%</span>
           </div>
           <div style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(0,0,0,0.07)', overflow: 'hidden' }}>
             <div style={{
@@ -87,7 +87,7 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
               transition: 'width 0.9s cubic-bezier(0.34,1.2,0.64,1) 0.5s',
             }}/>
           </div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 6 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginTop: 6 }}>
             4 more sessions to reach your hip mobility goal
           </div>
         </div>
@@ -110,8 +110,8 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
             onMouseLeave={e => { e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.backgroundColor = '#FFFFFF'; }}
           >
             <div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: TEXT }}>{label}</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB, marginTop: 2 }}>{sub}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: TEXT }}>{label}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB, marginTop: 2 }}>{sub}</div>
             </div>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M6 3l5 5-5 5" stroke={TEAL} strokeWidth="1.8" strokeLinecap="round"/>
@@ -122,8 +122,8 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
         <button onClick={onDone} style={{
           width: '100%', height: 52, borderRadius: 26, marginTop: 2,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(61,171,142,0.28)',
+          fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
+          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
         }}>
           I'm good for now
         </button>

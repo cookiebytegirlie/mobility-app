@@ -13,7 +13,7 @@ const NUDGES = [
     text: "You've been sitting 90 min",
     cta: '3 min reset',
     bg: TEAL_LIGHT,
-    border: 'rgba(61,171,142,0.22)',
+    border: 'rgba(255,136,57,0.22)',
     ctaColor: TEAL,
   },
   {
@@ -42,11 +42,11 @@ export function HomeScreen({ onNavigate }) {
         {/* Avatar */}
         <div style={{
           width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-          background: 'linear-gradient(135deg, #C8EDE7 0%, #A8D8D0 100%)',
+          background: '#EBE8C8',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 1px 6px rgba(0,0,0,0.10)',
         }}>
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: TEAL }}>T</span>
+          <img src="/images/Moove_Mark_2.svg" alt="Moove" style={{ width: 22, height: 22 }} />
         </div>
 
         {/* Check-in pill */}
@@ -57,7 +57,7 @@ export function HomeScreen({ onNavigate }) {
           boxShadow: SHADOW,
         }}>
           <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#F97316', flexShrink: 0 }} />
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT }}>Complete your daily check-in</span>
+          <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT }}>Complete your daily check-in</span>
         </div>
 
         {/* Bell */}
@@ -78,7 +78,7 @@ export function HomeScreen({ onNavigate }) {
 
         {/* ── Headline ── */}
         <div style={{
-          fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 30,
+          fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 30,
           color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 18,
         }}>
           Let's get moving.
@@ -91,9 +91,9 @@ export function HomeScreen({ onNavigate }) {
               flexShrink: 0, padding: '7px 14px', borderRadius: 20, cursor: 'pointer',
               backgroundColor: location === loc ? TEAL : WHITE,
               border: `1px solid ${location === loc ? TEAL : BORDER}`,
-              fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13,
+              fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
               color: location === loc ? WHITE : TEXT_SUB,
-              boxShadow: location === loc ? '0 2px 8px rgba(61,171,142,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+              boxShadow: location === loc ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
               transition: 'all 0.15s',
             }}>{loc}</button>
           ))}
@@ -111,12 +111,12 @@ export function HomeScreen({ onNavigate }) {
               }}>
                 <AppIcon name={n.icon} size={20} color={n.ctaColor} style={{ flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginBottom: 3 }}>{n.text}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginBottom: 3 }}>{n.text}</div>
                   <div
                     onClick={() => onNavigate('session-preview')}
                     style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}
                   >
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT }}>{n.cta}</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>{n.cta}</span>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <path d="M4 2l4 4-4 4" stroke={n.ctaColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
@@ -144,7 +144,7 @@ export function HomeScreen({ onNavigate }) {
         }}>
           <div style={{
             height: 180, position: 'relative',
-            background: `linear-gradient(rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.50) 85%), url(/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg) center/cover no-repeat`,
+            background: `linear-gradient(rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.50) 85%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12032.jpg) center/cover no-repeat`,
           }}>
             <div style={{
               position: 'absolute', top: 14, left: 14,
@@ -153,11 +153,11 @@ export function HomeScreen({ onNavigate }) {
               backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255,255,255,0.28)',
             }}>
-              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: WHITE, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={WHITE} /> Good for right now</span>
+              <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: WHITE, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={WHITE} /> Good for right now</span>
             </div>
             <div style={{ position: 'absolute', bottom: 14, left: 16 }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 22, color: WHITE, letterSpacing: '-0.2px', marginBottom: 3 }}>For your lower back</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>5 min · Full body warmup</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 22, color: WHITE, letterSpacing: '-0.2px', marginBottom: 3 }}>For your lower back</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>5 min · Full body warmup</div>
             </div>
           </div>
           <div style={{
@@ -176,7 +176,7 @@ export function HomeScreen({ onNavigate }) {
         </div>
 
         {/* ── New Routines ── */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>You might like these</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>You might like these</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {routines.map((r, i) => (
             <div key={i} onClick={() => onNavigate('session-preview')} style={{
@@ -188,8 +188,8 @@ export function HomeScreen({ onNavigate }) {
                 background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.46) 85%), url(${r.img}) center/cover no-repeat`,
               }}>
                 <div style={{ position: 'absolute', bottom: 12, left: 14 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: WHITE, marginBottom: 2 }}>{r.title}</div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)' }}>{r.sub}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: WHITE, marginBottom: 2 }}>{r.title}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)' }}>{r.sub}</div>
                 </div>
               </div>
               <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6 }}>

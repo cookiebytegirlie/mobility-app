@@ -15,9 +15,9 @@ function Chip({ label, active, onClick }) {
       flexShrink: 0, padding: '7px 14px', borderRadius: 20, cursor: 'pointer',
       backgroundColor: active ? TEAL : WHITE,
       border: `1px solid ${active ? TEAL : BORDER}`,
-      fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13,
+      fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
       color: active ? WHITE : TEXT_SUB,
-      boxShadow: active ? '0 2px 8px rgba(61,171,142,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+      boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
       transition: 'all 0.15s',
     }}>{label}</button>
   );
@@ -50,7 +50,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
       <div style={{ padding: '16px 20px 0' }}>
 
         {/* Headline */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 16 }}>
+        <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 16 }}>
           Find a move
         </div>
 
@@ -69,7 +69,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
               width: '100%', height: 42, borderRadius: 12, boxSizing: 'border-box',
               border: `1px solid ${BORDER}`, backgroundColor: WHITE,
               paddingLeft: 36, paddingRight: 16,
-              fontFamily: 'Plus Jakarta Sans', fontSize: 14, color: TEXT,
+              fontFamily: 'Inter', fontSize: 14, color: TEXT,
               outline: 'none', boxShadow: SHADOW,
             }}
           />
@@ -80,7 +80,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
           {FILTER_GROUPS.map(({ key, label, chips }) => (
             <div key={key}>
               <div style={{
-                fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11,
+                fontFamily: 'Inter', fontWeight: 700, fontSize: 11,
                 color: TEXT_SUB, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8,
               }}>{label}</div>
               <div style={{ display: 'flex', gap: 7, overflowX: 'auto', paddingBottom: 2 }}>
@@ -100,17 +100,17 @@ export function BrowseRoutinesScreen({ onNavigate }) {
         {/* On your schedule (no filters) */}
         {!hasFilters && !search && (
           <div style={{ marginBottom: 26 }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>Good for today</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>Good for today</div>
             <div onClick={() => onNavigate('session-preview')} style={{
               borderRadius: 14, overflow: 'hidden', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.09)',
             }}>
               <div style={{
                 height: 138, position: 'relative',
-                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.48) 85%), url(/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg) center/cover no-repeat`,
+                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.48) 85%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg) center/cover no-repeat`,
               }}>
                 <div style={{ position: 'absolute', bottom: 14, left: 16 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 20, color: 'white' }}>For your lower back</div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)', marginTop: 2 }}>5 min · Morning session</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 20, color: 'white' }}>For your lower back</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)', marginTop: 2 }}>5 min · Morning session</div>
                 </div>
               </div>
               <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6, alignItems: 'center', justifyContent: 'space-between' }}>
@@ -130,10 +130,10 @@ export function BrowseRoutinesScreen({ onNavigate }) {
                 <div key={label} onClick={() => onNavigate('session-preview')} style={{ flexShrink: 0, width: 80, cursor: 'pointer' }}>
                   <div style={{
                     width: 80, height: 80, borderRadius: 12, marginBottom: 6,
-                    background: `url(${i % 2 === 0 ? '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg' : '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg'}) center/cover no-repeat`,
+                    background: `url(${['/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg', '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', '/images/DTS_DEEP_SPA_DTS_Studio_Photos_ID10984.jpg', '/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg'][i % 3]}) center/cover no-repeat`,
                     boxShadow: '0 2px 8px rgba(0,0,0,0.09)',
                   }} />
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: TEXT, textAlign: 'center', lineHeight: 1.3 }}>{label}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT, textAlign: 'center', lineHeight: 1.3 }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
         )}
 
         {/* Results heading */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>
           {hasFilters || search
             ? `${visible.length} result${visible.length !== 1 ? 's' : ''}`
             : 'Everything'}
@@ -159,8 +159,8 @@ export function BrowseRoutinesScreen({ onNavigate }) {
                 background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.44) 85%), url(${r.img}) center/cover no-repeat`,
               }}>
                 <div style={{ position: 'absolute', bottom: 11, left: 14 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 17, color: 'white' }}>{r.title}</div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.78)', marginTop: 2 }}>{r.sub}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: 'white' }}>{r.title}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.78)', marginTop: 2 }}>{r.sub}</div>
                 </div>
               </div>
               <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6 }}>
@@ -169,7 +169,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
             </div>
           ))}
           {visible.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '40px 0', fontFamily: 'Plus Jakarta Sans', fontSize: 14, color: TEXT_SUB }}>
+            <div style={{ textAlign: 'center', padding: '40px 0', fontFamily: 'Inter', fontSize: 14, color: TEXT_SUB }}>
               No routines match these filters.
             </div>
           )}

@@ -56,7 +56,7 @@ function Sparkline({ points, color = TEAL }) {
 function SectionLabel({ children, style = {} }) {
   return (
     <div style={{
-      fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11,
+      fontFamily: 'Inter', fontWeight: 700, fontSize: 11,
       color: TEXT_MUTED, letterSpacing: 0.9, textTransform: 'uppercase',
       marginBottom: 10, ...style,
     }}>{children}</div>
@@ -86,15 +86,15 @@ function OverviewTab() {
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 3 }}>{part}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 3 }}>{part}</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <AppIcon name={icon} size={13} color={accent} />
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: accent }}>{label}</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: accent }}>{label}</span>
                 </div>
               </div>
             </div>
             <Sparkline points={points} color={accent}/>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: TEXT_MUTED, marginTop: 6, lineHeight: 1.4 }}>{sub}</div>
+            <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_MUTED, marginTop: 6, lineHeight: 1.4 }}>{sub}</div>
           </div>
         ))}
       </div>
@@ -105,7 +105,7 @@ function OverviewTab() {
         backgroundColor: WHITE, border: `1px solid ${BORDER}`, boxShadow: SHADOW,
         marginBottom: 22,
       }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 14 }}>This week</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 14 }}>This week</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 18 }}>
           {WEEK_DAYS.map((d, i) => (
             <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
@@ -119,11 +119,11 @@ function OverviewTab() {
                     <path d="M1 4.5l3.5 3.5L11 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ) : (
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 10, color: TEXT_MUTED }}>{d}</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 10, color: TEXT_MUTED }}>{d}</span>
                 )}
               </div>
               {WEEK_DONE[i] && (
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 9, color: TEAL }}>{d}</span>
+                <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 9, color: TEAL }}>{d}</span>
               )}
             </div>
           ))}
@@ -135,10 +135,10 @@ function OverviewTab() {
         }}>
           {[['5', 'Sessions'], ['28 min', 'Time invested'], [null, 'Day streak']].map(([val, lbl]) => (
             <div key={lbl} style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: TEXT, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+              <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: TEXT, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
                 {val === null ? <><AppIcon name="fire" size={16} color="#F97316" /> 4</> : val}
               </div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: TEXT_MUTED, marginTop: 2 }}>{lbl}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_MUTED, marginTop: 2 }}>{lbl}</div>
             </div>
           ))}
         </div>
@@ -157,7 +157,7 @@ function OverviewTab() {
           background: 'none', border: 'none', cursor: 'pointer',
           borderBottom: insightsOpen ? `1px solid ${BORDER}` : 'none',
         }}>
-          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT }}>Insights</span>
+          <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>Insights</span>
           <svg
             width="16" height="16" viewBox="0 0 16 16" fill="none"
             style={{ transform: insightsOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
@@ -170,7 +170,7 @@ function OverviewTab() {
           <div style={{ padding: '14px 16px 16px' }}>
 
             {/* ── Your activity ── */}
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 10 }}>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 10 }}>
               Your activity
             </div>
 
@@ -178,13 +178,13 @@ function OverviewTab() {
               <div key={id} style={{
                 display: 'flex', alignItems: 'flex-start', gap: 12,
                 padding: '12px 14px', borderRadius: 12, marginBottom: 8,
-                backgroundColor: TEAL_LIGHT, border: `1px solid rgba(61,171,142,0.16)`,
+                backgroundColor: TEAL_LIGHT, border: `1px solid rgba(255,136,57,0.16)`,
                 position: 'relative',
               }}>
                 <AppIcon name={icon} size={22} color={TEAL} style={{ flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: TEXT, marginBottom: 2 }}>{stat}</div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, lineHeight: 1.5 }}>{sub}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 16, color: TEXT, marginBottom: 2 }}>{stat}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, lineHeight: 1.5 }}>{sub}</div>
                 </div>
                 <button onClick={() => dismiss(id)} style={{
                   width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
@@ -196,24 +196,24 @@ function OverviewTab() {
               </div>
             ))}
             {activityCards.length === 0 && (
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 13, color: TEXT_MUTED, textAlign: 'center', padding: '8px 0 12px' }}>
+              <div style={{ fontFamily: 'Inter', fontSize: 13, color: TEXT_MUTED, textAlign: 'center', padding: '8px 0 12px' }}>
                 All caught up on activity insights.
               </div>
             )}
 
             {/* Most stretched areas bar chart */}
             <div style={{ padding: '14px', borderRadius: 12, backgroundColor: 'rgba(0,0,0,0.03)', marginBottom: 16 }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 12 }}>Where you've been focusing</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEXT, marginBottom: 12 }}>Where you've been focusing</div>
               {BODY_BARS.map(({ part, pct }, i) => (
                 <div key={part} style={{ marginBottom: i < BODY_BARS.length - 1 ? 11 : 0 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT }}>{part}</span>
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED }}>{pct}%</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT }}>{part}</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED }}>{pct}%</span>
                   </div>
                   <div style={{ height: 6, borderRadius: 3, backgroundColor: 'rgba(0,0,0,0.08)' }}>
                     <div style={{
                       height: '100%', borderRadius: 3,
-                      background: `linear-gradient(90deg, ${TEAL}, #5BC4A8)`,
+                      backgroundColor: TEAL,
                       width: `${pct}%`,
                     }}/>
                   </div>
@@ -222,7 +222,7 @@ function OverviewTab() {
             </div>
 
             {/* ── What the research says ── */}
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 10 }}>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 10 }}>
               Why this works
             </div>
 
@@ -230,13 +230,13 @@ function OverviewTab() {
               <div key={id} style={{
                 display: 'flex', alignItems: 'flex-start', gap: 12,
                 padding: '12px 14px', borderRadius: 12, marginBottom: 8,
-                backgroundColor: '#EFF6FF', border: '1px solid rgba(59,130,246,0.14)',
+                backgroundColor: '#FFF8F3', border: '1px solid rgba(255,136,57,0.15)',
                 position: 'relative',
               }}>
                 <AppIcon name={icon} size={22} color={TEAL} style={{ flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: TEXT, marginBottom: 2 }}>{stat}</div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB, lineHeight: 1.5 }}>{sub}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 16, color: TEXT, marginBottom: 2 }}>{stat}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, lineHeight: 1.5 }}>{sub}</div>
                 </div>
                 <button onClick={() => dismiss(id)} style={{
                   width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
@@ -248,7 +248,7 @@ function OverviewTab() {
               </div>
             ))}
             {researchCards.length === 0 && (
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 13, color: TEXT_MUTED, textAlign: 'center', padding: '8px 0' }}>
+              <div style={{ fontFamily: 'Inter', fontSize: 13, color: TEXT_MUTED, textAlign: 'center', padding: '8px 0' }}>
                 All research cards dismissed.
               </div>
             )}
@@ -268,7 +268,7 @@ function SessionsTab() {
     routine: s.name,
     duration: `${s.duration} min`,
     focus: s.focusAreas || [],
-    img: i % 2 === 0 ? '/images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg' : '/images/tabitha-turner-J4ibw_JGl_k-unsplash.jpg',
+    img: i % 2 === 0 ? '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' : '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
     partial: s.partial,
   }));
 
@@ -292,17 +292,17 @@ function SessionsTab() {
             }}/>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT }}>{s.routine}</span>
+                <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>{s.routine}</span>
                 {s.partial && (
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: '#D97706', backgroundColor: '#FEF3C7', padding: '1px 7px', borderRadius: 8 }}>partial</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: '#D97706', backgroundColor: '#FEF3C7', padding: '1px 7px', borderRadius: 8 }}>partial</span>
                 )}
               </div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_MUTED, marginBottom: 7 }}>
+              <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_MUTED, marginBottom: 7 }}>
                 {s.date} · {s.duration}
               </div>
               <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
                 {(s.focus || []).map(f => (
-                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(61,171,142,0.22)' }}>{f}</Tag>
+                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{f}</Tag>
                 ))}
               </div>
             </div>
@@ -331,7 +331,7 @@ function CheckInsTab() {
           <button key={key} onClick={() => setFilter(key)} style={{
             flex: 1, padding: '8px 4px', borderRadius: 9, border: 'none', cursor: 'pointer',
             backgroundColor: filter === key ? WHITE : 'transparent',
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12,
+            fontFamily: 'Inter', fontWeight: 700, fontSize: 12,
             color: filter === key ? TEAL : TEXT_MUTED,
             boxShadow: filter === key ? '0 1px 5px rgba(0,0,0,0.09)' : 'none',
             transition: 'all 0.15s',
@@ -364,13 +364,13 @@ function CheckInsTab() {
                   {/* Date + energy label row */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
                     <div>
-                      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT }}>{date}</div>
-                      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_MUTED }}>{day}</div>
+                      <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>{date}</div>
+                      <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_MUTED }}>{day}</div>
                     </div>
                     <div style={{
                       padding: '4px 10px', borderRadius: 20,
                       backgroundColor: e.bg,
-                      fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12,
+                      fontFamily: 'Inter', fontWeight: 700, fontSize: 12,
                       color: e.color,
                     }}>
                       {energy}
@@ -381,23 +381,23 @@ function CheckInsTab() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                     {plans && (
                       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0 }}>Plans</span>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT }}>{plans}</span>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0 }}>Plans</span>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT }}>{plans}</span>
                       </div>
                     )}
                     {sore.length > 0 && (
                       <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0, paddingTop: 2 }}>What was bothering you</span>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0, paddingTop: 2 }}>What was bothering you</span>
                         <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
                           {sore.map(s => (
-                            <Tag key={s} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(61,171,142,0.22)' }}>{s}</Tag>
+                            <Tag key={s} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{s}</Tag>
                           ))}
                         </div>
                       </div>
                     )}
                     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0 }}>Time</span>
-                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEXT }}>{time}</span>
+                      <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0 }}>Time</span>
+                      <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT }}>{time}</span>
                     </div>
                   </div>
                 </div>
@@ -409,7 +409,7 @@ function CheckInsTab() {
         {visible.length === 0 && (
           <div style={{
             textAlign: 'center', padding: '40px 20px',
-            fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: TEXT_MUTED,
+            fontFamily: 'Inter', fontWeight: 500, fontSize: 14, color: TEXT_MUTED,
           }}>
             No check-ins recorded for this period.
           </div>
@@ -433,7 +433,7 @@ export function ProgressScreen({ onNavigate }) {
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: BG, overflowY: 'auto', paddingBottom: 88 }}>
       <div style={{ padding: '20px 20px 0' }}>
         {/* Header */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 18 }}>
+        <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 18 }}>
           Progress
         </div>
 
@@ -446,7 +446,7 @@ export function ProgressScreen({ onNavigate }) {
             <button key={id} onClick={() => setActiveTab(id)} style={{
               flex: 1, padding: '9px 4px', borderRadius: 9, border: 'none', cursor: 'pointer',
               backgroundColor: activeTab === id ? WHITE : 'transparent',
-              fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12,
+              fontFamily: 'Inter', fontWeight: 700, fontSize: 12,
               color: activeTab === id ? TEAL : TEXT_MUTED,
               boxShadow: activeTab === id ? '0 1px 5px rgba(0,0,0,0.09)' : 'none',
               transition: 'all 0.15s',

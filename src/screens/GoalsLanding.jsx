@@ -69,17 +69,17 @@ function GoalArcSheet({ goal, onClose }) {
           </svg>
         </button>
         <div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 17, color: TEXT, display: 'flex', alignItems: 'center', gap: 7 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 17, color: TEXT, display: 'flex', alignItems: 'center', gap: 7 }}>
             <AppIcon name={goal.icon} size={17} color={TEXT} /> {goal.title}
           </div>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB }}>
             {goal.timeline} plan · Due {goal.deadline}
           </div>
         </div>
       </div>
 
       <div style={{ padding: '22px 20px', flex: 1 }}>
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 22 }}>Full goal arc</div>
+        <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 22 }}>Full goal arc</div>
 
         {/* Timeline */}
         <div style={{ position: 'relative' }}>
@@ -91,14 +91,14 @@ function GoalArcSheet({ goal, onClose }) {
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
               backgroundColor: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 2px 10px rgba(61,171,142,0.28)', zIndex: 1,
+              boxShadow: '0 2px 10px rgba(255,136,57,0.28)', zIndex: 1,
             }}>
               <svg width="14" height="11" viewBox="0 0 14 11" fill="none">
                 <path d="M1 5.5l4 4 8-8" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8 }}>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8 }}>
                 {arc.prep.label} · {arc.prep.duration}
               </div>
               <div style={{ backgroundColor: WHITE, borderRadius: 12, border: `1px solid ${BORDER}`, boxShadow: SHADOW, overflow: 'hidden' }}>
@@ -108,7 +108,7 @@ function GoalArcSheet({ goal, onClose }) {
                     borderBottom: i < arc.prep.routines.length - 1 ? `1px solid rgba(0,0,0,0.05)` : 'none',
                   }}>
                     <div style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: TEAL, flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: TEXT }}>{r}</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: TEXT }}>{r}</span>
                   </div>
                 ))}
               </div>
@@ -130,8 +130,8 @@ function GoalArcSheet({ goal, onClose }) {
                 backgroundColor: '#FFFBEB', border: '1.5px solid #D97706',
                 boxShadow: '0 2px 10px rgba(217,119,6,0.10)',
               }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 15, color: TEXT }}>{arc.event}</div>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#D97706', marginTop: 2 }}>The goal</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 15, color: TEXT }}>{arc.event}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#D97706', marginTop: 2 }}>The goal</div>
               </div>
             </div>
           </div>
@@ -140,7 +140,7 @@ function GoalArcSheet({ goal, onClose }) {
           <div style={{ display: 'flex', gap: 16 }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              backgroundColor: TEAL_LIGHT, border: `2px solid rgba(61,171,142,0.35)`,
+              backgroundColor: TEAL_LIGHT, border: `2px solid rgba(255,136,57,0.35)`,
               display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1,
             }}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -148,7 +148,7 @@ function GoalArcSheet({ goal, onClose }) {
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8 }}>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8 }}>
                 {arc.recovery.label} · {arc.recovery.duration}
               </div>
               <div style={{ backgroundColor: WHITE, borderRadius: 12, border: `1px solid ${BORDER}`, boxShadow: SHADOW, overflow: 'hidden' }}>
@@ -158,7 +158,7 @@ function GoalArcSheet({ goal, onClose }) {
                     borderBottom: i < arc.recovery.routines.length - 1 ? `1px solid rgba(0,0,0,0.05)` : 'none',
                   }}>
                     <div style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: TEXT_MUTED, flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: TEXT }}>{r}</span>
+                    <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 13, color: TEXT }}>{r}</span>
                   </div>
                 ))}
               </div>
@@ -181,18 +181,18 @@ export function GoalsLanding({ onNavigate }) {
       <div style={{ padding: '16px 20px 0' }}>
 
         {/* Headline */}
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 24 }}>Goals</div>
+        <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', marginBottom: 24 }}>Goals</div>
 
         {/* ── Active long-term goals ── */}
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-            <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.9, textTransform: 'uppercase' }}>
+            <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.9, textTransform: 'uppercase' }}>
               Active goals
             </div>
             <button onClick={() => onNavigate('goals-type')} style={{
               display: 'flex', alignItems: 'center', gap: 5,
               background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEAL,
+              fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEAL,
             }}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <circle cx="7" cy="7" r="6" stroke={TEAL} strokeWidth="1.5" fill="none"/>
@@ -219,21 +219,21 @@ export function GoalsLanding({ onNavigate }) {
                     <AppIcon name={g.icon} size={20} color={TEAL} />
                   </div>
                   <div>
-                    <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 16, color: TEXT }}>{g.title}</div>
-                    <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: TEXT_SUB }}>{g.timeline} plan</div>
+                    <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: TEXT }}>{g.title}</div>
+                    <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB }}>{g.timeline} plan</div>
                   </div>
                 </div>
                 <div style={{
                   padding: '4px 10px', borderRadius: 20, flexShrink: 0, marginLeft: 8,
                   backgroundColor: '#FEF3C7',
-                  fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: '#D97706',
+                  fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: '#D97706',
                 }}>Due {g.deadline}</div>
               </div>
 
               {/* Focus tags */}
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
                 {g.focus.map(f => (
-                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(61,171,142,0.22)' }}>{f}</Tag>
+                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{f}</Tag>
                 ))}
               </div>
 
@@ -242,7 +242,7 @@ export function GoalsLanding({ onNavigate }) {
                 <div style={{ flex: 1, height: 7, borderRadius: 4, backgroundColor: 'rgba(0,0,0,0.07)' }}>
                   <div style={{ height: '100%', borderRadius: 4, backgroundColor: TEAL, width: `${g.progress}%`, transition: 'width 0.5s' }} />
                 </div>
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: TEAL, flexShrink: 0, minWidth: 30 }}>
+                <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: TEAL, flexShrink: 0, minWidth: 30 }}>
                   {g.progress}%
                 </span>
               </div>
@@ -255,7 +255,7 @@ export function GoalsLanding({ onNavigate }) {
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 6h8M7 3l3 3-3 3" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: TEAL }}>View full goal arc</span>
+                <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEAL }}>View full goal arc</span>
               </button>
             </div>
           ))}
@@ -274,13 +274,13 @@ export function GoalsLanding({ onNavigate }) {
                 <path d="M6.5 1v11M1 6.5h11" stroke={TEAL} strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </div>
-            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14, color: TEXT_SUB }}>Add something new</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: TEXT_SUB }}>Add something new</span>
           </button>
         </div>
 
         {/* ── Completed ── */}
         <div style={{ marginBottom: 16 }}>
-          <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.9, textTransform: 'uppercase', marginBottom: 12 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEXT_MUTED, letterSpacing: 0.9, textTransform: 'uppercase', marginBottom: 12 }}>
             Completed
           </div>
           {COMPLETED.map((g, i) => (
@@ -298,10 +298,10 @@ export function GoalsLanding({ onNavigate }) {
                 <AppIcon name={g.icon} size={18} color={TEAL} />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 4 }}>{g.title}</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 4 }}>{g.title}</div>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: TEXT_MUTED }}>{g.date}</span>
-                  <Tag active style={{ fontSize: 11, borderRadius: 8, padding: '2px 8px', border: '1px solid rgba(61,171,142,0.22)' }}>{g.focus}</Tag>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_MUTED }}>{g.date}</span>
+                  <Tag active style={{ fontSize: 11, borderRadius: 8, padding: '2px 8px', border: '1px solid rgba(255,136,57,0.22)' }}>{g.focus}</Tag>
                 </div>
               </div>
               <div style={{

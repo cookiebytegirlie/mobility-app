@@ -37,14 +37,14 @@ export function GoalAnalysis({ onNext }) {
         <div style={{
           width: 64, height: 64, borderRadius: '50%', marginBottom: 32,
           backgroundColor: TEAL_LIGHT, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(61,171,142,0.20)',
+          boxShadow: '0 4px 20px rgba(255,136,57,0.20)',
         }}>
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ animation: 'spin 2s linear infinite' }}>
             <circle cx="14" cy="14" r="11" stroke={TEAL} strokeWidth="2" fill="none" strokeDasharray="16 52"/>
           </svg>
         </div>
 
-        <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 24, color: TEXT, marginBottom: 28 }}>
+        <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 24, color: TEXT, marginBottom: 28 }}>
           Building your plan...
         </div>
 
@@ -66,7 +66,7 @@ export function GoalAnalysis({ onNext }) {
                 }}>
                   {done && <Check color="white" />}
                 </div>
-                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: done ? 600 : 500, fontSize: 14, color: done ? TEXT : TEXT_SUB }}>
+                <span style={{ fontFamily: 'Inter', fontWeight: done ? 600 : 500, fontSize: 14, color: done ? TEXT : TEXT_SUB }}>
                   {label}
                 </span>
               </div>
@@ -80,7 +80,7 @@ export function GoalAnalysis({ onNext }) {
   /* Results state */
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: BG, padding: '28px 22px' }}>
-      <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 24 }}>
+      <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 24 }}>
         Here's what we found
       </div>
 
@@ -99,8 +99,8 @@ export function GoalAnalysis({ onNext }) {
               <AppIcon name={icon} size={22} color={TEAL} />
             </div>
             <div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 2 }}>{title}</div>
-              <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{sub}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 2 }}>{title}</div>
+              <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>{sub}</div>
             </div>
           </div>
         ))}

@@ -33,12 +33,12 @@ export function BottomSheet({
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ flex: 1, minWidth: 0 }}>
               {title && (
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 17, color: '#1A2028' }}>
+                <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 17, color: '#300A09' }}>
                   {title}
                 </div>
               )}
               {subtitle && (
-                <div style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#6B7280', marginTop: 2 }}>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#7A4A3A', marginTop: 2 }}>
                   {subtitle}
                 </div>
               )}
@@ -48,8 +48,8 @@ export function BottomSheet({
               <button onClick={onClose} style={{
                 padding: '7px 14px', borderRadius: 20, marginLeft: 10,
                 border: '1px solid rgba(0,0,0,0.08)', backgroundColor: '#FFFFFF',
-                cursor: 'pointer', fontFamily: 'Plus Jakarta Sans', fontWeight: 600,
-                fontSize: 12, color: '#1A2028',
+                cursor: 'pointer', fontFamily: 'Inter', fontWeight: 600,
+                fontSize: 12, color: '#300A09',
                 boxShadow: '0 1px 4px rgba(0,0,0,0.05)', flexShrink: 0,
               }}>
                 Close

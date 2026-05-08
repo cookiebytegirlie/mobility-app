@@ -1,23 +1,23 @@
 import React from 'react';
 
 export function HomeIcon({ active }) {
-  const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
+  const c = active ? '#300A09' : 'rgba(20,30,40,0.40)';
   return (<svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1 8.5L10 1L19 8.5V20a1 1 0 01-1 1H13v-6H7v6H2a1 1 0 01-1-1V8.5z" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/></svg>);
 }
 export function GoalsIcon({ active }) {
-  const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
+  const c = active ? '#300A09' : 'rgba(20,30,40,0.40)';
   return (<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><circle cx="11" cy="11" r="5" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><circle cx="11" cy="11" r="1.5" fill={c}/></svg>);
 }
 export function ScanIcon({ active }) {
-  const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
+  const c = active ? '#300A09' : 'rgba(20,30,40,0.40)';
   return (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2H8L6 4H2a1 1 0 00-1 1v12a1 1 0 001 1h18a1 1 0 001-1V5a1 1 0 00-1-1h-4l-2-2z" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none" strokeLinejoin="round"/><path d="M12 15a4 4 0 100-8 4 4 0 000 8z" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/></svg>);
 }
 export function RoutinesIcon({ active }) {
-  const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
+  const c = active ? '#300A09' : 'rgba(20,30,40,0.40)';
   return (<svg width="18" height="22" viewBox="0 0 18 22" fill="none"><rect x="1" y="1" width="16" height="20" rx="3" stroke={c} strokeWidth={active ? 2 : 1.5} fill="none"/><path d="M5 7h8M5 11h8M5 15h5" stroke={c} strokeWidth={active ? 2 : 1.5} strokeLinecap="round"/></svg>);
 }
 export function ProgressIcon({ active }) {
-  const c = active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)';
+  const c = active ? '#300A09' : 'rgba(20,30,40,0.40)';
   return (<svg width="20" height="22" viewBox="0 0 20 22" fill="none"><rect x="1" y="12" width="4" height="9" rx="1" fill={c}/><rect x="8" y="7" width="4" height="14" rx="1" fill={c}/><rect x="15" y="1" width="4" height="20" rx="1" fill={c}/></svg>);
 }
 
@@ -53,8 +53,8 @@ export function BottomNav({ activeTab, onTabChange }) {
           }}>
             <Icon active={active} />
             <span style={{
-              fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 10,
-              color: active ? 'rgba(20,160,130,1)' : 'rgba(20,30,40,0.40)',
+              fontFamily: 'Inter', fontWeight: 700, fontSize: 10,
+              color: active ? '#300A09' : 'rgba(20,30,40,0.40)',
             }}>{label}</span>
           </button>
         );
