@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, WHITE, BORDER, SHADOW } from '../constants/palette';
 import { Tag } from '../components/shared';
 import { ROUTINES } from '../constants/data';
 
+const BODY_TILES = [
+  { label: 'Hips',      filter: 'Hips',      img: '/images/body-hip.jpg' },
+  { label: 'Knees',     filter: 'Knees',     img: '/images/body-knee.jpg' },
+  { label: 'Neck',      filter: 'Neck',      img: '/images/body-neck.jpg' },
+  { label: 'Shoulders', filter: 'Shoulders', img: '/images/body-shoulder.jpg' },
+  { label: 'Wrists',    filter: 'Wrists',    img: '/images/body-wrist.jpg' },
+];
+
 const FILTER_GROUPS = [
-  { key: 'body', label: 'Body', chips: ['Full Body', 'Back', 'Hips', 'Neck', 'Shoulders'] },
   { key: 'env',  label: 'Environment', chips: ['Desk', 'Home', 'Park', 'Gym'] },
   { key: 'vibe', label: 'Vibe', chips: ['Gentle wake-up', 'Stress relief', 'Energy boost', 'Wind down'] },
 ];
@@ -17,15 +24,25 @@ function Chip({ label, active, onClick }) {
       border: `1px solid ${active ? TEAL : BORDER}`,
       fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
       color: active ? WHITE : TEXT_SUB,
-      boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+      boxShadow: active ? '0 2px 8px rgba(92,118,112,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
       transition: 'all 0.15s',
     }}>{label}</button>
   );
 }
 
-export function BrowseRoutinesScreen({ onNavigate }) {
+export function BrowseRoutinesScreen({ onNavigate, initialBody = null }) {
   const [search, setSearch]         = useState('');
-  const [filters, setFilters]       = useState({ body: [], env: [], vibe: [] });
+  const [filters, setFilters]       = useState({
+    body: initialBody ? [initialBody] : [],
+    env:  [],
+    vibe: [],
+  });
+
+  useEffect(() => {
+    if (initialBody) {
+      setFilters(prev => ({ ...prev, body: [initialBody] }));
+    }
+  }, [initialBody]);
 
   const toggle = (group, chip) =>
     setFilters(prev => ({
@@ -38,7 +55,7 @@ export function BrowseRoutinesScreen({ onNavigate }) {
   const hasFilters = Object.values(filters).some(f => f.length > 0);
 
   const visible = ROUTINES.filter(r => {
-    if (search && !r.title.toLowerCase().includes(search.toLowerCase()) && !r.sub.toLowerCase().includes(search.toLowerCase())) return false;
+    if (search && !r.name.toLowerCase().includes(search.toLowerCase()) && !r.sub.toLowerCase().includes(search.toLowerCase())) return false;
     if (filters.body.length > 0 && !filters.body.some(f => r.body.includes(f))) return false;
     if (filters.env.length  > 0 && !filters.env.some(f  => r.env.includes(f)))  return false;
     if (filters.vibe.length > 0 && !filters.vibe.some(f => r.vibe.includes(f))) return false;
@@ -75,7 +92,43 @@ export function BrowseRoutinesScreen({ onNavigate }) {
           />
         </div>
 
-        {/* ── Three filter rows ── */}
+        {/* ── Body-part photo tiles ── */}
+        <div style={{ marginBottom: 18 }}>
+          <div style={{
+            fontFamily: 'Inter', fontWeight: 700, fontSize: 11,
+            color: TEXT_SUB, letterSpacing: 0.6, textTransform: 'uppercase', marginBottom: 8,
+          }}>Body</div>
+          <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 4, marginLeft: -2, marginRight: -20, paddingLeft: 2, paddingRight: 20 }}>
+            {BODY_TILES.map(({ label, filter, img }) => {
+              const active = filters.body.includes(filter);
+              return (
+                <button
+                  key={filter}
+                  onClick={() => toggle('body', filter)}
+                  style={{
+                    flexShrink: 0, width: 72, padding: 0, border: 'none', cursor: 'pointer',
+                    backgroundColor: 'transparent',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  }}
+                >
+                  <div style={{
+                    width: 72, height: 72, borderRadius: 14, marginBottom: 6,
+                    background: `url(${img}) center/cover no-repeat`,
+                    border: active ? `2px solid ${TEAL}` : `1px solid ${BORDER}`,
+                    boxShadow: active ? '0 2px 10px rgba(92,118,112,0.30)' : '0 1px 4px rgba(0,0,0,0.06)',
+                    transition: 'all 0.15s',
+                  }} />
+                  <div style={{
+                    fontFamily: 'Inter', fontWeight: 600, fontSize: 11,
+                    color: active ? TEAL : TEXT_SUB, lineHeight: 1.2,
+                  }}>{label}</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── Filter rows ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 24 }}>
           {FILTER_GROUPS.map(({ key, label, chips }) => (
             <div key={key}>
@@ -101,12 +154,12 @@ export function BrowseRoutinesScreen({ onNavigate }) {
         {!hasFilters && !search && (
           <div style={{ marginBottom: 26 }}>
             <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>Good for today</div>
-            <div onClick={() => onNavigate('session-preview')} style={{
+            <div onClick={() => onNavigate('session-preview', { routine: ROUTINES.find(r => r.id === 'lower-back-relief') || ROUTINES[0] })} style={{
               borderRadius: 14, overflow: 'hidden', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.09)',
             }}>
               <div style={{
                 height: 138, position: 'relative',
-                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.48) 85%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg) center/cover no-repeat`,
+                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.48) 85%), url(/images/routine-out-and-about.jpg) center/cover no-repeat`,
               }}>
                 <div style={{ position: 'absolute', bottom: 14, left: 16 }}>
                   <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 20, color: 'white' }}>For your lower back</div>
@@ -126,16 +179,19 @@ export function BrowseRoutinesScreen({ onNavigate }) {
 
             {/* Mini scroll strip */}
             <div style={{ display: 'flex', gap: 10, marginTop: 12, overflowX: 'auto', paddingBottom: 4 }}>
-              {['Hip opener', 'Neck reset', 'Desk flow', 'Wind down'].map((label, i) => (
-                <div key={label} onClick={() => onNavigate('session-preview')} style={{ flexShrink: 0, width: 80, cursor: 'pointer' }}>
-                  <div style={{
-                    width: 80, height: 80, borderRadius: 12, marginBottom: 6,
-                    background: `url(${['/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg', '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', '/images/DTS_DEEP_SPA_DTS_Studio_Photos_ID10984.jpg', '/images/DTS_manifest_Daniel_Farò_Photos_ID12014.jpg'][i % 3]}) center/cover no-repeat`,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.09)',
-                  }} />
-                  <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT, textAlign: 'center', lineHeight: 1.3 }}>{label}</div>
-                </div>
-              ))}
+              {['hip-opener', 'neck-reset', 'desk-flow', 'wind-down'].map(id => {
+                const r = ROUTINES.find(x => x.id === id) || ROUTINES[0];
+                return (
+                  <div key={id} onClick={() => onNavigate('session-preview', { routine: r })} style={{ flexShrink: 0, width: 80, cursor: 'pointer' }}>
+                    <div style={{
+                      width: 80, height: 80, borderRadius: 12, marginBottom: 6,
+                      background: `url(${r.image}) center/cover no-repeat`,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.09)',
+                    }} />
+                    <div style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT, textAlign: 'center', lineHeight: 1.3 }}>{r.name}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -150,16 +206,16 @@ export function BrowseRoutinesScreen({ onNavigate }) {
         {/* Routine cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 12 }}>
           {visible.map((r, i) => (
-            <div key={i} onClick={() => onNavigate('session-preview')} style={{
+            <div key={i} onClick={() => onNavigate('session-preview', { routine: r })} style={{
               borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
               boxShadow: SHADOW,
             }}>
               <div style={{
                 height: 110, position: 'relative',
-                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.44) 85%), url(${r.img}) center/cover no-repeat`,
+                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.44) 85%), url(${r.image}) center/cover no-repeat`,
               }}>
                 <div style={{ position: 'absolute', bottom: 11, left: 14 }}>
-                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: 'white' }}>{r.title}</div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: 'white' }}>{r.name}</div>
                   <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.78)', marginTop: 2 }}>{r.sub}</div>
                 </div>
               </div>

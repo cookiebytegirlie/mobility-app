@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, WHITE, BORDER, SHADOW } from '../constants/palette';
 import { Tag } from '../components/shared';
 import { Close, AppIcon } from '../components/icons';
-import { LOCATION_ROUTINES } from '../constants/data';
+import { ROUTINES, LOCATION_ROUTINES } from '../constants/data';
+
+const findRoutine = (id) => ROUTINES.find(r => r.id === id) || ROUTINES[0];
 
 const LOCATIONS = ['Home', 'Office', 'Outdoors', 'Gym'];
+
+const BODY_TILES = [
+  { label: 'Hips',      filter: 'Hips',      img: '/images/body-hip.jpg' },
+  { label: 'Knees',     filter: 'Knees',     img: '/images/body-knee.jpg' },
+  { label: 'Neck',      filter: 'Neck',      img: '/images/body-neck.jpg' },
+  { label: 'Shoulders', filter: 'Shoulders', img: '/images/body-shoulder.jpg' },
+  { label: 'Wrists',    filter: 'Wrists',    img: '/images/body-wrist.jpg' },
+];
 
 const NUDGES = [
   {
@@ -13,17 +23,19 @@ const NUDGES = [
     text: "You've been sitting 90 min",
     cta: '3 min reset',
     bg: TEAL_LIGHT,
-    border: 'rgba(255,136,57,0.22)',
+    border: 'rgba(92,118,112,0.22)',
     ctaColor: TEAL,
+    routineId: 'desk-flow',
   },
   {
     id: 'walk',
     icon: 'leaf',
     text: 'Before your walk outside',
     cta: 'Quick prep stretch',
-    bg: '#FFF8F0',
+    bg: 'rgba(92,118,112,0.06)',
     border: 'rgba(217,119,6,0.18)',
-    ctaColor: '#D97706',
+    ctaColor: '#5C7670',
+    routineId: 'morning-stretch',
   },
 ];
 
@@ -42,7 +54,7 @@ export function HomeScreen({ onNavigate }) {
         {/* Avatar */}
         <div style={{
           width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-          background: '#EBE8C8',
+          background: 'rgba(92,118,112,0.12)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 1px 6px rgba(0,0,0,0.10)',
         }}>
@@ -56,22 +68,10 @@ export function HomeScreen({ onNavigate }) {
           backgroundColor: WHITE, border: `1px solid ${BORDER}`,
           boxShadow: SHADOW,
         }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#F97316', flexShrink: 0 }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#5C7670', flexShrink: 0 }} />
           <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT }}>Complete your daily check-in</span>
         </div>
 
-        {/* Bell */}
-        <button style={{
-          width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-          background: WHITE, border: `1px solid ${BORDER}`, cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: SHADOW,
-        }}>
-          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
-            <path d="M8 1C5.24 1 3 3.24 3 6v5l-1.5 2h13L13 11V6c0-2.76-2.24-5-5-5z" stroke={TEXT} strokeWidth="1.4" fill="none" strokeLinejoin="round"/>
-            <path d="M6 13.5c0 1.1.9 2 2 2s2-.9 2-2" stroke={TEXT} strokeWidth="1.4" strokeLinecap="round"/>
-          </svg>
-        </button>
       </div>
 
       <div style={{ padding: '2px 20px 0' }}>
@@ -93,7 +93,7 @@ export function HomeScreen({ onNavigate }) {
               border: `1px solid ${location === loc ? TEAL : BORDER}`,
               fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
               color: location === loc ? WHITE : TEXT_SUB,
-              boxShadow: location === loc ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+              boxShadow: location === loc ? '0 2px 8px rgba(92,118,112,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
               transition: 'all 0.15s',
             }}>{loc}</button>
           ))}
@@ -113,7 +113,7 @@ export function HomeScreen({ onNavigate }) {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_SUB, marginBottom: 3 }}>{n.text}</div>
                   <div
-                    onClick={() => onNavigate('session-preview')}
+                    onClick={() => onNavigate('session-preview', { routine: findRoutine(n.routineId) })}
                     style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer' }}
                   >
                     <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>{n.cta}</span>
@@ -138,13 +138,13 @@ export function HomeScreen({ onNavigate }) {
         )}
 
         {/* ── Quick Start hero card ── */}
-        <div onClick={() => onNavigate('session-preview')} style={{
+        <div onClick={() => onNavigate('session-preview', { routine: findRoutine('lower-back-relief') })} style={{
           borderRadius: 16, overflow: 'hidden', cursor: 'pointer',
           boxShadow: '0 4px 20px rgba(0,0,0,0.10)', marginBottom: 24,
         }}>
           <div style={{
             height: 180, position: 'relative',
-            background: `linear-gradient(rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.50) 85%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12032.jpg) center/cover no-repeat`,
+            background: `linear-gradient(rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.50) 85%), url(/images/routine-forest-walk.jpg) center/cover no-repeat`,
           }}>
             <div style={{
               position: 'absolute', top: 14, left: 14,
@@ -175,28 +175,60 @@ export function HomeScreen({ onNavigate }) {
           </div>
         </div>
 
+        {/* ── Stretch by body part ── */}
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>Stretch by body part</div>
+          <div style={{ display: 'flex', gap: 10, overflowX: 'auto', paddingBottom: 4, marginLeft: -2, marginRight: -20, paddingLeft: 2, paddingRight: 20 }}>
+            {BODY_TILES.map(({ label, filter, img }) => (
+              <button
+                key={filter}
+                onClick={() => onNavigate('browse-routines', { bodyFilter: filter })}
+                style={{
+                  flexShrink: 0, width: 96, padding: 0, border: 'none', cursor: 'pointer',
+                  backgroundColor: 'transparent',
+                  display: 'flex', flexDirection: 'column', alignItems: 'stretch',
+                }}
+              >
+                <div style={{
+                  width: 96, height: 96, borderRadius: 16, marginBottom: 8,
+                  background: `url(${img}) center/cover no-repeat`,
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.10)',
+                  border: `1px solid ${BORDER}`,
+                }} />
+                <div style={{
+                  fontFamily: 'Inter', fontWeight: 600, fontSize: 12,
+                  color: TEXT, textAlign: 'center', lineHeight: 1.2,
+                }}>{label}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* ── New Routines ── */}
         <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: TEXT, marginBottom: 14 }}>You might like these</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {routines.map((r, i) => (
-            <div key={i} onClick={() => onNavigate('session-preview')} style={{
-              borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
-            }}>
-              <div style={{
-                height: 118, position: 'relative',
-                background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.46) 85%), url(${r.img}) center/cover no-repeat`,
+          {routines.map((entry, i) => {
+            const r = findRoutine(entry.routineId);
+            return (
+              <div key={i} onClick={() => onNavigate('session-preview', { routine: r })} style={{
+                borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
               }}>
-                <div style={{ position: 'absolute', bottom: 12, left: 14 }}>
-                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: WHITE, marginBottom: 2 }}>{r.title}</div>
-                  <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)' }}>{r.sub}</div>
+                <div style={{
+                  height: 118, position: 'relative',
+                  background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.46) 85%), url(${r.image}) center/cover no-repeat`,
+                }}>
+                  <div style={{ position: 'absolute', bottom: 12, left: 14 }}>
+                    <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 17, color: WHITE, marginBottom: 2 }}>{r.name}</div>
+                    <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.80)' }}>{entry.sub}</div>
+                  </div>
+                </div>
+                <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6 }}>
+                  {r.tags.map(t => <Tag key={t}>{t}</Tag>)}
                 </div>
               </div>
-              <div style={{ backgroundColor: WHITE, padding: '10px 14px', display: 'flex', gap: 6 }}>
-                {r.tags.map(t => <Tag key={t}>{t}</Tag>)}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

@@ -64,7 +64,7 @@ export function GoalPlan({ onSave, onBack }) {
                 border: `1.5px solid ${active ? TEAL : BORDER}`,
                 fontFamily: 'Inter', fontWeight: 600, fontSize: 13,
                 color: active ? WHITE : TEXT_SUB,
-                boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+                boxShadow: active ? '0 2px 8px rgba(92,118,112,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
                 transition: 'all 0.15s',
               }}>{i}</button>
             );

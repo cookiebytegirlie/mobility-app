@@ -84,18 +84,18 @@ export const TWEAK_DEFAULTS = {
 };
 
 export const getPhoneBg = (s) => {
-  if (s === 'session-live' || s === 'session-preview' || s === 'session-complete') return '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg';
-  if (s.startsWith('goals') || s === 'goals-landing') return '/images/Abstract-Body.jpg';
-  if (s === 'scan-environment') return '/images/Meditation.jpg';
-  return '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg';
+  if (s === 'session-live' || s === 'session-preview' || s === 'session-complete') return '/images/routine-mindfulness.jpg';
+  if (s.startsWith('goals') || s === 'goals-landing') return '/images/routine-beach-flow.jpg';
+  if (s === 'scan-environment') return '/images/env-office.jpg';
+  return '/images/routine-inner-stillness.jpg';
 };
 
 export const MOODS = [
-  { id: 'amazing', label: 'Amazing',    bg: '#FEF9C3', ring: '#FDE047' },
-  { id: 'good',    label: 'Good',       bg: '#DCFCE7', ring: '#4ADE80' },
-  { id: 'okay',    label: 'Okay',       bg: '#FEF3C7', ring: '#FCD34D' },
-  { id: 'meh',     label: 'Meh',        bg: '#E0F2FE', ring: '#7DD3FC' },
-  { id: 'low',     label: 'Low-energy', bg: '#EDE9FE', ring: '#A78BFA' },
+  { id: 'amazing', label: 'Amazing',    bg: 'rgba(92,118,112,0.15)',  ring: '#5C7670' },
+  { id: 'good',    label: 'Good',       bg: 'rgba(173,187,203,0.25)', ring: '#ADBBCB' },
+  { id: 'okay',    label: 'Okay',       bg: 'rgba(199,147,162,0.20)', ring: '#C793A2' },
+  { id: 'meh',     label: 'Meh',        bg: 'rgba(74,68,98,0.15)',    ring: '#4A4462' },
+  { id: 'low',     label: 'Low-energy', bg: 'rgba(58,82,105,0.15)',   ring: '#3A5269' },
 ];
 
 export const EXERCISES_BY_DURATION = {
@@ -110,7 +110,7 @@ export const MOVES = [
     name: 'Neck Rolls',
     cue: 'Drop your chin to your chest. Slowly roll to the right, back, left.',
     duration: 30,
-    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
+    img: '/images/session-neck-roll.jpg',
     focus: ['Neck'],
     tutorial: {
       steps: [
@@ -127,7 +127,7 @@ export const MOVES = [
     name: 'Shoulder Circles',
     cue: 'Roll both shoulders back in big slow circles. Feel tension release.',
     duration: 40,
-    img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
+    img: '/images/session-shoulder.jpg',
     focus: ['Shoulders'],
     tutorial: {
       steps: [
@@ -144,7 +144,7 @@ export const MOVES = [
     name: 'Cat-Cow Stretch',
     cue: 'On hands and knees — arch up like a cat, then dip like a cow.',
     duration: 45,
-    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
+    img: '/images/session-cat-cow.jpg',
     focus: ['Spine', 'Upper Back'],
     tutorial: {
       steps: [
@@ -161,7 +161,7 @@ export const MOVES = [
     name: 'Hip Opener',
     cue: 'Step one foot forward into a lunge. Sink your hips low. Switch after 20 sec.',
     duration: 50,
-    img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
+    img: '/images/routine-park-group.jpg',
     focus: ['Hips', 'Lower Back'],
     tutorial: {
       steps: [
@@ -178,7 +178,7 @@ export const MOVES = [
     name: 'Seated Twist',
     cue: 'Sit tall. Twist gently across your knee. Hold 5 breaths each side.',
     duration: 40,
-    img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
+    img: '/images/routine-partner.jpg',
     focus: ['Spine', 'Hips'],
     tutorial: {
       steps: [
@@ -193,73 +193,193 @@ export const MOVES = [
   },
 ];
 
+export const ROUTINES = [
+  {
+    id: 'morning-stretch',
+    name: 'Morning Stretch',
+    sub: 'Full body · Wake up',
+    focus: ['Full body'],
+    level: 'Beginner',
+    image: '/images/routine-ready-to-run.jpg',
+    tag: 'QUICK START',
+    defaultDuration: 5,
+    exercises: [
+      { name: 'Cat-Cow Stretch', duration: 60 },
+      { name: "Child's Pose", duration: 60 },
+      { name: 'Thoracic Rotation', duration: 60 },
+      { name: 'Hip Circles', duration: 60 },
+      { name: 'Neck Rolls', duration: 60 },
+    ],
+    tags: ['Full body', '5 min'], body: ['Full Body', 'Knees'], env: ['Home', 'Desk'], vibe: ['Gentle wake-up'],
+  },
+  {
+    id: 'hip-opener',
+    name: 'Hip Opener',
+    sub: 'Hips & lower back',
+    focus: ['Hips', 'Lower back'],
+    level: 'Beginner',
+    image: '/images/routine-mindfulness.jpg',
+    tag: 'DEEP STRETCH',
+    defaultDuration: 10,
+    exercises: [
+      { name: 'Low Lunge (right)', duration: 90 },
+      { name: 'Low Lunge (left)', duration: 90 },
+      { name: 'Pigeon Pose (right)', duration: 90 },
+      { name: 'Pigeon Pose (left)', duration: 90 },
+      { name: '90/90 Hip Stretch', duration: 90 },
+      { name: 'Butterfly Stretch', duration: 60 },
+    ],
+    tags: ['Hips', '10 min'], body: ['Hips', 'Knees'], env: ['Home', 'Park', 'Gym'], vibe: ['Stress relief'],
+  },
+  {
+    id: 'neck-reset',
+    name: 'Neck Reset',
+    sub: 'Neck & shoulders',
+    focus: ['Neck', 'Shoulders'],
+    level: 'Beginner',
+    image: '/images/routine-tension-relief.jpg',
+    tag: 'DESK BREAK',
+    defaultDuration: 5,
+    exercises: [
+      { name: 'Neck Rolls', duration: 60 },
+      { name: 'Chin Tucks', duration: 45 },
+      { name: 'Side Neck Stretch (right)', duration: 45 },
+      { name: 'Side Neck Stretch (left)', duration: 45 },
+      { name: 'Shoulder Rolls', duration: 60 },
+      { name: 'Chest Opener', duration: 45 },
+    ],
+    tags: ['Neck', '5 min'], body: ['Neck', 'Shoulders'], env: ['Desk', 'Home'], vibe: ['Stress relief'],
+  },
+  {
+    id: 'desk-flow',
+    name: 'Desk Flow',
+    sub: 'Full body · Office friendly',
+    focus: ['Full body', 'Shoulders'],
+    level: 'Beginner',
+    image: '/images/routine-work-from-home.jpg',
+    tag: 'DESK BREAK',
+    defaultDuration: 5,
+    exercises: [
+      { name: 'Seated Thoracic Rotation', duration: 60 },
+      { name: 'Wrist & Forearm Stretch', duration: 45 },
+      { name: 'Chest Opener', duration: 60 },
+      { name: 'Seated Hip Flexor', duration: 60 },
+      { name: 'Shoulder Shrugs & Release', duration: 60 },
+    ],
+    tags: ['Back', '5 min'], body: ['Back', 'Shoulders', 'Wrists'], env: ['Desk'], vibe: ['Stress relief', 'Energy boost'],
+  },
+  {
+    id: 'wind-down',
+    name: 'Wind Down',
+    sub: 'Full body · Evening',
+    focus: ['Full body'],
+    level: 'Beginner',
+    image: '/images/routine-evening-unwind.jpg',
+    tag: 'WIND DOWN',
+    defaultDuration: 10,
+    exercises: [
+      { name: 'Supine Spinal Twist (right)', duration: 90 },
+      { name: 'Supine Spinal Twist (left)', duration: 90 },
+      { name: "Child's Pose", duration: 90 },
+      { name: 'Happy Baby', duration: 90 },
+      { name: 'Legs Up the Wall', duration: 120 },
+      { name: 'Deep Breathing', duration: 60 },
+    ],
+    tags: ['Full body', '10 min'], body: ['Full Body'], env: ['Home'], vibe: ['Wind down'],
+  },
+  {
+    id: 'lower-back-relief',
+    name: 'Lower Back Relief',
+    sub: 'Lower back & hips',
+    focus: ['Lower back', 'Hips'],
+    level: 'Beginner',
+    image: '/images/routine-serenity.jpg',
+    tag: 'RELIEF',
+    defaultDuration: 5,
+    exercises: [
+      { name: 'Knee-to-Chest (right)', duration: 45 },
+      { name: 'Knee-to-Chest (left)', duration: 45 },
+      { name: 'Cat-Cow Stretch', duration: 60 },
+      { name: "Child's Pose", duration: 60 },
+      { name: 'Supine Spinal Twist', duration: 90 },
+    ],
+    tags: ['Back', '5 min'], body: ['Back'], env: ['Desk', 'Home'], vibe: ['Gentle wake-up'],
+  },
+  {
+    id: 'shoulder-opener',
+    name: 'Shoulder Opener',
+    sub: 'Shoulders & upper back',
+    focus: ['Shoulders', 'Upper back'],
+    level: 'Beginner',
+    image: '/images/routine-inner-stillness.jpg',
+    tag: 'DESK BREAK',
+    defaultDuration: 5,
+    exercises: [
+      { name: 'Doorframe Chest Stretch', duration: 60 },
+      { name: 'Cross-Body Shoulder Stretch (right)', duration: 45 },
+      { name: 'Cross-Body Shoulder Stretch (left)', duration: 45 },
+      { name: 'Thread the Needle (right)', duration: 45 },
+      { name: 'Thread the Needle (left)', duration: 45 },
+      { name: 'Overhead Reach & Side Bend', duration: 60 },
+    ],
+    tags: ['Shoulders', '5 min'], body: ['Shoulders'], env: ['Desk', 'Home', 'Gym'], vibe: ['Stress relief'],
+  },
+  {
+    id: 'full-body-reset',
+    name: 'Full Body Reset',
+    sub: 'Full body · All areas',
+    focus: ['Full body'],
+    level: 'Intermediate',
+    image: '/images/routine-summer-sun.jpg',
+    tag: 'FULL RESET',
+    defaultDuration: 15,
+    exercises: [
+      { name: 'Sun Salutation Flow', duration: 180 },
+      { name: 'Hip Flexor Lunge Series', duration: 120 },
+      { name: 'Thoracic Spine Rotations', duration: 90 },
+      { name: '90/90 Hip Stretch', duration: 90 },
+      { name: 'Hamstring & Calf Stretch', duration: 120 },
+      { name: 'Seated Forward Fold', duration: 90 },
+      { name: 'Deep Breathing Cooldown', duration: 90 },
+    ],
+    tags: ['Full body', '15 min'], body: ['Full Body', 'Knees'], env: ['Home', 'Park', 'Gym'], vibe: ['Energy boost'],
+  },
+];
+
 export const LOCATION_ROUTINES = {
   Home: [
-    { title: 'For your lower back', sub: '5 min · Morning reset', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Back', 'Hips'] },
-    { title: 'Ease your neck tension', sub: '3 min · Quick relief', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Neck', 'Shoulders'] },
+    { routineId: 'lower-back-relief', sub: '5 min · Morning reset' },
+    { routineId: 'neck-reset',        sub: '5 min · Quick relief' },
   ],
   Office: [
-    { title: 'Reset your shoulders', sub: '5 min · Desk break', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Shoulders', 'Back'] },
-    { title: 'Release hip tension', sub: '8 min · Chair-friendly', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Hips', 'Back'] },
+    { routineId: 'desk-flow',         sub: '5 min · Desk break' },
+    { routineId: 'shoulder-opener',   sub: '5 min · Chair-friendly' },
   ],
   Outdoors: [
-    { title: 'Wake up your full body', sub: '10 min · Morning flow', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Full body'] },
-    { title: 'Open your hips', sub: '5 min · Park bench', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Hips', 'Legs'] },
+    { routineId: 'morning-stretch',   sub: '5 min · Morning flow' },
+    { routineId: 'hip-opener',        sub: '10 min · Open & energize' },
   ],
   Gym: [
-    { title: 'Warm up your whole body', sub: '8 min · Pre-workout', img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg', tags: ['Full body'] },
-    { title: 'Open your back', sub: '5 min · Bar-assisted', img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg', tags: ['Back', 'Shoulders'] },
+    { routineId: 'full-body-reset',   sub: '15 min · Pre-workout' },
+    { routineId: 'hip-opener',        sub: '10 min · Bar-assisted' },
   ],
 };
 
-export const ROUTINES = [
-  {
-    title: 'For your lower back',  sub: 'Morning Reset',
-    tags: ['Back', '5 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
-    body: ['Back'], env: ['Desk', 'Home'], vibe: ['Gentle wake-up'],
-  },
-  {
-    title: 'Feel good all over',   sub: 'Full Body Flow',
-    tags: ['Full body', '10 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
-    body: ['Full Body'], env: ['Home', 'Park'], vibe: ['Energy boost'],
-  },
-  {
-    title: 'Open your hips',       sub: 'Hip Release',
-    tags: ['Hips', '8 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
-    body: ['Hips'], env: ['Home', 'Park', 'Gym'], vibe: ['Stress relief'],
-  },
-  {
-    title: 'Ease neck tension',    sub: 'Neck & Shoulder Reset',
-    tags: ['Neck', '3 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
-    body: ['Neck', 'Shoulders'], env: ['Desk', 'Home'], vibe: ['Stress relief', 'Wind down'],
-  },
-  {
-    title: 'Desk break reset',     sub: 'Quick Office Flow',
-    tags: ['Back', '5 min'], img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
-    body: ['Back', 'Shoulders'], env: ['Desk'], vibe: ['Stress relief', 'Energy boost'],
-  },
-  {
-    title: 'Wind down tonight',    sub: 'Evening Unwind',
-    tags: ['Full body', '15 min'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
-    body: ['Full Body'], env: ['Home'], vibe: ['Wind down'],
-  },
-];
-
 export const SESSION_LOGS = [
-  { date: 'Today, 7:42 AM',     routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
-  { date: 'Yesterday, 7:55 AM', routine: 'Hip Release Flow', duration: '8 min',  focus: ['Hips', 'Lower Back'], img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg' },
-  { date: 'Apr 20, 6:30 PM',    routine: 'Desk Break Reset', duration: '3 min',  focus: ['Shoulders'],          img: '/images/Abstract-Body.jpg' },
-  { date: 'Apr 19, 8:10 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
-  { date: 'Apr 18, 12:15 PM',   routine: 'Full Body Flow',   duration: '10 min', focus: ['Full Body'],          img: '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg' },
-  { date: 'Apr 15, 7:30 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Shoulders'],  img: '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' },
+  { date: 'Today, 7:42 AM',     routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/routine-ready-to-run.jpg' },
+  { date: 'Yesterday, 7:55 AM', routine: 'Hip Release Flow', duration: '8 min',  focus: ['Hips', 'Lower Back'], img: '/images/routine-mindfulness.jpg' },
+  { date: 'Apr 20, 6:30 PM',    routine: 'Desk Break Reset', duration: '3 min',  focus: ['Shoulders'],          img: '/images/routine-work-from-home.jpg' },
+  { date: 'Apr 19, 8:10 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Back'],       img: '/images/routine-ready-to-run.jpg' },
+  { date: 'Apr 18, 12:15 PM',   routine: 'Full Body Flow',   duration: '10 min', focus: ['Full Body'],          img: '/images/routine-summer-sun.jpg' },
+  { date: 'Apr 15, 7:30 AM',    routine: 'Morning Stretch',  duration: '5 min',  focus: ['Neck', 'Shoulders'],  img: '/images/routine-ready-to-run.jpg' },
 ];
 
 export const ENERGY_MAP = {
-  'Amazing':    { face: 'amazing', color: '#16A34A', bg: '#DCFCE7' },
-  'Good':       { face: 'good',    color: '#65A30D', bg: '#ECFCCB' },
-  'Okay':       { face: 'okay',    color: '#D97706', bg: '#FEF3C7' },
-  'Meh':        { face: 'meh',     color: '#2563EB', bg: '#DBEAFE' },
-  'Low-energy': { face: 'low',     color: '#7C3AED', bg: '#EDE9FE' },
+  'Amazing':    { face: 'amazing', color: '#5C7670', bg: 'rgba(92,118,112,0.15)'  },
+  'Good':       { face: 'good',    color: '#ADBBCB', bg: 'rgba(173,187,203,0.20)' },
+  'Okay':       { face: 'okay',    color: '#C793A2', bg: 'rgba(199,147,162,0.15)' },
+  'Meh':        { face: 'meh',     color: '#4A4462', bg: 'rgba(74,68,98,0.12)'    },
+  'Low-energy': { face: 'low',     color: '#3A5269', bg: 'rgba(58,82,105,0.12)'   },
 };
 
 export const CHECKIN_LOGS = [

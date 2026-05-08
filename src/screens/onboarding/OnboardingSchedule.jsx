@@ -47,12 +47,12 @@ export function OnboardingSchedule({ onNext, onBack }) {
                 border: `1.5px solid ${chosen ? TEAL : BORDER}`,
                 backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
                 cursor: 'pointer',
-                boxShadow: chosen ? '0 2px 12px rgba(255,136,57,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
+                boxShadow: chosen ? '0 2px 12px rgba(92,118,112,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
                 transition: 'all 0.15s',
               }}>
                 <div style={{
                   width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                  backgroundColor: chosen ? 'rgba(255,136,57,0.12)' : 'rgba(0,0,0,0.04)',
+                  backgroundColor: chosen ? 'rgba(92,118,112,0.12)' : 'rgba(0,0,0,0.04)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <AppIcon name={icon} size={22} color={chosen ? TEAL : TEXT_SUB} />
@@ -86,7 +86,7 @@ export function OnboardingSchedule({ onNext, onBack }) {
             border: 'none', cursor: selected ? 'pointer' : 'default',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
             color: selected ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
-            boxShadow: selected ? '0 4px 20px rgba(255,136,57,0.28)' : 'none',
+            boxShadow: selected ? '0 4px 20px rgba(92,118,112,0.28)' : 'none',
             transition: 'all 0.2s',
           }}
         >

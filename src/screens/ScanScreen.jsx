@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { ENVIRONMENTS, FALLBACK_ROUTINES } from '../constants/data';
+import { ENVIRONMENTS, FALLBACK_ROUTINES, ROUTINES } from '../constants/data';
+
+const ENV_ROUTINE_MAP = {
+  'Park':        ['morning-stretch', 'hip-opener', 'lower-back-relief'],
+  'Office':      ['desk-flow', 'neck-reset', 'shoulder-opener'],
+  'Living Room': ['wind-down', 'lower-back-relief', 'full-body-reset'],
+  'Gym':         ['full-body-reset', 'hip-opener', 'shoulder-opener'],
+};
+
+const findRoutineForEnv = (envName, index) => {
+  const ids = ENV_ROUTINE_MAP[envName] || ['morning-stretch', 'hip-opener', 'lower-back-relief'];
+  const id = ids[index % ids.length];
+  return ROUTINES.find(r => r.id === id) || ROUTINES[0];
+};
 import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, WHITE, BORDER } from '../constants/palette';
 import { AppIcon } from '../components/icons';
 
 /* Map each environment to a real photo */
 const ENV_IMAGES = {
-  'Park':        '/images/Meditation.jpg',
-  'Office':      '/images/Abstract-Body.jpg',
-  'Living Room': '/images/DTS_manifest_Daniel_Farò_Photos_ID12032.jpg',
-  'Gym':         '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg',
+  'Park':        '/images/routine-park.jpg',
+  'Office':      '/images/env-office.jpg',
+  'Living Room': '/images/routine-living-room.jpg',
+  'Gym':         '/images/routine-out-and-about.jpg',
 };
 
 const ROUTINE_ICONS = ['star', 'yoga', 'muscle'];
@@ -20,7 +33,7 @@ export function ScanScreen({ onNavigate }) {
   const [aiLoading, setAiLoading] = useState(false);
 
   const env     = ENVIRONMENTS[envIndex];
-  const bgImage = ENV_IMAGES[env.name] || '/images/Meditation.jpg';
+  const bgImage = ENV_IMAGES[env.name] || '/images/env-office.jpg';
 
   /* Auto-transition: scanning → results after 2 s */
   useEffect(() => {
@@ -75,8 +88,8 @@ export function ScanScreen({ onNavigate }) {
         <div style={{
           position: 'absolute', inset: 0, zIndex: 5,
           backgroundImage: `
-            linear-gradient(rgba(255,136,57,0.20) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,136,57,0.20) 1px, transparent 1px)
+            linear-gradient(rgba(92,118,112,0.20) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(92,118,112,0.20) 1px, transparent 1px)
           `,
           backgroundSize: '36px 36px',
           animation: 'pulse 2.4s ease-in-out infinite',
@@ -241,7 +254,7 @@ export function ScanScreen({ onNavigate }) {
           </div>
 
           {/* Routine cards */}
-          <div style={{ overflowY: 'auto', padding: '12px 16px 16px', flex: 1 }}>
+          <div style={{ overflowY: 'auto', padding: '12px 16px 100px', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch' }}>
             {aiLoading ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[1, 2, 3].map(i => (
@@ -259,17 +272,17 @@ export function ScanScreen({ onNavigate }) {
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {routines.map((r, i) => (
-                  <div key={i} onClick={() => onNavigate('session-preview')} style={{
+                  <div key={i} onClick={() => onNavigate('session-preview', { routine: findRoutineForEnv(env.name, i) })} style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '13px 14px', borderRadius: 12, cursor: 'pointer',
                     backgroundColor: i === 0 ? TEAL_LIGHT : WHITE,
-                    border: `1px solid ${i === 0 ? 'rgba(255,136,57,0.25)' : BORDER}`,
-                    boxShadow: i === 0 ? '0 2px 10px rgba(255,136,57,0.10)' : '0 1px 6px rgba(0,0,0,0.05)',
+                    border: `1px solid ${i === 0 ? 'rgba(92,118,112,0.25)' : BORDER}`,
+                    boxShadow: i === 0 ? '0 2px 10px rgba(92,118,112,0.10)' : '0 1px 6px rgba(0,0,0,0.05)',
                     transition: 'all 0.15s',
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                      backgroundColor: i === 0 ? TEAL : 'rgba(255,136,57,0.12)',
+                      backgroundColor: i === 0 ? TEAL : 'rgba(92,118,112,0.12)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <AppIcon name={ROUTINE_ICONS[i]} size={18} color={i === 0 ? WHITE : TEAL} />
@@ -281,7 +294,7 @@ export function ScanScreen({ onNavigate }) {
                         overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
                       }}>{r.description}</div>
                       <div style={{ display: 'flex', gap: 6, marginTop: 6 }}>
-                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEAL, backgroundColor: TEAL_LIGHT, padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(255,136,57,0.22)' }}>
+                        <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEAL, backgroundColor: TEAL_LIGHT, padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(92,118,112,0.22)' }}>
                           {r.duration}
                         </span>
                         <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: TEXT_SUB, backgroundColor: 'rgba(0,0,0,0.05)', padding: '2px 8px', borderRadius: 8, border: '1px solid rgba(0,0,0,0.07)' }}>

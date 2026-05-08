@@ -83,7 +83,7 @@ export function CheckInWelcome({ onNext, onReturnStart, isReturningUser, onExit 
             width: '100%', height: 52, borderRadius: 26,
             backgroundColor: TEAL, border: 'none', cursor: 'pointer',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-            color: '#FFFFFF', boxShadow: '0 6px 24px rgba(255,136,57,0.32)',
+            color: '#EFEBE4', boxShadow: '0 6px 24px rgba(92,118,112,0.32)',
           }}>
             Check in with your body
           </button>
@@ -113,9 +113,9 @@ export function CheckInWelcome({ onNext, onReturnStart, isReturningUser, onExit 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 24px' }}>
         <div style={{
           width: 88, height: 88, borderRadius: '50%', marginBottom: 28,
-          background: 'linear-gradient(135deg, #EBE8C8 0%, #D5F0EA 100%)',
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.12) 0%, rgba(92,118,112,0.06) 100%)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(255,136,57,0.15)',
+          boxShadow: '0 4px 20px rgba(92,118,112,0.15)',
         }}>
           <AppIcon name="leaf" size={40} color={TEAL} />
         </div>
@@ -136,7 +136,7 @@ export function CheckInWelcome({ onNext, onReturnStart, isReturningUser, onExit 
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 6px 24px rgba(255,136,57,0.32)',
+          color: '#EFEBE4', boxShadow: '0 6px 24px rgba(92,118,112,0.32)',
         }}>
           Check in with your body
         </button>

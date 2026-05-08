@@ -21,9 +21,9 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 28, flexShrink: 0 }}>
         <div style={{
           width: 82, height: 82, borderRadius: '50%', marginBottom: 20,
-          background: 'linear-gradient(135deg, #EBE8C8 0%, #FFE8D6 100%)',
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.12) 0%, rgba(92,118,112,0.06) 100%)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 6px 28px rgba(255,136,57,0.22)',
+          boxShadow: '0 6px 28px rgba(92,118,112,0.22)',
           animation: ready ? 'popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards' : 'none',
           opacity: ready ? 1 : 0,
         }}>
@@ -64,11 +64,11 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
       }}>
         <div style={{
           padding: '14px 18px',
-          background: 'linear-gradient(135deg, rgba(255,136,57,0.10) 0%, rgba(255,136,57,0.06) 100%)',
-          borderBottom: `1px solid rgba(255,136,57,0.12)`,
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.10) 0%, rgba(92,118,112,0.06) 100%)',
+          borderBottom: `1px solid rgba(92,118,112,0.12)`,
           display: 'flex', alignItems: 'center', gap: 12,
         }}>
-          <AppIcon name="fire" size={26} color="#F97316" />
+          <AppIcon name="fire" size={26} color="#5C7670" />
           <div>
             <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: TEXT }}>3-day streak</div>
             <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: TEXT_SUB }}>Goal: hip mobility</div>
@@ -123,7 +123,7 @@ export function SessionComplete({ onDone, onMore, duration = 5 }) {
           width: '100%', height: 52, borderRadius: 26, marginTop: 2,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.28)',
         }}>
           I'm good for now
         </button>

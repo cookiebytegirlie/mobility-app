@@ -8,7 +8,7 @@ const SESSIONS = [
   { time: '6:00 PM',  name: 'Hip & Spine Flow',      focus: 'Hips · Lower back',   dur: '8 min' },
 ];
 
-export function CheckInDone({ onDone, onExit }) {
+export function CheckInDone({ onDone, onPlan, onExit }) {
   const ready = useReadyAnimation(120);
 
   return (
@@ -39,12 +39,12 @@ export function CheckInDone({ onDone, onExit }) {
       }}>
         <div style={{
           width: 80, height: 80, borderRadius: '50%',
-          background: 'linear-gradient(135deg, #EBE8C8 0%, #FFE8D6 100%)',
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.12) 0%, rgba(92,118,112,0.06) 100%)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           marginBottom: 18,
           animation: ready ? 'popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards' : 'none',
           opacity: ready ? 1 : 0,
-          boxShadow: '0 6px 24px rgba(255,136,57,0.20)',
+          boxShadow: '0 6px 24px rgba(92,118,112,0.20)',
         }}>
           <svg width="34" height="26" viewBox="0 0 34 26" fill="none">
             <path
@@ -88,8 +88,8 @@ export function CheckInDone({ onDone, onExit }) {
         {/* Card header */}
         <div style={{
           padding: '14px 18px',
-          background: 'linear-gradient(135deg, #EBE8C8 0%, #FFE8D6 100%)',
-          borderBottom: `1px solid rgba(255,136,57,0.15)`,
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.12) 0%, rgba(92,118,112,0.06) 100%)',
+          borderBottom: `1px solid rgba(92,118,112,0.15)`,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEAL }}>
@@ -97,7 +97,7 @@ export function CheckInDone({ onDone, onExit }) {
           </div>
           <div style={{
             fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEAL,
-            backgroundColor: 'rgba(255,136,57,0.12)', padding: '3px 10px', borderRadius: 10,
+            backgroundColor: 'rgba(92,118,112,0.12)', padding: '3px 10px', borderRadius: 10,
           }}>
             3 sessions
           </div>
@@ -149,11 +149,11 @@ export function CheckInDone({ onDone, onExit }) {
           width: '100%', height: 52, borderRadius: 26, marginBottom: 12,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.30)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.30)',
         }}>
           Start your first move
         </button>
-        <button onClick={onDone} style={{
+        <button onClick={onPlan || onDone} style={{
           width: '100%', background: 'none', border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: TEXT_SUB,
           padding: '6px 0',

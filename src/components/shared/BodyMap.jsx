@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AppIcon } from '../icons';
 
-const TEAL = '#FF8839';
-const TEAL_LIGHT = '#EBE8C8';
+const TEAL = '#5C7670';
+const TEAL_LIGHT = 'rgba(92,118,112,0.12)';
 const TEXT = '#300A09';
-const TEXT_SUB = '#7A4A3A';
+const TEXT_SUB = '#5C4A3A';
 const BG = '#EFEBE4';
 const BORDER = 'rgba(0,0,0,0.08)';
 
@@ -30,7 +30,7 @@ export function Silhouette({ view, selectedRegions, hoverRegion, onRegionClick, 
   const fill   = view === 'front' ? '#E6F4F0' : '#EAF2EE';
   const stroke = '#BDD8D0';
 
-  const zoneFill   = (id) => selectedRegions.includes(id) ? 'rgba(255,136,57,0.32)' : hoverRegion === id ? 'rgba(255,136,57,0.14)' : 'transparent';
+  const zoneFill   = (id) => selectedRegions.includes(id) ? 'rgba(92,118,112,0.32)' : hoverRegion === id ? 'rgba(92,118,112,0.14)' : 'transparent';
   const zoneStroke = (id) => selectedRegions.includes(id) ? TEAL : 'transparent';
   const labelFill  = (id) => selectedRegions.includes(id) ? TEAL : '#5A6672';
 
@@ -217,7 +217,7 @@ export function InteractiveBodyMap({
           <div style={{ width: '100%', height: 3, borderRadius: 2, backgroundColor: '#E8E0D5' }}>
             <div style={{
               height: '100%', borderRadius: 2,
-              background: 'linear-gradient(90deg, #FF8839, #FF8839)',
+              background: 'linear-gradient(90deg, #5C7670, #5C7670)',
               width: `${(progressStep / progressTotal) * 100}%`,
               transition: 'width 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)',
               willChange: 'width',
@@ -293,7 +293,7 @@ export function InteractiveBodyMap({
           border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
           color: '#FFFFFF',
-          boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
+          boxShadow: '0 4px 20px rgba(92,118,112,0.28)',
         }}>
           Continue{hasSelection ? ` (${selections.length} area${selections.length > 1 ? 's' : ''})` : ''}
         </button>

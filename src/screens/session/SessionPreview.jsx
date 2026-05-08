@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, BORDER } from '../../constants/palette';
 import { BackButton } from '../../components/shared';
 import { AppIcon } from '../../components/icons';
-import { EXERCISES_BY_DURATION } from '../../constants/data';
+import { ROUTINES } from '../../constants/data';
 
-export function SessionPreview({ onStart, onBack }) {
-  const [duration, setDuration] = useState(5);
-  const exercises = EXERCISES_BY_DURATION[duration] || [];
+function fmtSecs(s) {
+  if (s < 60) return `${s}s`;
+  const m = Math.floor(s / 60), r = s % 60;
+  return r ? `${m}:${String(r).padStart(2, '0')}` : `${m} min`;
+}
+
+export function SessionPreview({ onStart, onBack, routine: routineProp }) {
+  const routine = routineProp || ROUTINES[0];
+  const [duration, setDuration] = useState(routine.defaultDuration);
 
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: BG, overflow: 'hidden', paddingTop: 52 }}>
       {/* Hero */}
       <div style={{
         height: 200, position: 'relative', flexShrink: 0,
-        background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(239,235,228,0.9) 100%), url(/images/DTS_manifest_Daniel_Farò_Photos_ID12019.jpg) center/cover no-repeat`,
+        background: `linear-gradient(rgba(0,0,0,0.02) 0%, rgba(239,235,228,0.9) 100%), url(${routine.image}) center/cover no-repeat`,
       }}>
         <BackButton onClick={onBack} style={{
           position: 'absolute', top: 16, left: 16,
@@ -26,12 +32,14 @@ export function SessionPreview({ onStart, onBack }) {
           <div style={{
             display: 'inline-flex', alignItems: 'center',
             padding: '4px 10px', borderRadius: 20, marginBottom: 8,
-            backgroundColor: TEAL_LIGHT, border: `1px solid rgba(255,136,57,0.30)`,
+            backgroundColor: TEAL_LIGHT, border: `1px solid rgba(92,118,112,0.30)`,
           }}>
-            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}><AppIcon name="lightning" size={11} color={TEAL} /> QUICK START</span>
+            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL, letterSpacing: 0.6, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <AppIcon name="lightning" size={11} color={TEAL} /> {routine.tag}
+            </span>
           </div>
           <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 26, color: TEXT, letterSpacing: '-0.3px' }}>
-            Morning Stretch
+            {routine.name}
           </div>
         </div>
       </div>
@@ -41,8 +49,8 @@ export function SessionPreview({ onStart, onBack }) {
         {/* Metadata cards */}
         <div style={{ display: 'flex', gap: 10, marginBottom: 22 }}>
           {[
-            { label: 'Focus', value: 'Desk / Full Body' },
-            { label: 'Level', value: 'Beginner' },
+            { label: 'Focus', value: routine.focus.join(' / ') },
+            { label: 'Level', value: routine.level },
           ].map(({ label, value }) => (
             <div key={label} style={{
               flex: 1, padding: '14px 16px', borderRadius: 12,
@@ -69,7 +77,7 @@ export function SessionPreview({ onStart, onBack }) {
                   cursor: 'pointer',
                   fontFamily: 'Inter', fontWeight: 700, fontSize: 15,
                   color: chosen ? TEAL : TEXT,
-                  boxShadow: chosen ? '0 2px 10px rgba(255,136,57,0.16)' : '0 1px 4px rgba(0,0,0,0.05)',
+                  boxShadow: chosen ? '0 2px 10px rgba(92,118,112,0.16)' : '0 1px 4px rgba(0,0,0,0.05)',
                   transition: 'all 0.15s',
                 }}>
                   {d}<span style={{ fontSize: 11, fontWeight: 600, color: chosen ? TEAL : TEXT_SUB }}> min</span>
@@ -83,30 +91,27 @@ export function SessionPreview({ onStart, onBack }) {
         <div style={{ marginBottom: 28 }}>
           <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 15, color: TEXT, marginBottom: 14 }}>What you'll do</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {exercises.map((ex, i) => {
-              const [name, time] = ex.split(' — ');
-              return (
-                <div key={i} style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                  padding: '12px 14px', borderRadius: 12,
-                  backgroundColor: '#FFFFFF', border: `1px solid ${BORDER}`,
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+            {routine.exercises.map((ex, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '12px 14px', borderRadius: 12,
+                backgroundColor: '#FFFFFF', border: `1px solid ${BORDER}`,
+                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+              }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
+                  backgroundColor: TEAL_LIGHT,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <div style={{
-                    width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-                    backgroundColor: TEAL_LIGHT,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
-                  </div>
-                  <span style={{ flex: 1, fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: TEXT }}>{name}</span>
-                  <span style={{
-                    fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT_SUB,
-                    backgroundColor: 'rgba(0,0,0,0.05)', padding: '3px 9px', borderRadius: 8,
-                  }}>{time}</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
                 </div>
-              );
-            })}
+                <span style={{ flex: 1, fontFamily: 'Inter', fontWeight: 600, fontSize: 14, color: TEXT }}>{ex.name}</span>
+                <span style={{
+                  fontFamily: 'Inter', fontWeight: 600, fontSize: 12, color: TEXT_SUB,
+                  backgroundColor: 'rgba(0,0,0,0.05)', padding: '3px 9px', borderRadius: 8,
+                }}>{fmtSecs(ex.duration)}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -117,7 +122,7 @@ export function SessionPreview({ onStart, onBack }) {
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.30)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.30)',
         }}>
           Start {duration} min session
         </button>

@@ -55,6 +55,8 @@ function App() {
   };
 
   const [sessionDuration, setSessionDuration] = useState(5);
+  const [selectedRoutine, setSelectedRoutine] = useState(null);
+  const [browseInitialBody, setBrowseInitialBody] = useState(null);
   const [phoneScale, setPhoneScale] = useState(1);
   useEffect(() => {
     const compute = () => {
@@ -89,7 +91,12 @@ function App() {
     return () => window.removeEventListener('message', handler);
   }, []);
 
-  const navigateFade = (s) => setScreen(s);
+  const navigateFade = (s, data = {}) => {
+    if (data.routine !== undefined) setSelectedRoutine(data.routine);
+    if (data.bodyFilter !== undefined) setBrowseInitialBody(data.bodyFilter);
+    else if (s === 'browse-routines') setBrowseInitialBody(null);
+    setScreen(s);
+  };
   const handleTabChange = (t) => {
     setTab(t);
     if (t === 'home') navigateFade('main-home');
@@ -111,8 +118,8 @@ function App() {
       case 'onboarding-summary':    return <OnboardingSummary onNext={() => navigateFade('onboarding-plan')} onDone={() => navigateFade('onboarding-plan')} />;
       case 'onboarding-plan':       return <OnboardingPlan onSave={() => { setTab('home'); navigateFade('main-home'); }} onBack={() => navigateFade('onboarding-summary')} />;
       case 'main-home':            return <HomeScreen onNavigate={navigateFade} />;
-      case 'browse-routines':      return <BrowseRoutinesScreen onNavigate={navigateFade} />;
-      case 'progress':             return <ProgressScreen onNavigate={navigateFade} />;
+      case 'browse-routines':      return <BrowseRoutinesScreen onNavigate={navigateFade} initialBody={browseInitialBody} />;
+      case 'progress':             return <ProgressScreen />;
       /* Check-in — full flow */
       case 'checkin-1':            return <CheckInWelcome isReturningUser={isReturningUser} onNext={() => navigateFade('checkin-2')} onReturnStart={() => navigateFade('checkin-return-body')} onExit={() => navigateFade('main-home')} />;
       case 'checkin-2':            return <CheckInEnergy onNext={() => navigateFade('checkin-3')} onBack={() => navigateFade('checkin-1')} onExit={() => navigateFade('main-home')} />;
@@ -123,14 +130,14 @@ function App() {
       /* Check-in — compressed (returning user) */
       case 'checkin-return-body':  return <CheckInBodyMap isCompressed onNext={() => navigateFade('checkin-return-time')} onBack={() => navigateFade('checkin-1')} onExit={() => navigateFade('main-home')} />;
       case 'checkin-return-time':  return <CheckInTime isCompressed onNext={() => navigateFade('checkin-done')} onBack={() => navigateFade('checkin-return-body')} onExit={() => navigateFade('main-home')} />;
-      case 'checkin-done':         return <CheckInDone onDone={() => { markReturning(); navigateFade('session-preview'); }} onExit={() => navigateFade('main-home')} />;
-      case 'session-preview':      return <SessionPreview onStart={(dur) => { setSessionDuration(dur); navigateFade('session-live'); }} onBack={() => navigateFade('main-home')} />;
+      case 'checkin-done':         return <CheckInDone onDone={() => { markReturning(); navigateFade('session-preview'); }} onPlan={() => navigateFade('goals-landing')} onExit={() => navigateFade('main-home')} />;
+      case 'session-preview':      return <SessionPreview onStart={(dur) => { setSessionDuration(dur); navigateFade('session-live'); }} onBack={() => navigateFade('main-home')} routine={selectedRoutine} />;
       case 'session-live':         return <LiveSession onEnd={() => navigateFade('session-complete')} />;
       case 'session-complete':     return <SessionComplete duration={sessionDuration} onDone={() => { setTab('home'); navigateFade('main-home'); }} onMore={(extra) => { setSessionDuration(d => d + extra); navigateFade('session-live'); }} />;
       case 'goals-landing':        return <GoalsLanding onNavigate={navigateFade} />;
       case 'goals-type':           return <GoalType onNext={() => navigateFade('goals-input')} onBack={() => navigateFade('goals-landing')} />;
       case 'goals-input':          return <GoalInput onNext={() => navigateFade('goals-analysis')} onBack={() => navigateFade('goals-type')} />;
-      case 'goals-analysis':       return <GoalAnalysis onNext={() => navigateFade('goals-plan')} />;
+      case 'goals-analysis':       return <GoalAnalysis onNext={() => navigateFade('goals-plan')} onBack={() => navigateFade('goals-input')} />;
       case 'goals-plan':           return <GoalPlan onSave={() => { setTab('home'); navigateFade('main-home'); }} onBack={() => navigateFade('goals-analysis')} />;
       case 'scan-environment':     return <ScanScreen onNavigate={navigateFade} />;
       default:                     return <HomeScreen onNavigate={navigateFade} />;

@@ -29,7 +29,7 @@ export function GoalInput({ onNext, onBack }) {
             placeholder="e.g. Reduce lower back pain from sitting at my desk all day..."
             style={{
               width: '100%', height: 100, borderRadius: 12, boxSizing: 'border-box',
-              border: `1.5px solid ${goal ? 'rgba(255,136,57,0.40)' : BORDER}`,
+              border: `1.5px solid ${goal ? 'rgba(92,118,112,0.40)' : BORDER}`,
               padding: '12px 14px',
               fontFamily: 'Inter', fontSize: 14, color: TEXT,
               resize: 'none', outline: 'none',
@@ -52,7 +52,7 @@ export function GoalInput({ onNext, onBack }) {
                   border: `1.5px solid ${active ? TEAL : BORDER}`,
                   fontFamily: 'Inter', fontWeight: 600, fontSize: 14,
                   color: active ? WHITE : TEXT_SUB,
-                  boxShadow: active ? '0 2px 8px rgba(255,136,57,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
+                  boxShadow: active ? '0 2px 8px rgba(92,118,112,0.22)' : '0 1px 4px rgba(0,0,0,0.04)',
                   transition: 'all 0.15s',
                 }}>
                   {w} {w === 1 ? 'week' : 'weeks'}

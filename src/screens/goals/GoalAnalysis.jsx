@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TEAL, TEAL_LIGHT, TEXT, TEXT_SUB, BG, WHITE, BORDER, SHADOW } from '../../constants/palette';
-import { CTAButton } from '../../components/shared';
+import { CTAButton, BackButton } from '../../components/shared';
 import { Check, AppIcon } from '../../components/icons';
 
 const STEPS = [
@@ -16,7 +16,7 @@ const FINDINGS = [
   { icon: 'check-circle',  title: 'Strong success rate',       sub: '89% of similar users hit their goal in time' },
 ];
 
-export function GoalAnalysis({ onNext }) {
+export function GoalAnalysis({ onNext, onBack }) {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function GoalAnalysis({ onNext }) {
         <div style={{
           width: 64, height: 64, borderRadius: '50%', marginBottom: 32,
           backgroundColor: TEAL_LIGHT, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(255,136,57,0.20)',
+          boxShadow: '0 4px 20px rgba(92,118,112,0.20)',
         }}>
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ animation: 'spin 2s linear infinite' }}>
             <circle cx="14" cy="14" r="11" stroke={TEAL} strokeWidth="2" fill="none" strokeDasharray="16 52"/>
@@ -80,6 +80,7 @@ export function GoalAnalysis({ onNext }) {
   /* Results state */
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: BG, padding: '28px 22px' }}>
+      {onBack && <BackButton onClick={onBack} style={{ marginBottom: 16 }} />}
       <div style={{ fontFamily: 'Denim Ink', fontWeight: 600, fontSize: 28, color: TEXT, letterSpacing: '-0.3px', lineHeight: 1.1, marginBottom: 24 }}>
         Here's what we found
       </div>

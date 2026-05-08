@@ -67,7 +67,7 @@ export function CheckInPlans({ onNext, onBack, onExit }) {
               cursor: 'pointer',
               fontFamily: 'Inter', fontWeight: 600, fontSize: 14,
               color: chosen ? TEAL : TEXT,
-              boxShadow: chosen ? '0 2px 10px rgba(255,136,57,0.14)' : '0 1px 3px rgba(0,0,0,0.05)',
+              boxShadow: chosen ? '0 2px 10px rgba(92,118,112,0.14)' : '0 1px 3px rgba(0,0,0,0.05)',
               transition: 'all 0.15s',
             }}>
               <AppIcon name={icon} size={16} color={chosen ? TEAL : TEXT} />
@@ -83,7 +83,7 @@ export function CheckInPlans({ onNext, onBack, onExit }) {
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.28)',
         }}>
           Continue{selected.length > 0 ? ` (${selected.length})` : ''}
         </button>

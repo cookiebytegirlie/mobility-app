@@ -87,7 +87,7 @@ export function OnboardingDiagnostic({ onNext, onBack }) {
                   fontSize: 15,
                   color: chosen ? TEAL : TEXT,
                   textAlign: 'left',
-                  boxShadow: chosen ? '0 2px 12px rgba(255,136,57,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
+                  boxShadow: chosen ? '0 2px 12px rgba(92,118,112,0.14)' : '0 1px 4px rgba(0,0,0,0.05)',
                   transition: 'all 0.15s',
                   display: 'flex',
                   alignItems: 'center',
@@ -122,7 +122,7 @@ export function OnboardingDiagnostic({ onNext, onBack }) {
             border: 'none', cursor: selected ? 'pointer' : 'default',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
             color: selected ? '#FFFFFF' : 'rgba(0,0,0,0.28)',
-            boxShadow: selected ? '0 4px 20px rgba(255,136,57,0.28)' : 'none',
+            boxShadow: selected ? '0 4px 20px rgba(92,118,112,0.28)' : 'none',
             transition: 'all 0.2s',
           }}
         >

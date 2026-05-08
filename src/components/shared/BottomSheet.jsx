@@ -38,7 +38,7 @@ export function BottomSheet({
                 </div>
               )}
               {subtitle && (
-                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#7A4A3A', marginTop: 2 }}>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#5C4A3A', marginTop: 2 }}>
                   {subtitle}
                 </div>
               )}

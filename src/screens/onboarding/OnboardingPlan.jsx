@@ -101,7 +101,7 @@ export function OnboardingPlan({ onSave, onBack }) {
                   border: `1.5px solid ${chosen ? TEAL : BORDER}`,
                   backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
                   cursor: 'pointer', textAlign: 'center',
-                  boxShadow: chosen ? '0 2px 10px rgba(255,136,57,0.14)' : '0 1px 4px rgba(0,0,0,0.04)',
+                  boxShadow: chosen ? '0 2px 10px rgba(92,118,112,0.14)' : '0 1px 4px rgba(0,0,0,0.04)',
                   transition: 'all 0.15s',
                 }}
               >
@@ -157,7 +157,7 @@ export function OnboardingPlan({ onSave, onBack }) {
             width: '100%', height: 52, borderRadius: 26,
             backgroundColor: TEAL, border: 'none', cursor: 'pointer',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-            color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.30)',
+            color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.30)',
           }}
         >
           Let's do this

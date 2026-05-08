@@ -7,7 +7,7 @@ export function OnboardingWelcome({ onNext }) {
       {/* Hero photo */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'url(/images/Meditating-1.jpg) center/cover no-repeat',
+        background: 'url(/images/routine-beach-flow.jpg) center/cover no-repeat',
       }} />
       {/* Gradient overlay */}
       <div style={{
@@ -63,7 +63,7 @@ export function OnboardingWelcome({ onNext }) {
             fontFamily: 'Inter',
             fontWeight: 500,
             fontSize: 16,
-            color: '#7A4A3A',
+            color: '#5C4A3A',
             lineHeight: 1.55,
             marginBottom: 36,
           }}>
@@ -75,14 +75,14 @@ export function OnboardingWelcome({ onNext }) {
               width: '100%',
               height: 52,
               borderRadius: 26,
-              backgroundColor: '#FF8839',
+              backgroundColor: '#5C7670',
               border: 'none',
               cursor: 'pointer',
               fontFamily: 'Inter',
               fontWeight: 700,
               fontSize: 16,
               color: '#FFFFFF',
-              boxShadow: '0 6px 24px rgba(255,136,57,0.38)',
+              boxShadow: '0 6px 24px rgba(92,118,112,0.38)',
               display: 'block',
               transition: 'transform 0.1s',
             }}

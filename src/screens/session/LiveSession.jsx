@@ -81,7 +81,7 @@ function TutorialSheet({ move, onClose, onStart }) {
             <div key={i} style={{ display: 'flex', gap: 12, marginBottom: 14 }}>
               <div style={{
                 width: 26, height: 26, borderRadius: '50%', flexShrink: 0, marginTop: 1,
-                backgroundColor: '#EBE8C8',
+                backgroundColor: 'rgba(92,118,112,0.12)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: TEAL }}>{i + 1}</span>
@@ -91,7 +91,7 @@ function TutorialSheet({ move, onClose, onStart }) {
           ))}
           <div style={{
             padding: '14px 16px', borderRadius: 12, marginBottom: 20,
-            backgroundColor: '#EBE8C8', border: '1px solid rgba(255,136,57,0.20)',
+            backgroundColor: 'rgba(92,118,112,0.12)', border: '1px solid rgba(92,118,112,0.20)',
           }}>
             <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 12, color: TEAL, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -101,7 +101,7 @@ function TutorialSheet({ move, onClose, onStart }) {
               </svg>
               Common mistake
             </div>
-            <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: '#7A4A3A', lineHeight: 1.55, margin: 0 }}>{move.tutorial.tip}</p>
+            <p style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 13, color: '#5C4A3A', lineHeight: 1.55, margin: 0 }}>{move.tutorial.tip}</p>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ function TutorialSheet({ move, onClose, onStart }) {
             width: '100%', height: 50, borderRadius: 25,
             backgroundColor: TEAL, border: 'none', cursor: 'pointer',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16, color: '#FFFFFF',
-            boxShadow: '0 4px 16px rgba(255,136,57,0.28)',
+            boxShadow: '0 4px 16px rgba(92,118,112,0.28)',
           }}>
             Got it — start this move
           </button>
@@ -239,8 +239,8 @@ export function LiveSession({ onEnd }) {
 
         <button onClick={() => setIsFormView(v => !v)} style={{
           width: 38, height: 38, borderRadius: '50%',
-          backgroundColor: isFormView ? 'rgba(255,136,57,0.7)' : 'rgba(255,255,255,0.18)',
-          border: `1px solid ${isFormView ? 'rgba(255,136,57,0.9)' : 'rgba(255,255,255,0.30)'}`,
+          backgroundColor: isFormView ? 'rgba(92,118,112,0.7)' : 'rgba(255,255,255,0.18)',
+          border: `1px solid ${isFormView ? 'rgba(92,118,112,0.9)' : 'rgba(255,255,255,0.30)'}`,
           cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           {isFormView ? (
@@ -263,7 +263,7 @@ export function LiveSession({ onEnd }) {
             height: 4,
             width: i === moveIndex ? 22 : 4,
             borderRadius: 2,
-            backgroundColor: i < moveIndex ? 'rgba(255,136,57,0.9)' : i === moveIndex ? 'white' : 'rgba(255,255,255,0.28)',
+            backgroundColor: i < moveIndex ? 'rgba(92,118,112,0.9)' : i === moveIndex ? 'white' : 'rgba(255,255,255,0.28)',
             transition: 'all 0.3s',
             cursor: 'pointer',
           }}/>

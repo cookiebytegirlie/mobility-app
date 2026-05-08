@@ -9,7 +9,7 @@ import { SESSION_LOGS, CHECKIN_LOGS, ENERGY_MAP } from '../constants/data';
 const BODY_TRENDS = [
   { id: 'lb',   part: 'Lower back',   icon: 'trend-up',    label: 'Improving',   sub: 'Less stiffness reported',   accent: TEAL,      points: [22, 30, 42, 55, 70] },
   { id: 'neck', part: 'Neck tension', icon: 'trend-down',  label: 'Down 3 weeks', sub: 'Consistent improvement',   accent: '#16A34A', points: [18, 28, 40, 58, 74] },
-  { id: 'hips', part: 'Hips',         icon: 'trend-right', label: 'Maintaining', sub: 'Stable — keep it up',       accent: '#D97706', points: [50, 58, 50, 56, 52] },
+  { id: 'hips', part: 'Hips',         icon: 'trend-right', label: 'Maintaining', sub: 'Stable — keep it up',       accent: '#5C7670', points: [50, 58, 50, 56, 52] },
 ];
 
 const BODY_BARS = [
@@ -136,7 +136,7 @@ function OverviewTab() {
           {[['5', 'Sessions'], ['28 min', 'Time invested'], [null, 'Day streak']].map(([val, lbl]) => (
             <div key={lbl} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 18, color: TEXT, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-                {val === null ? <><AppIcon name="fire" size={16} color="#F97316" /> 4</> : val}
+                {val === null ? <><AppIcon name="fire" size={16} color="#5C7670" /> 4</> : val}
               </div>
               <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_MUTED, marginTop: 2 }}>{lbl}</div>
             </div>
@@ -178,7 +178,7 @@ function OverviewTab() {
               <div key={id} style={{
                 display: 'flex', alignItems: 'flex-start', gap: 12,
                 padding: '12px 14px', borderRadius: 12, marginBottom: 8,
-                backgroundColor: TEAL_LIGHT, border: `1px solid rgba(255,136,57,0.16)`,
+                backgroundColor: TEAL_LIGHT, border: `1px solid rgba(92,118,112,0.16)`,
                 position: 'relative',
               }}>
                 <AppIcon name={icon} size={22} color={TEAL} style={{ flexShrink: 0 }} />
@@ -230,7 +230,7 @@ function OverviewTab() {
               <div key={id} style={{
                 display: 'flex', alignItems: 'flex-start', gap: 12,
                 padding: '12px 14px', borderRadius: 12, marginBottom: 8,
-                backgroundColor: '#FFF8F3', border: '1px solid rgba(255,136,57,0.15)',
+                backgroundColor: 'rgba(92,118,112,0.06)', border: '1px solid rgba(92,118,112,0.15)',
                 position: 'relative',
               }}>
                 <AppIcon name={icon} size={22} color={TEAL} style={{ flexShrink: 0 }} />
@@ -268,7 +268,7 @@ function SessionsTab() {
     routine: s.name,
     duration: `${s.duration} min`,
     focus: s.focusAreas || [],
-    img: i % 2 === 0 ? '/images/DTS_manifest_Daniel_Farò_Photos_ID12035.jpg' : '/images/DTS_AURA_Fanette_Guilloud_Photos_ID12983.jpg',
+    img: i % 2 === 0 ? '/images/routine-couch.jpg' : '/images/routine-living-room.jpg',
     partial: s.partial,
   }));
 
@@ -294,7 +294,7 @@ function SessionsTab() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
                 <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT }}>{s.routine}</span>
                 {s.partial && (
-                  <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: '#D97706', backgroundColor: '#FEF3C7', padding: '1px 7px', borderRadius: 8 }}>partial</span>
+                  <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 10, color: '#5C7670', backgroundColor: 'rgba(92,118,112,0.10)', padding: '1px 7px', borderRadius: 8 }}>partial</span>
                 )}
               </div>
               <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: TEXT_MUTED, marginBottom: 7 }}>
@@ -302,7 +302,7 @@ function SessionsTab() {
               </div>
               <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
                 {(s.focus || []).map(f => (
-                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{f}</Tag>
+                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(92,118,112,0.22)' }}>{f}</Tag>
                 ))}
               </div>
             </div>
@@ -390,7 +390,7 @@ function CheckInsTab() {
                         <span style={{ fontFamily: 'Inter', fontWeight: 600, fontSize: 11, color: TEXT_MUTED, width: 62, flexShrink: 0, paddingTop: 2 }}>What was bothering you</span>
                         <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
                           {sore.map(s => (
-                            <Tag key={s} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{s}</Tag>
+                            <Tag key={s} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(92,118,112,0.22)' }}>{s}</Tag>
                           ))}
                         </div>
                       </div>

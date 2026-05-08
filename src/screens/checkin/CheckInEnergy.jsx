@@ -77,7 +77,7 @@ export function CheckInEnergy({ onNext, onBack, onExit }) {
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.28)',
         }}>
           Continue
         </button>

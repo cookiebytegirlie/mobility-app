@@ -57,8 +57,8 @@ export function OnboardingSummary({ onDone, onNext }) {
         {/* Social proof banner */}
         <div style={{
           padding: '16px 18px', borderRadius: 14,
-          background: 'linear-gradient(135deg, rgba(255,136,57,0.10) 0%, rgba(255,136,57,0.06) 100%)',
-          border: '1.5px solid rgba(255,136,57,0.22)',
+          background: 'linear-gradient(135deg, rgba(92,118,112,0.10) 0%, rgba(92,118,112,0.06) 100%)',
+          border: '1.5px solid rgba(92,118,112,0.22)',
           marginBottom: 8,
         }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
@@ -83,7 +83,7 @@ export function OnboardingSummary({ onDone, onNext }) {
             width: '100%', height: 52, borderRadius: 26,
             backgroundColor: TEAL, border: 'none', cursor: 'pointer',
             fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-            color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.30)',
+            color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.30)',
           }}
         >
           Here's your plan

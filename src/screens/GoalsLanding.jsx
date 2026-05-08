@@ -91,7 +91,7 @@ function GoalArcSheet({ goal, onClose }) {
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
               backgroundColor: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 2px 10px rgba(255,136,57,0.28)', zIndex: 1,
+              boxShadow: '0 2px 10px rgba(92,118,112,0.28)', zIndex: 1,
             }}>
               <svg width="14" height="11" viewBox="0 0 14 11" fill="none">
                 <path d="M1 5.5l4 4 8-8" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -119,19 +119,19 @@ function GoalArcSheet({ goal, onClose }) {
           <div style={{ display: 'flex', gap: 16, marginBottom: 24 }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              backgroundColor: '#FEF3C7', border: '2.5px solid #D97706',
+              backgroundColor: 'rgba(92,118,112,0.10)', border: '2.5px solid #5C7670',
               display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1,
             }}>
-              <AppIcon name={goal.icon} size={16} color="#D97706" />
+              <AppIcon name={goal.icon} size={16} color="#5C7670" />
             </div>
             <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
               <div style={{
                 flex: 1, padding: '14px 16px', borderRadius: 12,
-                backgroundColor: '#FFFBEB', border: '1.5px solid #D97706',
+                backgroundColor: 'rgba(92,118,112,0.06)', border: '1.5px solid #5C7670',
                 boxShadow: '0 2px 10px rgba(217,119,6,0.10)',
               }}>
                 <div style={{ fontFamily: 'Inter', fontWeight: 800, fontSize: 15, color: TEXT }}>{arc.event}</div>
-                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#D97706', marginTop: 2 }}>The goal</div>
+                <div style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 12, color: '#5C7670', marginTop: 2 }}>The goal</div>
               </div>
             </div>
           </div>
@@ -140,7 +140,7 @@ function GoalArcSheet({ goal, onClose }) {
           <div style={{ display: 'flex', gap: 16 }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              backgroundColor: TEAL_LIGHT, border: `2px solid rgba(255,136,57,0.35)`,
+              backgroundColor: TEAL_LIGHT, border: `2px solid rgba(92,118,112,0.35)`,
               display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1,
             }}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -225,15 +225,15 @@ export function GoalsLanding({ onNavigate }) {
                 </div>
                 <div style={{
                   padding: '4px 10px', borderRadius: 20, flexShrink: 0, marginLeft: 8,
-                  backgroundColor: '#FEF3C7',
-                  fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: '#D97706',
+                  backgroundColor: 'rgba(92,118,112,0.10)',
+                  fontFamily: 'Inter', fontWeight: 700, fontSize: 11, color: '#5C7670',
                 }}>Due {g.deadline}</div>
               </div>
 
               {/* Focus tags */}
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
                 {g.focus.map(f => (
-                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(255,136,57,0.22)' }}>{f}</Tag>
+                  <Tag key={f} active style={{ fontSize: 11, borderRadius: 10, padding: '3px 9px', border: '1px solid rgba(92,118,112,0.22)' }}>{f}</Tag>
                 ))}
               </div>
 
@@ -301,7 +301,7 @@ export function GoalsLanding({ onNavigate }) {
                 <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: TEXT, marginBottom: 4 }}>{g.title}</div>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                   <span style={{ fontFamily: 'Inter', fontWeight: 500, fontSize: 11, color: TEXT_MUTED }}>{g.date}</span>
-                  <Tag active style={{ fontSize: 11, borderRadius: 8, padding: '2px 8px', border: '1px solid rgba(255,136,57,0.22)' }}>{g.focus}</Tag>
+                  <Tag active style={{ fontSize: 11, borderRadius: 8, padding: '2px 8px', border: '1px solid rgba(92,118,112,0.22)' }}>{g.focus}</Tag>
                 </div>
               </div>
               <div style={{

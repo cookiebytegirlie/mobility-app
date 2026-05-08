@@ -58,7 +58,7 @@ export function CheckInTime({ onNext, onBack, isCompressed = false, onExit }) {
                 border: `1.5px solid ${chosen ? TEAL : BORDER}`,
                 backgroundColor: chosen ? TEAL_LIGHT : '#FFFFFF',
                 cursor: 'pointer',
-                boxShadow: chosen ? '0 4px 16px rgba(255,136,57,0.18)' : '0 1px 6px rgba(0,0,0,0.06)',
+                boxShadow: chosen ? '0 4px 16px rgba(92,118,112,0.18)' : '0 1px 6px rgba(0,0,0,0.06)',
                 transition: 'all 0.15s',
               }}>
                 <div style={{
@@ -85,7 +85,7 @@ export function CheckInTime({ onNext, onBack, isCompressed = false, onExit }) {
           width: '100%', height: 52, borderRadius: 26,
           backgroundColor: TEAL, border: 'none', cursor: 'pointer',
           fontFamily: 'Inter', fontWeight: 700, fontSize: 16,
-          color: '#FFFFFF', boxShadow: '0 4px 20px rgba(255,136,57,0.28)',
+          color: '#EFEBE4', boxShadow: '0 4px 20px rgba(92,118,112,0.28)',
         }}>
           See my plan
         </button>
